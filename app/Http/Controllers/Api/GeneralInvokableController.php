@@ -1,0 +1,72 @@
+<?php
+
+namespace App\Http\Controllers\Api;
+
+use App\Http\Controllers\Controller;
+use App\Http\Resources\Api\BrandResource;
+use App\Http\Resources\Api\CategoryResource;
+use App\Http\Resources\Api\CityResource;
+use App\Http\Resources\Api\CustomerRateResource;
+use App\Http\Resources\Api\packagesCategoryResources;
+use App\Http\Resources\Api\Rate;
+use App\Http\Resources\Api\RateResource;
+use App\Http\Resources\Api\ServiceResource;
+use App\Http\Resources\Api\SkinColorResource;
+use App\Models\AddonService;
+use App\Models\Brand;
+use App\Models\Category;
+use App\Models\City;
+use App\Models\customers_rates;
+use App\Models\PackageCategory;
+use App\Models\SkinColor;
+use Illuminate\Http\Request;
+
+class GeneralInvokableController extends Controller
+{
+    /**
+     * Handle the incoming request.
+     */
+    public function __invoke(Request $request)
+    {
+        $ourservices   = AddonService::select('id', 'name_ar', 'name_en','image','description_ar','description_en')->get();
+        $allCities     = City::select('id', 'name_ar', 'name_en')->get();
+         $rate         = customers_rates::select('id', 'customer_id','comment','rate','status')->get();
+            return $this->success('', [
+          
+            'allCities' => CityResource::collection($allCities),
+            
+            'Rate' => RateResource::collection( $rate),
+            'services'=> ServiceResource::collection($ourservices),
+           
+            'instagram_link' => setting('instagram_link'),
+            'privacy_policy' => setting('privacy_policy_' . request()->header('Content-language')),
+            'facebook_link' => setting('facebook_link'),
+            'linkedin_link' => setting('linkedin_link'),
+            'youtube_link' => setting('youtube_link'),
+            'twitter_link' => setting('twitter_link'),
+            'whatsapp_number' => setting('whatsapp_number'),
+            'sms_number' => setting('sms_number'),
+            'email' => setting('email'),
+            'address_ar' => setting('address_ar'),
+            'address_en' => setting('address_en'),
+
+            'whatsapp_message_time' => setting('delay_time_seconds'),
+            'whatsapp_message' => setting('whatsapp_message'),
+            'whatsapp_show' => setting('whatsapp_notification_enabled'),
+
+
+            'about_us' => [
+                'label' => setting('label_' . request()->header('Content-language')),
+                'description' => setting('about_us_' . request()->header('Content-language')),
+                'video' => setting('youtube_link')
+
+            ],
+            'terms_and_condition' => setting('terms_' . request()->header('Content-language')),
+            'return_policy' => setting('return_policy_' . request()->header('Content-language')),
+            'loyality' => setting('loyality_' . request()->header('Content-language')),
+
+            'tax' => (setting('tax') / 100),
+
+        ]);
+    }
+}

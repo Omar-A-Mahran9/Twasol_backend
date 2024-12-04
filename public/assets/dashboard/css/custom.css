@@ -1,0 +1,56 @@
+
+.form-control.is-invalid[type="password"] {
+    border-color: #f1416c;
+    padding-left: calc(1.5em + 1.55rem);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23f1416c'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23f1416c' stroke='none'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: left calc(2.375em + 0.3875rem) center;
+    background-size: calc(0.75em + 0.775rem) calc(0.75em + 0.775rem);
+}
+
+.pac-container { z-index: 100000 !important; }
+
+.table.dataTable thead th, table.dataTable thead td, table.dataTable tfoot th, table.dataTable tfoot td {
+    text-align: center;
+}
+
+
+.select2-container--bootstrap5 .select2-selection__clear {
+    left: 4rem !important;
+    right: unset !important;
+}
+
+.select2-container--bootstrap5 .select2-dropdown .select2-results__option.select2-results__option--selected:after {
+    left: 5rem !important;
+    right: unset;
+}
+
+.form-control.is-invalid[type="password"] {
+    padding-left: calc(1.5em + 1.55rem);
+    background-position: left calc(2.375em + 0.3875rem) center;
+    background-size: calc(0.75em + 0.775rem) calc(0.75em + 0.775rem);
+}
+
+.was-validated .form-select:valid:not([multiple]):not([size]), .was-validated .form-select:valid:not([multiple])[size="1"], .form-select.is-valid:not([multiple]):not([size]), .form-select.is-valid:not([multiple])[size="1"] {
+    padding-left: 5.5rem;
+    background-position: left 1rem center, center left 3rem;
+    background-size: 16px 12px, calc(0.75em + 0.775rem) calc(0.75em + 0.775rem);
+}
+
+.select2-selection.is-invalid .select2-selection__clear, .select2-selection.is-valid .select2-selection__clear {
+    left: 5.5rem !important;
+}
+
+.was-validated .form-control:valid, .form-control.is-valid[type='password'] {
+    background-position: left calc(0.5em + 2.9rem) center;
+}
+
+
+.select2-container--bootstrap5 .select2-selection--multiple .select2-selection__rendered .select2-selection__choice .select2-selection__choice__remove {
+    left: 5%;
+}
+
+[type="tel"], [type="url"], [type="email"], [type="number"] {
+    direction: rtl;
+}
+

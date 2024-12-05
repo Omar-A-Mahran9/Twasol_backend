@@ -749,7 +749,7 @@
                     <!--begin::Drawer wrapper-->
                     <div class="btn btn-icon btn-custom btn-color-gray-500 btn-active-light btn-active-color-primary w-35px h-35px w-md-40px h-md-40px position-relative"
                         id="kt_drawer_chat_toggle">
-                        <a href="https://alraqi.sa/" target="_blank">
+                        <a href="https://tawasol-technology.com/" target="_blank">
                             {{--  <i class="fa-duotone fa-solid fa-globe fs-2"></i>  --}}
                             <i class="fa-solid fa-globe fs-2"></i>
                             {{--  <i class="ki-outline ki-abstract-20 fs-2"></i>  --}}
@@ -758,8 +758,8 @@
                     {{-- <div class="btn btn-icon btn-custom btn-color-gray-500 btn-active-light btn-active-color-primary w-35px h-35px w-md-40px h-md-40px position-relative"
                         data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-attach="parent"
                         data-kt-menu-placement="bottom-end" id="kt_activities_toggle"> --}}
-                        <!--begin::Svg Icon | path: icons/duotune/communication/com003.svg-->
-                        {{--  <span class="svg-icon svg-icon-1">
+                    <!--begin::Svg Icon | path: icons/duotune/communication/com003.svg-->
+                    {{--  <span class="svg-icon svg-icon-1">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path opacity="0.3"
@@ -770,14 +770,14 @@
                                     fill="currentColor" />
                             </svg>
                         </span>  --}}
-                        {{-- <i class="ki-outline ki-notification-on fs-2"></i> --}}
+                    {{-- <i class="ki-outline ki-notification-on fs-2"></i> --}}
 
-                        <!--end::Svg Icon-->
+                    <!--end::Svg Icon-->
 
-                        <!--begin::Bullet-->
-                        {{-- <span
+                    <!--begin::Bullet-->
+                    {{-- <span
                             class="bullet bullet-dot bg-danger h-6px w-6px position-absolute translate-middle top-0 start-50 animation-blink  {{ $unreadNotifications->count() == 0 ? 'd-none' : '' }}"></span> --}}
-                        <!--end::Bullet-->
+                    <!--end::Bullet-->
                     {{-- </div> --}}
                     <!--end::Drawer wrapper-->
                     <div class="menu menu-sub menu-sub-dropdown menu-column w-350px w-lg-375px" id="kt_menu"

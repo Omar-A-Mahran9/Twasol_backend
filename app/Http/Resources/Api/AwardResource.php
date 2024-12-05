@@ -19,8 +19,6 @@ class BlogResource extends JsonResource
             'id' => $this->id,
             'image' => $this->full_image_path,
             'name' => $this->name,
-            'description' => $this->description,
-
             'created' => \Carbon\Carbon::parse($this->created_at)->format('d/m/Y'), // Formats as 31/12/2024        
       
                 ];

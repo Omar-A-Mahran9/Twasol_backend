@@ -26,10 +26,9 @@ class StoreBrandRequest extends FormRequest
     {
         return [
             'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:512',
-            "name_ar" => ["required", "string:255", "unique:brands", new NotNumbersOnly()],
-            "name_en" => ["required", "string:255", "unique:brands", new NotNumbersOnly()],
-            "description_ar" => ["required", "string:255", new NotNumbersOnly()],
-            "description_en" => ["required", "string:255", new NotNumbersOnly()],
+            "name_ar" => ["required", "string:255", "unique:awards", new NotNumbersOnly()],
+            "name_en" => ["required", "string:255", "unique:awards", new NotNumbersOnly()],
+           
         ];
     }
 }

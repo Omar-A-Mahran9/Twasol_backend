@@ -118,8 +118,8 @@
                 @endcan
 
                 @can('view_brands')
-                    <x-dashboard.aside-item :slug="'brands'" :route="route('dashboard.brands.index')" :title="__('Brands')">
-                        <i class="ki-outline ki-text-bold fs-2"></i>
+                    <x-dashboard.aside-item :slug="'brands'" :route="route('dashboard.brands.index')" :title="__('awards')">
+                        <i class="fas fa-certificate fs-2"></i>
                     </x-dashboard.aside-item>
                 @endcan
 

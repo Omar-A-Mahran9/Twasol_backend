@@ -13,6 +13,7 @@ use App\Http\Resources\Api\SliderResource;
 use App\Http\Resources\Api\SubcategoryResource;
 use App\Http\Resources\Api\TagResource;
 use App\Models\Ad;
+use App\Models\award;
 use App\Models\blogs;
 use App\Models\Brand;
 use App\Models\Category;
@@ -36,6 +37,13 @@ class HomeController extends Controller
     public function getblogs()
     {
         $blogs = blogs::get();
+
+        return $this->success('', BlogResource::collection($blogs));
+    }
+
+    public function getawards()
+    {
+        $blogs = award::get();
 
         return $this->success('', BlogResource::collection($blogs));
     }

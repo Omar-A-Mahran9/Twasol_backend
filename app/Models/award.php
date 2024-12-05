@@ -5,14 +5,13 @@ namespace App\Models;
 use App\Models\Scopes\SortingScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Brand extends Model
+class award extends Model
 {
-    use HasFactory,SoftDeletes;
-
+    use HasFactory;
+    protected $table="awards";
     protected $guarded = [];
-    protected $appends = ['name', 'full_image_path', 'description'];
+    protected $appends = ['name', 'full_image_path'];
     protected $casts   = [
         'created_at' => 'date:Y-m-d',
         'updated_at' => 'date:Y-m-d',
@@ -37,13 +36,6 @@ class Brand extends Model
     }
     public function getFullImagePathAttribute()
     {
-        return asset(getImagePathFromDirectory($this->image, 'Brands', "default.svg"));
+        return asset(getImagePathFromDirectory($this->image, 'awares', "default.svg"));
     }
-
-    public function getDescriptionAttribute()
-    {
-        return $this->attributes['description_' . app()->getLocale()];
-    }
-
-   
 }

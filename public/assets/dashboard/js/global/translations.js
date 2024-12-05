@@ -22,10 +22,13 @@ let translations = {
         "Add new Addon": " أضف خدمة ",
         "Edit addon": "تعديل الخدمة",
         "Add new rate": "اضافة تقييم",
+        "Add new awars": "اضافة انجاز جديد",
 
         "Yes, Delete !": "نعــم, أحذف !",
         "No, Cancel": "لا , ألغي",
         "something went wrong": "حدث خطأ ما",
+        "Edit awards !": "تعديل انجاز !",
+
         "Error !": "خطـأ !",
         "Operation done successfully": "تمت العملية بنجاح",
         "This action is unauthorized.": "ليس لديك صلاحية لهذا الاجراء",

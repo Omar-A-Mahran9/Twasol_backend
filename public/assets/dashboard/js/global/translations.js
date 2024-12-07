@@ -6,6 +6,7 @@ const __ = (word) => {
 
 let translations = {
     ar: {
+        "Add new partner": "اضافة شريك جديد",
         "Add new blog": "أضف مدونة جديدة",
         "Please wait...": "يرجى الانتظار...",
         "Are you sure from deleting this ": "هل انت متاكد من حذف  ",
@@ -61,6 +62,9 @@ let translations = {
         "You have deleted the": "تم حذف",
         "was not deleted !": "لم يتم الحذف !",
         "successfully !": "بنجاح !",
+        "Edit partner": "تعديل الشريك",
+        "Add new offer": "اضافة عرض جديد",
+
         Showing: "عرض",
         to: "إلى",
         records: "صفوف",

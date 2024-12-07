@@ -39,6 +39,7 @@ Route::get("fast-shipping-city/restore/{fastCity}", "FastShippingCityController@
 Route::delete("packageCategories/delete-selected", "PackageCategoryController@deleteSelected");
 Route::delete("packages/delete-selected", "PackagesController@deleteSelected");
 Route::delete("car_prices/delete-selected", "CarPriceController@deleteSelected");
+Route::delete("partner/delete-selected", "PartenerController@deleteSelected");
 
 /** begin resources routes **/
 Route::resource('order-reasons', 'OrderReasonController')->except(['create', 'edit']);
@@ -46,6 +47,7 @@ Route::resource('admins', 'AdminController')->except(['create', 'edit']);
 Route::resource('booking', 'BookingController')->except(['create', 'edit']);
 Route::resource('brands', 'BrandController')->except(['create', 'edit']);
 Route::resource('award', 'BrandController')->except(['create', 'edit']);
+Route::resource('partner', 'PartenerController')->except(['create', 'edit']);
 
 Route::resource('blogs', 'BlogsController')->except(['create', 'edit']);
 Route::resource('CommonQuestion', 'CommonQuestionController')->except(['create', 'edit']);

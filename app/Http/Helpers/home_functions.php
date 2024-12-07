@@ -1,8 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Http;
-// use Webstdy\Notification\NewNotification;
-
+ 
 if(!function_exists('isNavTabActive')){
 
     function isNavTabActive($path){

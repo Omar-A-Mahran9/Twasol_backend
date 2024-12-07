@@ -21,41 +21,25 @@ class Role extends Model
     ];
 
     public static $modules = [
-        'booking',
         'blogs',
-        'CommonQuestion',
         'admins',
         'customers',
         'customersRate',
         'vendors',
-        'colors',
+        'partener',
+        'awards',
+
         'roles',
-        'addonService',
-        'brands',
-        'categories',
-        'cars',
-        'packages',
-        'carPrices',
-        'payment_partener',
-        'payment_ways',
-        'packageCategories',
-        'packagesubCategories',
-        'packages',
+        'addonService', 
         'tags',
         'cities',
-        'ads',
+        'offers',
         'products',
         'newsletter',
         'contact_us',
         'settings',
-        'home_content',
-        'design_types',
-        'fast_cities',
         'orders',
         'sliders',
-        'recycle_bin',
-        'order_reasons',
-        'order_refund_cancel'
     ];
 
     protected static function booted()

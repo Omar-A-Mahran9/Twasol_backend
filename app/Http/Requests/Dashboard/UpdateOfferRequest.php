@@ -24,17 +24,16 @@ class UpdateOfferRequest extends FormRequest
         $offer = request()->route('offer');
 
         return [
+            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:512',
             "name_ar" => ["required", "string:255", "unique:offers,name_ar,$offer->id"],
             "name_en" => ["required", "string:255", "unique:offers,name_ar,$offer->id"],
             "description_ar" => 'required|string|max:255',
             "description_en" => 'required|string|max:255',
             "price" => 'required|numeric|min:1',
-            'vendor_id' => 'required|min:1',
-            'category_id' => 'required|min:1',
+            'addon_service_id' => 'required|min:1',
             'status' => 'required|in:Pending,Rejected,Approved',
-            'rejection_reason' => 'required_if:status,Rejected',
-            'meta_tag_key_words' => 'nullable|string|max:255',
+             'meta_tag_key_words' => 'nullable|string|max:255',
             'meta_tag_key_description' => 'nullable|string|max:255',
         ];
     }
-}
+} 

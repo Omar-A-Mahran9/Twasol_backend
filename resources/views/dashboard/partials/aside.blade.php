@@ -89,7 +89,11 @@
                         <i class="ki-outline ki-plus fs-2"></i>
                     </x-dashboard.aside-item>
                 @endcan
-
+                @can('view_offers')
+                    <x-dashboard.aside-item :slug="'offers'" :route="route('dashboard.offers.index')" :title="__('Offers')">
+                        <i class="ki-outline ki-discount fs-2"></i>
+                    </x-dashboard.aside-item>
+                @endcan
 
                 <!--begin:Menu item-->
                 @can('view_cities')
@@ -117,9 +121,15 @@
                     </x-dashboard.aside-item>
                 @endcan
 
-                @can('view_brands')
+                @can('view_awards')
                     <x-dashboard.aside-item :slug="'brands'" :route="route('dashboard.brands.index')" :title="__('awards')">
                         <i class="fas fa-certificate fs-2"></i>
+                    </x-dashboard.aside-item>
+                @endcan
+
+                @can('view_partener')
+                    <x-dashboard.aside-item :slug="'brands'" :route="route('dashboard.partner.index')" :title="__('partner')">
+                        <i class="fas fa-handshake fs-2   me-2"></i>
                     </x-dashboard.aside-item>
                 @endcan
 

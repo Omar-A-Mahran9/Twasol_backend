@@ -14,7 +14,7 @@
             data-bs-target="#kt_account_profile_details" aria-expanded="true" aria-controls="kt_account_profile_details">
             <!--begin::Card title-->
             <div class="card-title m-0">
-                <h3 class="fw-bold m-0">{{ __('Offers list') }}</h3>
+                <h3 class="fw-bold m-0">{{ __('Partners list') }}</h3>
             </div>
             <!--end::Card title-->
         </div>
@@ -38,7 +38,7 @@
                     </span>
                     <!--end::Svg Icon-->
                     <input type="text" data-kt-docs-table-filter="search"
-                        class="form-control form-control-solid w-250px ps-15" placeholder="{{ __('Search for offers') }}">
+                        class="form-control form-control-solid w-250px ps-15" placeholder="{{ __('Search for partners') }}">
                 </div>
                 <!--end::Search-->
                 <!--begin::Toolbar-->
@@ -57,7 +57,7 @@
                                     fill="currentColor"></rect>
                             </svg>
                         </span>
-                        <!--end::Svg Icon-->{{ __('Add offer') }}</button>
+                        <!--end::Svg Icon-->{{ __('Add Partener') }}</button>
                     <!--end::Add customer-->
                 </div>
                 <!--end::Toolbar-->
@@ -84,11 +84,9 @@
                             </div>
                         </th>
                         <th>{{ __('Name') }}</th>
-                        <th>{{ __('Service') }}</th>
-                        <th>{{ __('Price') }}</th>
-                        <th>{{ __('Status') }}</th>
+                        <th>{{ __('Image') }}</th>
                         <th>{{ __('Created at') }}</th>
-                        <th>{{ __('Actions') }}</th>
+                        <th class=" min-w-100px">{{ __('Actions') }}</th>
                     </tr>
                 </thead>
                 <tbody class="text-gray-600 fw-semibold">
@@ -101,14 +99,14 @@
     <!--end::Basic info-->
 
     {{-- begin::Add Country Modal --}}
-    <form id="crud_form" class="ajax-form" action="{{ route('dashboard.offers.store') }}" method="post"
+    <form id="crud_form" class="ajax-form" action="{{ route('dashboard.partner.store') }}" method="post"
         data-success-callback="onAjaxSuccess" data-error-callback="onAjaxError">
         @csrf
         <div class="modal fade" tabindex="-1" id="crud_modal">
             <div class="modal-dialog modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="form_title">{{ __('Add new offer') }}</h5>
+                        <h5 class="modal-title" id="form_title">{{ __('Add new partner') }}</h5>
                         <!--begin::Close-->
                         <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
                             aria-label="Close">
@@ -124,85 +122,21 @@
                             <x-dashboard.upload-image-inp name="image" :image="null" :directory="null"
                                 placeholder="default.svg" type="editable"></x-dashboard.upload-image-inp>
                         </div>
-                        <div class="fv-row mb-5 fv-plugins-icon-container">
+                        <div class="fv-row mb-0 fv-plugins-icon-container">
                             <label for="name_ar_inp"
                                 class="form-label required fs-6 fw-bold mb-3">{{ __('Name ar') }}</label>
                             <input type="text" name="name_ar" class="form-control form-control-lg form-control-solid"
                                 id="name_ar_inp" placeholder="{{ __('Name ar') }}">
                             <div class="fv-plugins-message-container invalid-feedback" id="name_ar"></div>
                         </div>
-                        <div class="fv-row mb-5 fv-plugins-icon-container">
+                        <div class="fv-row mb-0 fv-plugins-icon-container">
                             <label for="name_en_inp"
                                 class="form-label required fs-6 fw-bold mb-3">{{ __('Name en') }}</label>
                             <input type="text" name="name_en" class="form-control form-control-lg form-control-solid"
                                 id="name_en_inp" placeholder="{{ __('Name en') }}">
                             <div class="fv-plugins-message-container invalid-feedback" id="name_en"></div>
                         </div>
-                        <div class="fv-row mb-5 fv-plugins-icon-container">
-                            <label for="description_ar_inp"
-                                class="form-label required fs-6 fw-bold mb-3">{{ __('Description ar') }}</label>
-                            <input type="text" name="description_ar"
-                                class="form-control form-control-lg form-control-solid" id="description_ar_inp"
-                                placeholder="{{ __('Description ar') }}">
-                            <div class="fv-plugins-message-container invalid-feedback" id="description_ar"></div>
-                        </div>
-                        <div class="fv-row mb-5 fv-plugins-icon-container">
-                            <label for="description_en_inp"
-                                class="form-label required fs-6 fw-bold mb-3">{{ __('Description en') }}</label>
-                            <input type="text" name="description_en"
-                                class="form-control form-control-lg form-control-solid" id="description_en_inp"
-                                placeholder="{{ __('Description en') }}">
-                            <div class="fv-plugins-message-container invalid-feedback" id="description_en"></div>
-                        </div>
-                        <div class="fv-row mb-5 fv-plugins-icon-container">
-                            <label for="price_inp"
-                                class="form-label required fs-6 fw-bold mb-3">{{ __('Price') }}</label>
-                            <input type="number" step="0.1" name="price"
-                                class="form-control form-control-lg form-control-solid" id="price_inp"
-                                placeholder="{{ __('Price') }}">
-                            <div class="fv-plugins-message-container invalid-feedback" id="price"></div>
-                        </div>
-                        <div class="fv-row mb-5 fv-plugins-icon-container">
-                            <label class="form-label required fs-6 fw-bold mb-3">{{ __('Service') }}</label>
-                            <select class="form-select form-select" data-control="select2" name="addon_service_id"
-                                id="addon_service_id_inp" data-placeholder="{{ __('Choose the offer') }}"
-                                data-dir="{{ isArabic() ? 'rtl' : 'ltr' }}">
-                                <option value="" selected></option>
-                                @foreach ($Services as $Service)
-                                    <option value="{{ $Service->id }}"> {{ $Service->name }} </option>
-                                @endforeach
-                            </select>
-                            <div class="fv-plugins-message-container invalid-feedback" id="addon_service_id"></div>
-                        </div>
-                        <div class="fv-row mb-5 fv-plugins-icon-container">
-                            <label class="form-label required fs-6 fw-bold mb-3">{{ __('Status') }}</label>
-                            <select class="form-select form-select" data-control="select2" name="status"
-                                id="status_inp" data-placeholder="{{ __('Choose the status') }}"
-                                data-dir="{{ isArabic() ? 'rtl' : 'ltr' }}">
-                                <option value="" selected></option>
-                                <option value="Pending"> {{ __('Pending') }} </option>
-                                <option value="Rejected"> {{ __('Rejected') }} </option>
-                                <option value="Approved"> {{ __('Approved') }} </option>
-                            </select>
-                            <div class="fv-plugins-message-container invalid-feedback" id="status"></div>
-                        </div>
-                        <div class="fv-row mb-5 fv-plugins-icon-container">
-                            <label for="meta_tag_key_words_inp"
-                                class="form-label fs-6 fw-bold mb-3">{{ __('Meta tag key words') }}</label>
-                            <input type="text" name="meta_tag_key_words"
-                                class="form-control form-control-lg form-control-solid" id="meta_tag_key_words_inp"
-                                placeholder="{{ __('Meta tag key words') }}">
-                            <div class="fv-plugins-message-container invalid-feedback" id="meta_tag_key_words"></div>
-                        </div>
-                        <div class="fv-row mb-5 fv-plugins-icon-container">
-                            <label for="meta_tag_key_description_inp"
-                                class="form-label fs-6 fw-bold mb-3">{{ __('Meta tag key description') }}</label>
-                            <input type="text" name="meta_tag_key_description"
-                                class="form-control form-control-lg form-control-solid" id="meta_tag_key_description_inp"
-                                placeholder="{{ __('Meta tag key description') }}">
-                            <div class="fv-plugins-message-container invalid-feedback" id="meta_tag_key_description">
-                            </div>
-                        </div>
+
                     </div>
 
                     <div class="modal-footer">
@@ -213,7 +147,7 @@
                                 {{ __('Save') }}
                             </span>
                             <span class="indicator-progress">
-                                {{ __('Please wait...') }} <span
+                                {{ __('Please wait....') }} <span
                                     class="spinner-border spinner-border-sm align-middle ms-2"></span>
                             </span>
                         </button>
@@ -229,35 +163,20 @@
 @push('scripts')
     <script src="{{ asset('assets/dashboard/js/global/datatable-config.js') }}"></script>
     <script src="{{ asset('assets/dashboard/js/datatables/datatables.bundle.js') }}"></script>
-    <script src="{{ asset('assets/dashboard/js/datatables/offers.js') }}"></script>
+    <script src="{{ asset('assets/dashboard/js/datatables/partner.js') }}"></script>
     <script src="{{ asset('assets/dashboard/js/global/crud-operations.js') }}"></script>
+    <script src="{{ asset('assets/dashboard/plugins/custom/fslightbox/fslightbox.bundle.js') }}"></script>
 
     <script>
         $(document).ready(function() {
             $("#add_btn").click(function(e) {
-                $('#status_inp').on('change', function() {
-                    var selectedValue = $(this).val();
-                    var rejectionReasonContainer = $('#rejection_reason_container');
-
-                    if (selectedValue === 'Rejected') {
-                        // Show the rejection reason input field
-                        rejectionReasonContainer.show();
-                    } else {
-                        // Hide the rejection reason input field
-                        rejectionReasonContainer.hide();
-                    }
-                });
-
                 e.preventDefault();
 
-                $("#form_title").text(__('Add new offer'));
+                $("#form_title").text(__('Add new partner'));
                 $("[name='_method']").remove();
-                $(`[name='addon_service_id']`).val('').attr('selected', true);
-                $(`[name='addon_service_id']`).trigger('change');
-                $(`[name='status']`).val('').attr('selected', true);
-                $(`[name='status']`).trigger('change');
                 $("#crud_form").trigger('reset');
-                $("#crud_form").attr('action', `/dashboard/offers`);
+                $("#crud_form").attr('action', `/dashboard/partner`);
+                $('.image-input-wrapper').css('background-image', `url('/placeholder_images/default.svg')`);
             });
 
 

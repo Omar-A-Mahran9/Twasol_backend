@@ -13,20 +13,21 @@ return new class extends Migration
     {
         Schema::create('offers', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('vendor_id');
-            $table->unsignedBigInteger('category_id');
             $table->string('name_ar')->unique();
             $table->string('name_en')->unique();
             $table->string('description_ar');
+            $table->string('image');
             $table->string('description_en');
-            $table->double('price');
+            $table->unsignedBigInteger('addon_service_id')->nullable();
+            // Foreign key constraint.
+            $table->foreign('addon_service_id')
+            ->references('id')
+            ->on('addon_services')
+            ->onDelete('cascade'); 
+                       $table->double('price');
             $table->enum('status', ['Pending', 'Rejected', 'Approved']);
-            $table->string('rejection_reason')->nullable();
             $table->string('meta_tag_key_words')->nullable();
             $table->string('meta_tag_key_description')->nullable();
-
-            $table->foreign('vendor_id')->references('id')->on('vendors');
-            $table->foreign('category_id')->references('id')->on('categories');
             $table->timestamps();
         });
     }

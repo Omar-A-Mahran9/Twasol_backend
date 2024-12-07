@@ -8,6 +8,7 @@ use App\Http\Resources\Api\CategoryResource;
 use App\Http\Resources\Api\CityResource;
 use App\Http\Resources\Api\CustomerRateResource;
 use App\Http\Resources\Api\packagesCategoryResources;
+use App\Http\Resources\Api\PartenersResource;
 use App\Http\Resources\Api\Rate;
 use App\Http\Resources\Api\RateResource;
 use App\Http\Resources\Api\ServiceResource;
@@ -18,6 +19,7 @@ use App\Models\Category;
 use App\Models\City;
 use App\Models\customers_rates;
 use App\Models\PackageCategory;
+use App\Models\partener;
 use App\Models\SkinColor;
 use Illuminate\Http\Request;
 
@@ -31,13 +33,14 @@ class GeneralInvokableController extends Controller
         $ourservices   = AddonService::select('id', 'name_ar', 'name_en','image','description_ar','description_en')->get();
         $allCities     = City::select('id', 'name_ar', 'name_en')->get();
          $rate         = customers_rates::select('id', 'customer_id','comment','rate','status')->get();
+         $parteners=partener::select('id', 'name_ar', 'name_en','image')->get();
             return $this->success('', [
           
             'allCities' => CityResource::collection($allCities),
             
             'Rate' => RateResource::collection( $rate),
             'services'=> ServiceResource::collection($ourservices),
-           
+            'partners'=>PartenersResource::collection($parteners),
             'instagram_link' => setting('instagram_link'),
             'privacy_policy' => setting('privacy_policy_' . request()->header('Content-language')),
             'facebook_link' => setting('facebook_link'),

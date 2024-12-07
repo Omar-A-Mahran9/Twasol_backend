@@ -55,6 +55,7 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
     Route::get('brands', 'HomeController@getBrands');
     Route::get('blogs', 'HomeController@getblogs');
     Route::get('awards', 'HomeController@getawards');
+    Route::get('partners', 'HomeController@getpartners');
 
     Route::get('categories', 'HomeController@getCategories');
     Route::get('subcategories', 'HomeController@getSubcategories');
@@ -78,6 +79,8 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
     Route::get('categories-search', 'HomeController@categoriesSearch');
     Route::post('news-letter', 'HomeController@newsLetter');
     Route::get('sliders', 'HomeController@getSliders');
+    Route::get('offers', 'HomeController@getOffers');
+    Route::post('order/{step}', 'OrderController@createOrder');
 
 
 

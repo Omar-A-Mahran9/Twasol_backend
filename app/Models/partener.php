@@ -6,11 +6,11 @@ use App\Models\Scopes\SortingScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Offer extends Model
+class partener extends Model
 {
     use HasFactory;
-    protected $guarded = [];
-    protected $appends = ['name', 'description','full_image_path'];
+    protected $fillable = ['image','name_ar','name_en']; // Add this array to allow mass assignment of the 'image' attribute
+    protected $appends = ['name', 'full_image_path'];
     protected $casts   = [
         'created_at' => 'date:Y-m-d',
         'updated_at' => 'date:Y-m-d',
@@ -24,14 +24,9 @@ class Offer extends Model
         static::addGlobalScope(new SortingScope);
     }
 
-    public function service()
+    public function products()
     {
-         return $this->belongsTo(AddonService::class,'addon_service_id');
-    }
-
-    public function visits()
-    {
-        return $this->morphMany(Visit::class, 'visitable');
+        return $this->hasMany(Product::class);
     }
 
     public function getNameAttribute()
@@ -39,13 +34,10 @@ class Offer extends Model
         return $this->attributes['name_' . app()->getLocale()];
     }
 
-    public function getDescriptionAttribute()
-    {
-        return $this->attributes['description_' . app()->getLocale()];
-    }
-
     public function getFullImagePathAttribute()
     {
-        return asset(getImagePathFromDirectory($this->image, 'offers', "default.svg"));
+        return asset(getImagePathFromDirectory($this->image, 'partner', "default.svg"));
     }
+
+    
 }

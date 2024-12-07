@@ -21,23 +21,23 @@ class DashboardController extends Controller
     public function index()
     {
         //  count orders based status and prices
-        $orders               = Order::query();
-        $orderPlaced          = $orders->clone()->where('status', OrderStatus::OrderPlaced->value)->count();
-        $orderPlacedPrice     = $orders->clone()->where('status', OrderStatus::OrderPlaced->value)->sum('total_price');
-        $orderProcessing      = $orders->clone()->whereIn('status', [OrderStatus::PaymentConfirmed->value, OrderStatus::Processing->value, OrderStatus::Shipped->value])->count();
-        $orderProcessingPrice = $orders->clone()->whereIn('status', [OrderStatus::PaymentConfirmed->value, OrderStatus::Processing->value, OrderStatus::Shipped->value])->sum('total_price');
-        $orderDelivered       = $orders->clone()->where('status', OrderStatus::Delivered->value)->count();
-        $orderDeliveredPrice  = $orders->clone()->where('status', OrderStatus::Delivered->value)->sum('total_price');
-        $orderRejected        = $orders->clone()->where('status', OrderStatus::Rejected->value)->count();
-        $orderRejectedPrice   = $orders->clone()->where('status', operator: OrderStatus::Rejected->value)->sum('total_price');
-        $orderPlaced          = $this->formatNumber($orderPlaced);
-        $orderProcessing      = $this->formatNumber($orderProcessing);
-        $orderDelivered       = $this->formatNumber($orderDelivered);
-        $orderRejected        = $this->formatNumber($orderRejected);
-        $orderPlacedPrice     = $this->formatNumber($orderPlacedPrice);
-        $orderProcessingPrice = $this->formatNumber($orderProcessingPrice);
-        $orderDeliveredPrice  = $this->formatNumber($orderDeliveredPrice);
-        $orderRejectedPrice   = $this->formatNumber($orderRejectedPrice);
+        $orders               = 0;
+        $orderPlaced          = 0;
+        $orderPlacedPrice     = 0;
+        $orderProcessing      = 0;
+        $orderProcessingPrice = 0;
+        $orderDelivered       = 0;
+        $orderDeliveredPrice  = 0;
+        $orderRejected        = 0;
+        $orderRejectedPrice   = 0;
+        $orderPlaced          = 0;
+        $orderProcessing      = 0;
+        $orderDelivered       = 0;
+        $orderRejected        = 0;
+        $orderPlacedPrice     = 0;
+        $orderProcessingPrice = 0;
+        $orderDeliveredPrice  = 0;
+        $orderRejectedPrice   = 0;
 
         // Total count of customers
         $users           = Customer::query();
@@ -48,28 +48,11 @@ class DashboardController extends Controller
         $userCountActive = $this->formatNumber($userCountActive);
         $userCount       = $this->formatNumber($userCount);
 
-        $topUsers = Customer::clone()->withSum([
-            'orders' => function ($query) {
-                $query->where('status', OrderStatus::Delivered->value);
-            }
-        ], 'total_price')
-            ->withCount([
-                'orders' => function ($query) {
-                    $query->where('status', OrderStatus::Delivered->value);
-                }
-            ])
-            ->having('orders_count', '>', 0)
-            ->orderByDesc('orders_count')
-            ->take(5)
-            ->get();
+        $topUsers =0;
 
-        // Total count of vendors
-        $vendors            = Vendor::query();
-        $vendorCount            = 4;
-
+ 
             
-         $vendorCount = $this->formatNumber($vendorCount);
-
+ 
         // Total count of cities
         $cities          = City::query();
         $citiesCount     = $cities->clone()->count();
@@ -96,34 +79,7 @@ class DashboardController extends Controller
         $topSellingSilverProducts  = 0;
         $topSellingWatchesProducts = 0;
         //
-        return view('welcome', compact(
-            'orderPlaced',
-            'orderPlacedPrice',
-            'orderProcessing',
-            'orderProcessingPrice',
-            'orderDelivered',
-            'orderDeliveredPrice',
-            'orderRejected',
-            'orderRejectedPrice',
-            'userCount',
-            'userCountActive',
-            'userCountOrder',
-            'vendorCount',
-             'citiesCount',
-            'branchesCount',
-            'allCategories',
-            'topUsers',
-            'topSellingAllProducts',
-            'topSellingGoldProducts',
-            'topSellingSilverProducts',
-             'topSellingWatchesProducts',
-             'categoryCountProducts',
-            'categoryCount',
-            'categoryCountOrders',
-            'topCities',
-            'topNameCities',
-            'topBranchCities',
-        ));
+        return view('welcome',  );
     }
 
     public function ordersTransaction(Request $request)

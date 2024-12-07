@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Dashboard\StoreOfferRequest;
 use App\Http\Requests\Dashboard\UpdateOfferRequest;
+use App\Models\AddonService;
 use App\Models\Category;
 use App\Models\Offer;
 use App\Models\Vendor;
@@ -20,13 +21,9 @@ class OfferController extends Controller
         if ($request->ajax())
         {
             $offers   = Offer::with([
-                'vendor' => function ($query) {
-                    $query->withTrashed()->select('id', 'name');
+                'service' => function ($query) {
+                    $query->select('id', 'name_ar','name_en','description_ar','description_en');
                 },
-                'category' => function ($query) {
-                    $query->withTrashed()->select('id', 'name_ar', 'name_en', 'description_ar', 'description_en');
-                },
-
             ]);
             $response = [
                 "recordsTotal" => $offers->count(),
@@ -35,10 +32,9 @@ class OfferController extends Controller
             ];
             return response($response);
         }
-        $vendors    = Vendor::select('id', 'name')->withTrashed()->get();
-        $categories = Category::select('id', 'name_ar', 'name_en')->withTrashed()->get();
-
-        return view('dashboard.offers.index', compact('vendors', 'categories'));
+        $Services    = AddonService::select('id', 'name_ar', 'name_en')->get();
+ 
+        return view('dashboard.offers.index', compact('Services' ));
     }
 
     public function store(StoreOfferRequest $request)
@@ -46,6 +42,9 @@ class OfferController extends Controller
         $this->authorize('create_offers');
 
         $data = $request->validated();
+
+        if ($request->has('image'))
+        $data['image'] = uploadImageToDirectory($request->file('image'), "offers");
 
         Offer::create($data);
 
@@ -57,6 +56,8 @@ class OfferController extends Controller
         $this->authorize('update_offers');
 
         $data = $request->validated();
+        if ($request->has('image'))
+        $data['image'] = uploadImageToDirectory($request->file('image'), "offers");
 
         $offer->update($data);
 
@@ -68,12 +69,9 @@ class OfferController extends Controller
         $this->authorize('show_offers');
 
         $offer->load([
-            'vendor' => function ($query) {
-                $query->withTrashed();
+            'service' => function ($query) {
+                $query->select('id', 'name_ar','name_en','description_ar','description_en');
             },
-            'category' => function ($query) {
-                $query->withTrashed();
-            }
         ]);
 
         return view('dashboard.offers.show', compact('offer'));

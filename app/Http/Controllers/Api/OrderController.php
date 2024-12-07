@@ -21,12 +21,12 @@ use App\Http\Controllers\Controller;
 use App\Models\ProductSpecification;
 use App\Traits\WebNotificationsTrait;
 use App\Http\Resources\Api\CityResource;
-use App\Http\Requests\Api\PaymentRequest;
-use App\Http\Resources\Api\OrderResource;
+ use App\Http\Resources\Api\OrderResource;
 use App\Http\Resources\Api\ReasonResource;
 use App\Http\Requests\Api\OrderReasonRequest;
-use App\Http\Requests\Api\OrderCheckoutRequest;
-
+ 
+use App\Http\Requests\Api\OrderRequest;
+ 
 class OrderController extends Controller
 {
     use WebNotificationsTrait;
@@ -39,7 +39,7 @@ class OrderController extends Controller
         $this->otoService        = $otoService;
     }
 
-    public function checkout(OrderCheckoutRequest $request, $step = null)
+    public function checkout(OrderRequest $request, $step = null)
     {
         $vendors = collect();
         if ($step == 1) {
@@ -359,9 +359,11 @@ class OrderController extends Controller
         }
     }
 
-    public function pay(PaymentRequest $request)
+    public function createOrder(OrderRequest $request)
     {
-        return $this->tapPaymentService->pay($request);
+        $data=$request->validated();
+        dd($data);
+        // return $this->tapPaymentService->pay($request);
     }
 
     public function checkPaymentTransaction(Request $request)

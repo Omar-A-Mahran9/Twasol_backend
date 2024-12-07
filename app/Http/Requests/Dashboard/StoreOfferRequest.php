@@ -22,16 +22,15 @@ class StoreOfferRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:512',
             "name_ar" => 'required|string|max:255|unique:offers',
             "name_en" => 'required|string|max:255|unique:offers',
             "description_ar" => 'required|string|max:255',
             "description_en" => 'required|string|max:255',
             "price" => 'required|numeric|min:1',
-            'vendor_id' => 'required|min:1',
-            'category_id' => 'required|min:1',
+            'addon_service_id' => 'required|min:1',
             'status' => 'required|in:Pending,Rejected,Approved',
-            'rejection_reason' => 'required_if:status,Rejected',
-            'meta_tag_key_words' => 'nullable|string|max:255',
+             'meta_tag_key_words' => 'nullable|string|max:255',
             'meta_tag_key_description' => 'nullable|string|max:255',
         ];
     }

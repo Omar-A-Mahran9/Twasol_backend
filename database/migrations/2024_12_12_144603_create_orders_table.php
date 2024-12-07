@@ -15,17 +15,22 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('customer_id');
-            $table->unsignedBigInteger('address_id');
-            $table->double('total_price');
-            $table->double('tax');
-            $table->integer('status')->comment('App\Enums\OrderStatus')->default(OrderStatus::OrderPlaced->value);
-            $table->enum('type', ['Personal', 'Gift']);
-            $table->string('gift_owner_name')->nullable();
-            $table->string('gift_owner_phone')->nullable();
-            $table->string('gift_text')->nullable();
+            $table->unsignedBigInteger('city_id');
+            $table->unsignedBigInteger('addon_service_id') ;
+            // Foreign key constraint.
+            $table->date('date');
+            $table->string('description');
+            $table->string('address');
 
+           
+            $table->integer('status')->comment('App\Enums\OrderStatus')->default(OrderStatus::OrderPlaced->value);
+            $table->foreign('city_id')->references('id')->on('cities');
             $table->foreign('customer_id')->references('id')->on('customers');
-            $table->foreign('address_id')->references('id')->on('addresses');
+
+            $table->foreign('addon_service_id')
+            ->references('id')
+            ->on('addon_services')
+            ->onDelete('cascade'); 
             $table->timestamps();
         });
     }

@@ -1,6 +1,6 @@
 @extends('dashboard.partials.master')
 @section('content')
-    <!--begin::Content-->
+    {{-- <!--begin::Content-->
     <div id="kt_app_content" class="flex-column-fluid">
         <!--begin::Content container-->
         <div id="kt_app_content_container" class="app-container container-xxl">
@@ -141,5 +141,5 @@
         </div>
         <!--end::Content container-->
     </div>
-    <!--end::Content-->
+    <!--end::Content--> --}}
 @endsection

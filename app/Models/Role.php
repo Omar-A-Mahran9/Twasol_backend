@@ -28,7 +28,7 @@ class Role extends Model
         'vendors',
         'partener',
         'awards',
-
+        'gallary',
         'roles',
         'addonService', 
         'tags',

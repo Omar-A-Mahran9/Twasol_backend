@@ -29,12 +29,7 @@ class OrderRequest extends FormRequest
         $currentStep = request()->route('step');
 
         $stepsRules = [
-            [
-                'date' => ['required','date'],
-                'addon_service_id'=>['required'],
-                'description'=>['required'],
-
-            ],
+         
             [
                 "name" => ['required', 'string', 'max:255', new NotNumbersOnly()],
                 "phone" => [
@@ -54,6 +49,12 @@ class OrderRequest extends FormRequest
                 ],
                 'city_id'=>['required'],
                 "address" => ['required', 'string'],
+
+            ],
+            [
+                'date' => ['required','date'],
+                'addon_service_id'=>['required'],
+                'description'=>['required'],
 
             ],
           

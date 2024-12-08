@@ -134,6 +134,12 @@
                 @endcan
 
 
+                @can('view_gallary')
+                    <x-dashboard.aside-item :slug="'brands'" :route="route('dashboard.partner.index')" :title="__('partner')">
+                        <i class="fas fa-handshake fs-2   me-2"></i>
+                    </x-dashboard.aside-item>
+                @endcan
+
                 {{-- 
                 @can('view_CommonQuestion')
                     <x-dashboard.aside-item :slug="'CommonQuestion'" :route="route('dashboard.CommonQuestion.index')" :title="__('Common Question')">

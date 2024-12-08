@@ -362,8 +362,12 @@ class OrderController extends Controller
     public function createOrder(OrderRequest $request)
     {
         $data=$request->validated();
-        dd($data);
-        // return $this->tapPaymentService->pay($request);
+
+        $customerdata=[
+            
+        ];
+ 
+        return $data;
     }
 
     public function checkPaymentTransaction(Request $request)

@@ -7,6 +7,7 @@ use App\Http\Resources\Api\BrandResource;
 use App\Http\Resources\Api\CategoryResource;
 use App\Http\Resources\Api\CityResource;
 use App\Http\Resources\Api\CustomerRateResource;
+use App\Http\Resources\Api\GallariesResource;
 use App\Http\Resources\Api\packagesCategoryResources;
 use App\Http\Resources\Api\PartenersResource;
 use App\Http\Resources\Api\Rate;
@@ -18,6 +19,7 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\City;
 use App\Models\customers_rates;
+use App\Models\Gallary;
 use App\Models\PackageCategory;
 use App\Models\partener;
 use App\Models\SkinColor;
@@ -30,6 +32,7 @@ class GeneralInvokableController extends Controller
      */
     public function __invoke(Request $request)
     {
+        $gallary   = Gallary::select('id', 'name_ar', 'name_en','image')->get();
         $ourservices   = AddonService::select('id', 'name_ar', 'name_en','image','description_ar','description_en')->get();
         $allCities     = City::select('id', 'name_ar', 'name_en')->get();
          $rate         = customers_rates::select('id', 'customer_id','comment','rate','status')->get();
@@ -37,7 +40,8 @@ class GeneralInvokableController extends Controller
             return $this->success('', [
           
             'allCities' => CityResource::collection($allCities),
-            
+            'gallary'=>GallariesResource::collection($gallary),
+
             'Rate' => RateResource::collection( $rate),
             'services'=> ServiceResource::collection($ourservices),
             'partners'=>PartenersResource::collection($parteners),

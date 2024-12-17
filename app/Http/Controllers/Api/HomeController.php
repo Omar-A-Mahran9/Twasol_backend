@@ -7,6 +7,7 @@ use App\Http\Resources\Api\AdResource;
 use App\Http\Resources\Api\BlogResource;
 use App\Http\Resources\Api\BrandResource;
 use App\Http\Resources\Api\CategoryResource;
+use App\Http\Resources\Api\GallariesResource;
 use App\Http\Resources\Api\OfferResource;
 use App\Http\Resources\Api\PartenersResource;
 use App\Http\Resources\Api\ProductResource;
@@ -20,6 +21,7 @@ use App\Models\blogs;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\CommonQuestion;
+use App\Models\Gallary;
 use App\Models\NewsLetter;
 use App\Models\Offer;
 use App\Models\partener;
@@ -52,6 +54,13 @@ class HomeController extends Controller
         $partner = partener::get();
 
         return $this->success('', PartenersResource::collection($partner));
+    }
+
+    public function getgallaries()
+    {
+        $gallary = Gallary::get();
+
+        return $this->success('', GallariesResource::collection($gallary));
     }
 
     public function getblog($id)

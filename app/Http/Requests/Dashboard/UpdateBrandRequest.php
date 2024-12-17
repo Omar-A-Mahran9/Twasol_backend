@@ -14,7 +14,7 @@ class UpdateBrandRequest extends FormRequest
      */
     public function authorize()
     {
-        return abilities()->contains('update_brands');
+        return abilities()->contains('update_awards');
     }
 
     /**

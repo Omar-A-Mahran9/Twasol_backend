@@ -65,6 +65,7 @@ let translations = {
         "Edit partner": "تعديل الشريك",
         "Add new offer": "اضافة عرض جديد",
         "Add new gallary": "اضافة صورة جديدة",
+        "Add new gallary": "اضافة صورة",
 
         Showing: "عرض",
         to: "إلى",

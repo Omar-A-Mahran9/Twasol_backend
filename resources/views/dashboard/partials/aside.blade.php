@@ -128,7 +128,7 @@
                 @endcan
 
                 @can('view_partener')
-                    <x-dashboard.aside-item :slug="'brands'" :route="route('dashboard.partner.index')" :title="__('partner')">
+                    <x-dashboard.aside-item :slug="'parteners'" :route="route('dashboard.partner.index')" :title="__('partner')">
                         <i class="fas fa-handshake fs-2   me-2"></i>
                     </x-dashboard.aside-item>
                 @endcan

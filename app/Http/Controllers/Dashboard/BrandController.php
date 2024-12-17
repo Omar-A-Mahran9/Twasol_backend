@@ -12,7 +12,8 @@ class BrandController extends Controller
 {
     public function index(Request $request)
     {
-        $this->authorize('view_brands');
+        
+        $this->authorize('view_awards');
         if ($request->ajax()){
       
 
@@ -46,14 +47,14 @@ class BrandController extends Controller
 
     public function destroy(award $brand)
     {
-        $this->authorize('delete_brands');
+        $this->authorize('delete_awards');
         $brand->delete();
         return response(["aware deleted successfully"]);
     }
 
     public function deleteSelected(Request $request)
     {
-        $this->authorize('delete_brands');
+        $this->authorize('delete_awards');
 
         award::whereIn('id', $request->selected_items_ids)->delete();
 
@@ -61,7 +62,7 @@ class BrandController extends Controller
     }
     public function restoreSelected(Request $request)
     {
-        $this->authorize('delete_brands');
+        $this->authorize('delete_awards');
 
         award::withTrashed()->whereIn('id', $request->selected_items_ids)->restore();
 

@@ -14,7 +14,7 @@ class StoreBrandRequest extends FormRequest
      */
     public function authorize()
     {
-        return abilities()->contains('create_brands');
+        return abilities()->contains('create_awards');
     }
 
     /**

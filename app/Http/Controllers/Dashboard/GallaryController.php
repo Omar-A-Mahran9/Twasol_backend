@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
- use App\Http\Requests\Dashboard\UpdateGallaryRequest;
+use App\Http\Requests\Dashboard\StoreGallaryRequest;
+use App\Http\Requests\Dashboard\UpdateGallaryRequest;
 use App\Models\Gallary;
 use Illuminate\Http\Request;
 
@@ -33,7 +34,7 @@ class GallaryController extends Controller
     }
 
   
-    public function store(UpdateGallaryRequest $request)
+    public function store(StoreGallaryRequest $request)
     {
         $data          = $request->validated();
         $data['image'] = uploadImageToDirectory($request->file('image'), "gallary");

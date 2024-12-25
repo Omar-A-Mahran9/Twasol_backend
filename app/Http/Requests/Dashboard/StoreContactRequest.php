@@ -21,6 +21,7 @@ class StoreContactRequest extends FormRequest
      */
     public function rules(): array
     {
+
         return [
             'name' => ["required", "string:255"],
             'email' => ['required', 'string', 'email:rfc,dns'],

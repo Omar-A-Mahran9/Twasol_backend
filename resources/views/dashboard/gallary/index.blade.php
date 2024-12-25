@@ -138,6 +138,19 @@
                             <div class="fv-plugins-message-container invalid-feedback" id="name_en"></div>
                         </div>
 
+                        <div class="fv-row mb-5 fv-plugins-icon-container">
+                            <label class="form-label required fs-6 fw-bold mb-3">{{ __('Service') }}</label>
+                            <select class="form-select form-select" data-control="select2" name="addon_service_id"
+                                id="addon_service_id_inp" data-placeholder="{{ __('Choose the service') }}"
+                                data-dir="{{ isArabic() ? 'rtl' : 'ltr' }}">
+                                <option value="" selected></option>
+                                @foreach ($Services as $Service)
+                                    <option value="{{ $Service->id }}"> {{ $Service->name }} </option>
+                                @endforeach
+                            </select>
+                            <div class="fv-plugins-message-container invalid-feedback" id="addon_service_id"></div>
+                        </div>
+
                     </div>
 
                     <div class="modal-footer">

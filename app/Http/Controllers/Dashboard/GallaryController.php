@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Dashboard\StoreGallaryRequest;
 use App\Http\Requests\Dashboard\UpdateGallaryRequest;
+use App\Models\AddonService;
 use App\Models\Gallary;
 use Illuminate\Http\Request;
 
@@ -16,13 +17,15 @@ class GallaryController extends Controller
     public function index(Request $request)
     {
         $this->authorize('view_gallary');
+        $Services    = AddonService::select('id', 'name_ar', 'name_en','description_en','description_ar')->get();
+
         if ($request->ajax()){
       
 
             return response(getModelData(model: new Gallary()));
         }
         else
-            return view('dashboard.gallary.index');
+            return view('dashboard.gallary.index', compact('Services' ));
     }
 
     /**

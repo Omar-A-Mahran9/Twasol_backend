@@ -28,6 +28,8 @@ class StoreGallaryRequest extends FormRequest
             'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg',
             "name_ar" => ["required", "string:255", "unique:gallaries", new NotNumbersOnly()],
             "name_en" => ["required", "string:255", "unique:gallaries", new NotNumbersOnly()],
+            "addon_service_id" => ["required"],
+
         ];
     }
 }

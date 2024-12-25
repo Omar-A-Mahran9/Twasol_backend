@@ -169,6 +169,10 @@ var KTDatatablesServerSide = (function () {
                     "background-image",
                     `url('${data.full_image_path}')`
                 );
+                $(`[name='addon_service_id']`)
+                    .val(data.addon_service_id ?? "")
+                    .attr("selected", true);
+                $(`[name='addon_service_id']`).trigger("change");
                 $("#name_ar_inp").val(data.name_ar);
                 $("#name_en_inp").val(data.name_en);
                 $("#crud_form").attr(

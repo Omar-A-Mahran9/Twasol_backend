@@ -10,7 +10,7 @@ class Gallary extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['image','name_ar','name_en']; // Add this array to allow mass assignment of the 'image' attribute
+    protected $fillable = ['image','name_ar','name_en','addon_service_id']; // Add this array to allow mass assignment of the 'image' attribute
     protected $appends = ['name', 'full_image_path'];
     protected $casts   = [
         'created_at' => 'date:Y-m-d',

@@ -50,19 +50,16 @@ class GeneralInvokableController extends Controller
             'facebook_link' => setting('facebook_link'),
             'snapchat' => setting('linkedin_link'),
             'youtube_link' => setting('youtube_link'),
-            'tiktok_link' => "tiktok",
+            'tiktok_link' =>  setting('tiktok_link'),
             'twitter_link' => setting('twitter_link'),
             'whatsapp_number' => setting('whatsapp_number'),
             'sms_number' => setting('sms_number'),
             'email' => setting('email'),
             'address_ar' => setting('address_ar'),
             'address_en' => setting('address_en'),
-
             'whatsapp_message_time' => setting('delay_time_seconds'),
             'whatsapp_message' => setting('whatsapp_message'),
             'whatsapp_show' => setting('whatsapp_notification_enabled'),
-
-
             'about_us' => [
                 'label' => setting('label_' . request()->header('Content-language')),
                 'description' => setting('about_us_' . request()->header('Content-language')),

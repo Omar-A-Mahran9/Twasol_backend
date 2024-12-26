@@ -66,7 +66,7 @@ class HomeController extends Controller
         }
 
         // Return the specific gallery using the resource
-        return $this->success('', new GallariesResource($gallery));
+        return $this->success('', GallariesResource::collection($gallery));
     }
     public function getgallaries()
     {

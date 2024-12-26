@@ -8,6 +8,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class GallariesResource extends JsonResource
 {
+
     /**
      * Transform the resource into an array.
      *
@@ -15,6 +16,7 @@ class GallariesResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
+ 
         return [
             'id' => $this->id,
             'image' => $this->full_image_path,

@@ -28,7 +28,7 @@
                             <div class="card-body pt-0">
                                 <!--begin::Input group-->
                                 <div class="mb-10 row">
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         <!--begin::Label-->
                                         <label class="form-label">{{ __('Instagram link') }}</label>
                                         <!--end::Label-->
@@ -47,7 +47,7 @@
                                         </div>
                                         <!--end::Description-->
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         <!--begin::Label-->
                                         <label class="form-label">{{ __('Facebook link') }}</label>
                                         <!--end::Label-->
@@ -64,6 +64,22 @@
                                         <!--begin::Description-->
                                         <div class="fv-plugins-message-container invalid-feedback" id="facebook_link"></div>
                                         <!--end::Description-->
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <!--begin::Label-->
+                                        <label class="form-label">{{ __('TikTok link') }}</label>
+                                        <!--end::Label-->
+                                        <!--begin::Input group-->
+                                        <div class="input-group mb-5">
+                                            <span class="input-group-text">
+                                                <i class="lab la-tiktok fs-1"></i>
+                                            </span>
+                                            <input type="text" class="form-control" name="tiktok_link"
+                                                value="{{ setting('tiktok_link') }}" id="tiktok_link_inp"
+                                                placeholder="www.tiktok.com/@username" aria-describedby="basic-addon3" />
+                                        </div>
+                                        <!--end::Input group-->
+
                                     </div>
                                 </div>
                                 <!--end::Input group-->
@@ -87,6 +103,7 @@
                                         <div class="fv-plugins-message-container invalid-feedback" id="linkedin_link"></div>
                                         <!--end::Description-->
                                     </div>
+
                                     <div class="col-lg-4">
                                         <!--begin::Label-->
                                         <label class="form-label">{{ __('Youtube link') }}</label>

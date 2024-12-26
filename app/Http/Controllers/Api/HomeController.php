@@ -55,7 +55,19 @@ class HomeController extends Controller
 
         return $this->success('', PartenersResource::collection($partner));
     }
+    public function getGalleryById($id)
+    {
+        // Fetch the gallery by ID
+        $gallery = Gallary::where('addon_service_id',$id)->get();
 
+        // Check if the gallery exists
+        if (!$gallery) {
+            return $this->error('Gallery not found', 404);
+        }
+
+        // Return the specific gallery using the resource
+        return $this->success('', new GallariesResource($gallery));
+    }
     public function getgallaries()
     {
         $gallary = Gallary::get();

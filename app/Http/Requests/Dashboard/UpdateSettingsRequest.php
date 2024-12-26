@@ -56,6 +56,7 @@ class UpdateSettingsRequest extends FormRequest
                 'instagram_link' => 'required|max:255|url',
                 'facebook_link' => 'required|max:255|url',
                 'linkedin_link' => 'required|max:255|url',
+                'tiktok_link' => 'required|max:255|url',
                 'youtube_link' => 'required|max:255|url',
                 'twitter_link' => 'required|max:255|url',
             ],

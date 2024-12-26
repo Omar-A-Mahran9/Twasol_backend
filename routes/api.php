@@ -57,6 +57,7 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
     Route::get('awards', 'HomeController@getawards');
     Route::get('partners', 'HomeController@getpartners');
     Route::get('galleris', 'HomeController@getgallaries');
+    Route::get('galleries/{id}', 'HomeController@getGalleryById');
 
     Route::get('categories', 'HomeController@getCategories');
     Route::get('subcategories', 'HomeController@getSubcategories');

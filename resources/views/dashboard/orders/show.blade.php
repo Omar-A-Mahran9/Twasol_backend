@@ -23,7 +23,7 @@
                                 href="#kt_ecommerce_sales_order_summary">{{ __('Order Summary') }}</a>
                         </li>
                         <!--end:::Tab item-->
-
+                       
                     </ul>
                     <!--end:::Tabs-->
                     <!--begin::Button-->
@@ -168,22 +168,22 @@
                                     <!--begin::Card body-->
                                     <div class="card-body pt-0">
 
-                                        <h5 class="mb-5">{{ __('visit date') . ': ' . $order->date }}</h5>
-                                        <h5 class="mb-5">{{ __('City') . ': ' . $order->city->name }}</h5>
-                                        <h5 class="mb-5">{{ __('Address') . ': ' . $order->address }}</h5>
+                                     <h5 class="mb-5">{{ __('visit date') . ': ' . $order->date }}</h5>
+                                      <h5 class="mb-5">{{ __('City') . ': ' . $order->city->name }}</h5>
+                                      <h5 class="mb-5">{{ __('Address') . ': ' .  $order->address }}</h5>
 
-
+ 
                                     </div>
                                     <!--end::Card body-->
                                 </div>
                                 <!--end::Shipping address-->
                             </div>
-
+                   
                         </div>
                         <!--end::Orders-->
                     </div>
                     <!--end::Tab pane-->
-
+              
                 </div>
                 <!--end::Tab content-->
             </div>

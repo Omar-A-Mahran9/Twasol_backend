@@ -26,39 +26,8 @@ class City extends Model
         static::addGlobalScope(new SortingScope);
     }
 
-    public function packages()
-{
-    return $this->belongsToMany(Packages::class, 'city_package','city_id');
-}
-
-
-    public function products()
-    {
-        return $this->belongsToMany(Product::class)->withPivot('product_has_fast_shipping');
-    }
-
-    public function vendors()
-    {
-        return $this->belongsToMany(Vendor::class)->withoutGlobalScope(SortingScope::class);
-    }
-
-    public function branches()
-    {
-        return $this->belongsTo(CityVendor::class,'id','city_id')->withoutGlobalScope(SortingScope::class);
-    }
-
-    public function fastShipping()
-    {
-        return $this->hasOne(FastCity::class, 'city_id', 'id')->withoutGlobalScope(SortingScope::class);
-    }
-
-    public function bepartners()
-    {
-        return $this->belongsToMany(Bepartener::class, 'bepartner_city');
-    }
-
-  
-
+ 
+ 
     public function getNameAttribute()
     {
         return $this->attributes['name_' . app()->getLocale()];

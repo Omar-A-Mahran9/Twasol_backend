@@ -32,5 +32,10 @@ class Order extends Model
         return $this->belongsTo(AddonService::class);
     }
 
+    public function city()
+    {
+        return $this->belongsTo(City::class);
+    }
+
     
 }

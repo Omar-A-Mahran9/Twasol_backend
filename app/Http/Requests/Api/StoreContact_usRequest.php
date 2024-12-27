@@ -26,6 +26,7 @@ class StoreContact_usRequest extends FormRequest
             'name' => ['required'],
             'phone' => ['required', new PhoneNumber()],
             'email' => ['required', 'string', 'email:rfc,dns', 'unique:contact_us'],
+            'email' => ['required', 'string', 'email:rfc,dns', 'unique:contact_us'],
 
             'message' => ['required']
         ];

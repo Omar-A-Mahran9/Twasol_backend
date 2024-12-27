@@ -2,13 +2,14 @@
     "login": "تسجيل الدخول",
     "Welcome back": "!مرحبًا بعودتك",
     "Tawasol-Technology": "تواصل تكنولوجي",
+
     "Booking": "الحجوزات",
     "booking": "الحجوزات",
     "Trip": "الرحلة",
     "Booking Date": "تاريخ الحجز",
     "Payment way": "وسيلة الدفع",
     "Blogs": "مدونتنا",
-    
+
     "Add Partener": "اضافة شريك",
     "Search for partners": "البحث عن شركاء",
     "Blogs list": "قائمة المدونات",
@@ -79,27 +80,11 @@
     "packages categories count": "عدد فئات الباقات",
 
     "cities count": "عدد  المدن",
-    "Add category": "اضافة فئة جديدة",
-    "visited count": "عدد  الزيارات",
-    "Booking number": "عدد الحجوزات",
-    "earnings": "أرباح",
-    "Drivers count": "عدد السائقين",
-    "support passengers count": "عدد وكلاء السفر",
 
-    "Books Data": "بيانات الحجوزات",
-    "cars": "السيارات",
-    "Bags counts": "عدد الحقائب",
-    "Passengers counts": "عدد الركاب",
 
-    "Create Car": "اضافة سيارة",
-    "Car data": "بيانات السيارة",
-    "Car images": "صور السيارة",
-    "write Car name": "أدخل اسم السيارة",
-    "Car list": "قائمة المنتجات",
-    "Edit Car": "تعديل السيارة",
-    "Car Images": "صور السيارة",
-    "Car Details": "تفاصيل السيارة",
     "Home": "الرئيسية",
+    "Tawasol": "تواصل تكنولوجي",
+
     "Orders": "الطلبات",
     "orders": "الطلبات",
     "Search for vendors ( Name - Email )": "ابحث عن التجار ( الاسم - البريد الالكتروني )",

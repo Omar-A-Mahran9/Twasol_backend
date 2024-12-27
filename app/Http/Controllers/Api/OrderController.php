@@ -38,337 +38,42 @@ class OrderController extends Controller
         $this->tapPaymentService = $tapPaymentService;
         $this->otoService        = $otoService;
     }
-
-    public function checkout(OrderRequest $request, $step = null)
-    {
-        $vendors = collect();
-        if ($step == 1) {
-            $unavailableProductsForFastShipping = collect();
-            $unavailableProductsShipping        = collect();
-            $allProductsInSameCity              = true;
-            $totalShippingCost                  = 0;
-            $vendorCityShippingCosts            = [];
-            $message                            = '';
-            $splitPriceVendor = collect();
-            $priceSpecification = 0;
-            $priceAfterVat = 0;
-            if (request()->fast_shipping) {
-                foreach (request()->products as $key => $item) {
-                    // Fetch the product once based on vendor_id and item_id
-                    $product = Product::with('categories', 'vendor.categories')->where('vendor_id', $item['vendor_id'])->whereHas('specifications', function ($query) use ($item) {
-                        $query
-                            // ->where('stock', '>', '0')
-                            ->where('product_id', $item['id'])
-                            ->where('weight', $item['weight'])
-                            ->where('size', $item['size']);
-                    })->find($item['id']);
-                    if ($product) {
-                        $cityId = request()->city;
-                        $hasStock = $product->specifications()
-                            ->where('product_id', $item['id'])
-                            ->where('stock', '<=', 0)
-                            ->exists();
-                        // Check if product doesn't have the specified city
-                        $hasCity = $product->cities()->where('city_id', $cityId)->exists();
-                        if (!$hasCity) {
-                            if ($hasStock) {
-                                $message = __('Product is out of stock.');
-                                $unavailableProductsForFastShipping->add([
-                                    'id' => $product->id,
-                                    'name' => $product->name,
-                                    'price' => $item['price'],
-                                    'quantity' => $item['quantity'],
-                                    'image' => $product->images()->first()->full_image_path ?? null
-                                ]);
-                            } else {
-                                $unavailableProductsForFastShipping->add([
-                                    'id' => $product->id,
-                                    'name' => $product->name,
-                                    'price' => $item['price'],
-                                    'quantity' => $item['quantity'],
-                                    'image' => $product->images()->first()->full_image_path ?? null
-                                ]);
-                                $allProductsInSameCity = false;
-                                $message               = __('There is no express shipping to') . ' ' . City::find(request()->city)->name;
-                            }
-                        } else {
-                            $vendorHasFastShipping = $product->cities()
-                                ->whereHas('fastShipping', function ($query) use ($cityId) {
-                                    $query->where('city_id', $cityId);
-                                })->with([
-                                    'fastShipping' => function ($query) use ($cityId) {
-                                        $query->where('city_id', $cityId);
-                                    }
-                                ])->first();
-
-                            if ($vendorHasFastShipping) {
-                                $shippingPrice = $vendorHasFastShipping->fastShipping->shipping_price;
-
-                                // If this vendor-city combination has not been added yet
-                                if (!isset($vendorCityShippingCosts[$cityId])) {
-                                    $totalShippingCost += $shippingPrice;
-                                    $vendorCityShippingCosts[$cityId] = $shippingPrice;
-                                }
-                            }
-                            if (!$vendorHasFastShipping) {
-                                $unavailableProductsForFastShipping->add([
-                                    'id' => $product->id,
-                                    'name' => $product->name,
-                                    'price' => $item['price'],
-                                    'quantity' => $item['quantity'],
-                                    'image' => $product->images()->first()->full_image_path ?? null
-                                ]);
-                                $allProductsInSameCity = false;
-                                $message               = __('No fast shipping');
-                            }
-                        }
-                        $filteredCategories = $product->vendor->categories->filter(function ($vendorCategory) use ($product) {
-                            return $vendorCategory->id === $product->categories->first()->id;
-                        });
-                        $firstCategory = $filteredCategories->first();
-                        $ratio = optional($firstCategory?->pivot)->ratio ?? 0;
-                        $priceAfterVat = $item['price'] + ($item['price'] * (setting('tax') / 100));
-
-                        $priceSpecification = $priceAfterVat - ($priceAfterVat *  ($ratio / 100));
-                        $this->appendOrUpdate($splitPriceVendor, [
-                            "id" => $product->vendor['destination_id'], //destination id
-                            "amount" => $priceSpecification,
-                            "currency" => "SAR"
-                        ]);
-                    }
-                }
-                if (!$allProductsInSameCity) {
-                    return response([
-                        'message' => $message,
-                        'data' => [
-                            'unavailableProducts' => $unavailableProductsForFastShipping,
-                            'totalShippingCost' => $totalShippingCost
-                        ]
-                    ], 200);
-                }
-                return response([
-                    'message' => __('Successfully completed'),
-                    'data' => [
-                        'unavailableProducts' => $unavailableProductsForFastShipping,
-                        'totalShippingCost' => $totalShippingCost,
-                        "destination" => $splitPriceVendor
-                    ]
-                ], 200);
-            } elseif (!request()->fast_shipping) {
-                foreach (request()->products as $key => $item) {
-                    $product = Product::with('categories', 'vendor.categories', 'vendor.vendorShipment.city')->where('vendor_id', $item['vendor_id'])->whereHas('specifications', function ($query) use ($item) {
-                        $query
-                            // ->where('stock', '>', '0')->where('product_id', $item['id'])
-                            ->where('weight', $item['weight'])
-                            ->where('size', $item['size']);
-                    })->find($item['id']);
-                    $city    = City::find($request->city);
-                    if ($product) {
-                        $hasStock = $product->specifications()
-                            ->where('product_id', $item['id'])
-                            ->where('stock', '<=', 0)
-                            ->exists();
-                        if ($hasStock) {
-                            $message = __('Product is out of stock.');
-                            $unavailableProductsShipping->add([
-                                'id' => $item['id'],
-                                'name' => $product['name'],
-                                'price' => $item['price'],
-                                'quantity' => $item['quantity'],
-                                'image' => $product->images()->first()->full_image_path ?? null
-                            ]);
-                        } else {
-                            $filteredCategories = $product->vendor->categories->filter(function ($vendorCategory) use ($product) {
-                                return $vendorCategory->id === $product->categories->first()->id;
-                            });
-                            $firstCategory = $filteredCategories->first();
-                            $ratio = optional($firstCategory?->pivot)->ratio ?? 0;
-                            $priceAfterVat = $item['price'] + ($item['price'] * (setting('tax') / 100));
-                            $priceSpecification = $priceAfterVat - ($priceAfterVat *  ($ratio / 100));
-                            $this->appendOrUpdate($splitPriceVendor, [
-                                "id" => $product->vendor['destination_id'], //destination id
-                                "amount" => $priceSpecification,
-                                "currency" => "SAR"
-                            ]);
-                            $vendors->add([
-                                'id' => $product->vendor->id,
-                                'city' => $product->vendor->vendorShipment->city->name_en,
-                                'vendor_name' => $product->vendor['name'],
-                                'product_id' => $product['id'],
-                                'name' => $product['name'],
-                                'price' => $item['price'],
-                                'quantity' => $item['quantity'],
-                                'image' => $product->images()->first()->full_image_path ?? null
-                            ]);
-                        }
-                    }
-                }
-                $uniqueVendors = $vendors->unique('id')->values()->toArray();
-                foreach ($uniqueVendors as $index => $uniqueVendor) {
-                    $dataDelivery = [
-                        'weight' => 1,
-                        'originCity' => $uniqueVendor['city'],
-                        'destinationCity' => $city->name_en
-                    ];
-
-                    $delivery = $this->otoService->checkDeliveryFee($dataDelivery);
-                    if (count($delivery->deliveryCompany) == 0) {
-                        $message = __('No shipping to city') . ' ' . $city->name;
-                        $matches = $vendors->Where('id', $uniqueVendor['id']);
-                        $matches->each(function ($match) use ($unavailableProductsShipping, $product) {
-                            $unavailableProductsShipping->add([
-                                'id' => $match['product_id'],
-                                'name' => $match['name'],
-                                'price' => $match['price'],
-                                'quantity' => $match['quantity'],
-                                'image' => $product->images()->first()->full_image_path ?? null
-                            ]);
-                        });
-                    }
-                    if ($delivery->success) {
-                        $deliveryCompanies = collect($delivery->deliveryCompany);
-                        // Filter for freePickup first, then for freePickupDropoff if no freePickup options found
-                        $filteredDelivery = $deliveryCompanies->filter(function ($company) {
-                            return $company->pickupDropoff === 'freePickup';
-                        });
-                        if ($filteredDelivery->isEmpty()) {
-                            $filteredDelivery = $deliveryCompanies->filter(function ($company) {
-                                return $company->pickupDropoff === 'freePickupDropoff';
-                            });
-                        }
-                        // Find the delivery option with the minimum price
-                        $minPriceDelivery = $filteredDelivery->sortBy('price')->first();
-                        if ($minPriceDelivery) {
-                            $totalShippingCost += $minPriceDelivery->price;
-                            // Update the uniqueVendor array with delivery info
-                            $uniqueVendors[$index]['delivery'] = $minPriceDelivery;
-                        }
-                    } elseif ($delivery->errorCode == 3) {
-                        $matches = $vendors->Where('id', $uniqueVendor['id']);
-                        $matches->each(function ($match) use ($unavailableProductsShipping, $product) {
-                            $unavailableProductsShipping->add([
-                                'id' => $match['product_id'],
-                                'name' => $match['name'],
-                                'price' => $match['price'],
-                                'quantity' => $match['quantity'],
-                                'image' => $product->images()->first()->full_image_path ?? null
-                            ]);
-                        });
-                    }
-                }
-                return response([
-                    'message' => $message,
-                    'data' => [
-                        'unavailableProducts' => $unavailableProductsShipping,
-                        'totalShippingCost' => $totalShippingCost,
-                        "unique_vendors" => $uniqueVendors,
-                        "destination" => $splitPriceVendor
-                    ]
-                ], 200);
-            }
-        }
-
-        if (!isset($step)) {
-            $customer = Customer::where('email', $request->email)->orWhere('phone', $request->phone)->first();
-            if (!$customer) {
-                $customer = Customer::create([
-                    "first_name" => $request->first_name,
-                    "last_name" => $request->last_name,
-                    "phone" => $request->phone,
-                    "email" => $request->email,
-                    "bloc_flag" => 0
-                ]);
-            }
-
-            $address            = Address::create([
-                'customer_id' => $customer->id,
-                'city_id' => $request->city,
-                'street_name' => $request->street_name,
-                'building_number' => $request->building_number,
-                'district' => $request->district,
-                'marks' => $request->marks,
-                'lat' => $request->lat,
-                'lng' => $request->lng,
-            ]);
-            $collectionShipment = collect($request->unique_vendors);
-            $shippingPrice      = 0;
-            if ($collectionShipment->isNotEmpty()) {
-                $shippingPrice = $collectionShipment->pluck('delivery.price')->sum();
-            } else {
-                $shippingPrice = FastCity::where('city_id', request()->city)->first()->shipping_price ?? 0;
-            }
-            $total = collect($request->products)->sum(callback: 'price') * (setting('tax') / 100) + collect($request->products)->sum('price');
-            $order = Order::create([
-                "customer_id" => $customer->id,
-                "address_id" => $address->id,
-                "total_price" => $total + $shippingPrice,
-                "tax" => $request->tax ?? 0,
-                "type" => $request->type,
-                "gift_owner_name" => $request->gift_owner_name,
-                "gift_owner_phone" => $request->gift_owner_phone,
-                "gift_text" => $request->gift_text,
-                "paying_off" => $request->paying_off,
-                "has_fast_shipping" => $request->fast_shipping ?? 0,
-                "shipping_price" => $shippingPrice,
-                "city_id" => $request->city
-            ]);
-
-            $splitPriceVendor = collect();
-            $priceSpecification = 0;
-            foreach ($request->products as $product) {
-                $isFastShippingProduct = Product::where('vendor_id', $product['vendor_id'])->whereHas('cities', function ($q) use ($request) {
-                    $q->whereHas('fastShipping', function ($query) use ($request) {
-                        $query->where('city_id', $request->city);
-                    });
-                })->where('id', $product['id'])->exists();
-                $productExist = Product::where('vendor_id', $product['vendor_id'])->whereHas('specifications', function ($query) use ($product) {
-                    $query->where('product_id', $product['id'])
-                        ->where('weight', $product['weight'])
-                        ->where('size', $product['size']);
-                })->find($product['id']);
-                if ($productExist) {
-                    $productStock = ProductSpecification::where('price', $product['price'])
-                        ->where('product_id', $product['id'])
-                        ->where('weight', $product['weight'])
-                        ->where('size', $product['size'])->first();
-                    if ($productStock) {
-                        $productStock->update([
-                            'stock' => $productStock->stock - $product['quantity']
-                        ]);
-                    }
-                }
-                OrderItem::create([
-                    "order_id" => $order->id,
-                    "product_id" => $product['id'],
-                    "vendor_id" => $product['vendor_id'],
-                    "price" => $product['price'],
-                    "quantity" => $product['quantity'],
-                    "size" => $product['size'],
-                    "weight" => $product['weight'],
-                    "tax" => setting('tax'),
-                    "fast_shipping" => $isFastShippingProduct ? TRUE : FALSE
-                ]);
-            }
-            if ($request->unique_vendors) {
-                $this->dataOrder($order->id, $request->unique_vendors);
-            }
-            $this->newOrderNotification($order);
-            $this->newOrderVendorNotification($order);
-
-            return $this->success("Created successfully", new OrderResource($order));
-        }
-    }
+ 
 
     public function createOrder(OrderRequest $request)
     {
-        $data=$request->validated();
-
-        $customerdata=[
-            
+        $data = $request->validated();
+        
+        // If no addon service ID, return an error response or success message
+        if ($request->addon_service_id == null) {
+            return response()->json( $data );
+        }
+    
+        // Create customer
+        $customerData = [
+            'first_name' => strtok($data['name'], ' '),
+            'last_name' => trim(strtok(' ')),
+            'phone' => $data['phone'],
+            'email' => $data['email'],
+            'block_flag' => 0,
         ];
- 
-        return $data;
+        $customer = Customer::create($customerData);
+    
+        // Create order
+        $orderData = [
+            'customer_id' => $customer->id,
+            'city_id' => $data['city_id'],
+            'address' => $data['address'],
+            'date' => $data['date'] ?? "",
+            'addon_service_id' => $data['addon_service_id'],
+            'description' => $data['description'],
+        ];
+    
+        $order = Order::create($orderData);
+    
+        return response()->json($order, 201);  // Respond with the created order
     }
+    
 
     public function checkPaymentTransaction(Request $request)
     {

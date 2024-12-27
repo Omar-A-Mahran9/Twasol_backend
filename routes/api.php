@@ -70,8 +70,7 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
     Route::get('products', 'ProductController@index');
     Route::get('products/{product}', 'ProductController@show');
     Route::get('products/{product}/rates', 'ProductController@rates');
-    Route::get('related-products/{product}', 'RelatedProductInvokableController');
-    Route::get('about-vendor/{product}', 'ProductController@aboutVendor');
+     Route::get('about-vendor/{product}', 'ProductController@aboutVendor');
     Route::get('vendors', 'VendorController@index');
     Route::get('vendors/{vendor}', 'VendorController@show');
     Route::get('vendors-products/{vendor}', 'VendorController@vendorProducts');

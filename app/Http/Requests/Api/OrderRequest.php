@@ -67,7 +67,7 @@ class OrderRequest extends FormRequest
                 'city_id'=>['required'],
                 "address" => ['required', 'string'],
                 'date' => ['required','date'],
-'addon_service_id' => ['required', 'numeric'],
+                'addon_service_id' => ['required', 'numeric'],
                 'description'=>['required'],
             ]
         ];

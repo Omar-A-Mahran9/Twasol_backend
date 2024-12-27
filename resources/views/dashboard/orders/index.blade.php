@@ -68,8 +68,8 @@
                     <tr class=" text-gray-400 fw-bold fs-7 text-uppercase gs-0">
                         <th style="text-align: center">{{ __('Order ID') }}</th>
                         <th style="text-align: center">{{ __('Customer') }}</th>
-                        <th style="text-align: center">{{ __('Total Price') }}</th>
-                        <th style="text-align: center">{{ __('Status') }}</th>
+                        <th style="text-align: center">{{ __('Phone') }}</th>
+                        <th style="text-align: center">{{ __('Service') }}</th>
                         <th style="text-align: center">{{ __('Created at') }}</th>
                         <th style="text-align: center" class=" min-w-100px">{{ __('Actions') }}</th>
                     </tr>

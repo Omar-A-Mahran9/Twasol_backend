@@ -39,5 +39,10 @@ class AddonService extends Model
         return asset(getImagePathFromDirectory($this->image, 'Services', "default.svg"));
     }
 
+    public function orders()
+    {
+        return $this->HasMany(Order::class);
+    }
+
 
 }

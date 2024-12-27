@@ -54,11 +54,7 @@ class Customer extends Authenticatable
     {
         return $this->hasMany(Rate::class);
     }
-
-    public function visits()
-    {
-        return $this->hasMany(Visit::class);
-    }
+ 
 
     public function getNameAttribute()
     {

@@ -27,29 +27,10 @@ class Order extends Model
         return $this->belongsTo(Customer::class);
     }
 
-    public function address()
+    public function addon_service()
     {
-        return $this->belongsTo(Address::class);
-    }
-    public function branch()
-    {
-        return $this->belongsTo(CityVendor::class);
-    }
-    public function orderItems()
-    {
-        return $this->hasMany(OrderItem::class);
+        return $this->belongsTo(AddonService::class);
     }
 
-    public function historyOrder()
-    {
-        return $this->hasMany(HistoryOrder::class);
-    }
-    public function reasons()
-    {
-        return $this->belongsToMany(OrderReason::class, 'order_reason')->withPivot('comment', 'created_at');
-    }
-    public function getStatusAttribute()
-    {
-        return OrderStatus::tryFrom($this->attributes['status'])->name;
-    }
+    
 }

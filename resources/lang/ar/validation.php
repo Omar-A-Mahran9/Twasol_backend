@@ -264,6 +264,9 @@ return [
         'schedules.*.*.break_start_time' => 'بداية الراحة',
         'schedules.*.*.break_end_time' => 'نهاية الراحة',
         'price' => 'السعر',
+        'addon_service_id' => 'نوع الخدمة',
+        'date' => 'تاريخ الزيارة',
+
         'category_id' => 'الفئة',
         'categories' => 'الفئات',
         'subcategories' => 'الفئات الفرعية',

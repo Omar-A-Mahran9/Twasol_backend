@@ -33,8 +33,10 @@ class GeneralInvokableController extends Controller
     public function __invoke(Request $request)
     {
         $gallary   = Gallary::select('id', 'name_ar', 'name_en','image')->get();
-        $ourservices   = AddonService::select('id', 'name_ar', 'name_en','image','description_ar','description_en')->get();
-        $allCities     = City::select('id', 'name_ar', 'name_en')->get();
+        $ourservices = AddonService::select('id', 'name_ar', 'name_en', 'image', 'description_ar', 'description_en')
+        ->orderBy('created_at', 'desc') // Order by the latest created records
+        ->get();
+            $allCities     = City::select('id', 'name_ar', 'name_en')->get();
          $rate         = customers_rates::select('id', 'customer_id','comment','rate','status')->get();
          $parteners=partener::select('id', 'name_ar', 'name_en','image')->get();
             return $this->success('', [

@@ -34,8 +34,9 @@ class GeneralInvokableController extends Controller
     {
         $gallary   = Gallary::select('id', 'name_ar', 'name_en','image')->get();
         $ourservices = AddonService::select('id', 'name_ar', 'name_en', 'image', 'description_ar', 'description_en')
-        ->orderBy('created_at', 'desc') // Order by the latest created records
+        ->orderBy('created_at', 'asc') // Order by the oldest created records
         ->get();
+    
             $allCities     = City::select('id', 'name_ar', 'name_en')->get();
          $rate         = customers_rates::select('id', 'customer_id','comment','rate','status')->get();
          $parteners=partener::select('id', 'name_ar', 'name_en','image')->get();

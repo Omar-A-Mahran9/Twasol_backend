@@ -26,7 +26,9 @@ use App\Http\Resources\Api\ReasonResource;
 use App\Http\Requests\Api\OrderReasonRequest;
  
 use App\Http\Requests\Api\OrderRequest;
- 
+use App\Mail\OrderConfirmationMail;
+use Illuminate\Support\Facades\Mail;
+
 class OrderController extends Controller
 {
     use WebNotificationsTrait;
@@ -84,9 +86,13 @@ class OrderController extends Controller
         ];
     
         $order = Order::create($orderData);
+         Mail::to("info@tawasol-technology.com")->send(new OrderConfirmationMail($order));
+
         return $this->success(
             $order,
          );
+
+
     
      }
     

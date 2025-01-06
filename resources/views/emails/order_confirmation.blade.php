@@ -102,6 +102,12 @@
                 </tr>
             </tbody>
         </table>
+
+        <h2>More Details:</h2>
+        <p>
+            {{ $order->description }}
+        </p>
+
         <div class="footer">
             <p>If you have any questions, feel free to contact us at <a
                     href="mailto:info@tawasol-technology.com">info@tawasol-technology.com</a>.</p>

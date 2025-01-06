@@ -31,7 +31,7 @@ class OrderRequest extends FormRequest
         // Define validation rules for each step
         $stepsRules = [
             0 => [  // Step 1
-                "email" => ['required', 'email'],
+                "email" => ['email'],
                 "name" => ['required', 'string', 'max:255', new NotNumbersOnly()],
                 "phone" => [
                     'required',
@@ -50,7 +50,7 @@ class OrderRequest extends FormRequest
             ],
         
             3 => [  // Step 3 (combine the fields from steps 1 and 2)
-                "email" => ['required', 'email'],
+                "email" => [ 'email'],
                 "name" => ['required', 'string', 'max:255', new NotNumbersOnly()],
                 "phone" => [
                     'required',

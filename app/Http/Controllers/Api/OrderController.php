@@ -63,6 +63,7 @@ class OrderController extends Controller
         $customer = $existingCustomer;
         } else {
             // Proceed with creating a new customer
+            
             $customerData = [
                 'first_name' => strtok($data['name'], ' '),
                 'last_name' => trim(strtok(' ')),

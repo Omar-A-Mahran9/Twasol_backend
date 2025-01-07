@@ -162,8 +162,14 @@ var KTDatatablesServerSide = (function () {
                 );
                 $("#name_ar_inp").val(data.name_ar);
                 $("#name_en_inp").val(data.name_en);
-                $("#description_ar_inp").val(data.description_ar);
-                $("#description_en_inp").val(data.description_en);
+                // Assuming `data` is your object containing the description values
+                tinymce
+                    .get("description_ar_inp")
+                    .setContent(data.description_ar); // Set content for Arabic editor
+                tinymce
+                    .get("description_en_inp")
+                    .setContent(data.description_en); // Set content for English editor
+
                 $("#price_inp").val(data.price);
                 $("#crud_form").attr(
                     "action",

@@ -29,6 +29,7 @@ class AddonServiceController extends Controller
      */
     public function store(StoreAddonRequest $request)
     {
+        dd($request);
         $data = $request->validated();
         $data['image'] = uploadImageToDirectory($request->file('image'), "Services");
 

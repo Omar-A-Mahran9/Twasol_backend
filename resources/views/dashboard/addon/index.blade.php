@@ -235,7 +235,7 @@
     <!--end::Basic info-->
 
     {{-- begin::Add Country Modal --}}
-    <form id="crud_form" class="ajax-form" action="{{ route('dashboard.addon.store') }}" method="post"
+    <form id="crud_form" class="ajax-form w-50" action="{{ route('dashboard.addon.store') }}" method="post"
         data-success-callback="onAjaxSuccess" data-error-callback="onAjaxError">
         @csrf
         <div class="modal fade" tabindex="-1" id="crud_modal">
@@ -319,48 +319,57 @@
     </form>
 @endsection
 @push('scripts')
+    <script src="{{ asset('assets/dashboard/plugins/custom/fslightbox/fslightbox.bundle.js') }}"></script>
+    <script src="{{ asset('assets/dashboard/plugins/custom/tinymce/tinymce.bundle.js') }}"></script>
+
     <script src="{{ asset('assets/dashboard/js/global/datatable-config.js') }}"></script>
     <script src="{{ asset('assets/dashboard/js/datatables/datatables.bundle.js') }}"></script>
     <script src="{{ asset('assets/dashboard/js/datatables/addon.js') }}"></script>
     <script src="{{ asset('assets/dashboard/js/global/crud-operations.js') }}"></script>
-    <script src="{{ asset('assets/dashboard/plugins/custom/fslightbox/fslightbox.bundle.js') }}"></script>
-    <script src="{{ asset('assets/dashboard/plugins/custom/tinymce/tinymce.bundle.js') }}"></script>
 
     <script>
         $(document).ready(function() {
+            // Reset form functionality
             $("#add_btn").click(function(e) {
                 e.preventDefault();
                 $("#form_title").text(__('Add new Addon'));
                 $("[name='_method']").remove();
                 $("#crud_form").trigger('reset');
+                // Get content from TinyMCE and set it back into the textarea
+                var descriptionAr = tinymce.get('description_ar_inp').getContent();
+                var descriptionEn = tinymce.get('description_en_inp').getContent();
+                $("#description_ar_inp").val(descriptionAr);
+                $("#description_en_inp").val(descriptionEn);
+
                 $("#crud_form").attr('action', `/dashboard/addon`);
                 $('.image-input-wrapper').css('background-image', `url('/placeholder_images/default.svg')`);
             });
+
+            // TinyMCE configuration
+            let language = locale === 'en' ? 'ltr' : 'rtl';
+            const tinyMCEConfig = {
+                height: "480",
+                menubar: false,
+                toolbar: [
+                    "styleselect",
+                    "undo redo | cut copy paste | bold italic | link image | alignleft aligncenter alignright alignjustify",
+                    "bullist numlist | outdent indent | ltr rtl | blockquote subscript superscript | advlist autolink lists charmap | print preview | code"
+                ],
+                directionality: language,
+                plugins: "advlist autolink link image lists charmap print preview code directionality",
+            };
+
+            // Initialize TinyMCE for English
+            tinymce.init({
+                ...tinyMCEConfig,
+                selector: "#description_en_inp",
+            });
+
+            // Initialize TinyMCE for Arabic
+            tinymce.init({
+                ...tinyMCEConfig,
+                selector: "#description_ar_inp",
+            });
         });
     </script>
-    {{-- <script>
-        let language = locale == 'en' ? 'ltr' : 'rtl';
-        tinymce.init({
-            selector: "#description_en_inp",
-            height: "480",
-            menubar: false,
-            toolbar: ["styleselect",
-                "undo redo | cut copy paste | bold italic | link image | alignleft aligncenter alignright alignjustify",
-                "bullist numlist | outdent indent | ltr rtl | blockquote subscript superscript | advlist | autolink | lists charmap | print preview |  code"
-            ],
-            directionality: language, // Set the initial direction to RTL if needed
-            plugins: "advlist autolink link image lists charmap print preview code directionality"
-        });
-        tinymce.init({
-            selector: "#description_ar_inp",
-            height: "480",
-            menubar: false,
-            toolbar: ["styleselect",
-                "undo redo | cut copy paste | bold italic | link image | alignleft aligncenter alignright alignjustify",
-                "bullist numlist | outdent indent | ltr rtl | blockquote subscript superscript | advlist | autolink | lists charmap | print preview |  code"
-            ],
-            directionality: language, // Set the initial direction to RTL if needed
-            plugins: "advlist autolink link image lists charmap print preview code directionality"
-        });
-    </script> --}}
 @endpush

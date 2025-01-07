@@ -55,12 +55,12 @@
                         <i class="ki-outline ki-slider-horizontal-2 fs-2"></i>
                     </x-dashboard.aside-item>
                 @endcan
-
+{{-- 
                 @can('view_tags')
                     <x-dashboard.aside-item :slug="'tags'" :route="route('dashboard.tags.index')" :title="__('Tags')">
                         <i class="ki-outline ki-key fs-2"></i>
                     </x-dashboard.aside-item>
-                @endcan
+                @endcan --}}
 
                 <!--begin:Menu item-->
                 @can('view_customers')

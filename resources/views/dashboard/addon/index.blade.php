@@ -235,7 +235,7 @@
     <!--end::Basic info-->
 
     {{-- begin::Add Country Modal --}}
-    <form id="crud_form" class="ajax-form w-50" action="{{ route('dashboard.addon.store') }}" method="post"
+    <form   class="ajax-form w-50" action="{{ route('dashboard.addon.store') }}" method="post"
         data-success-callback="onAjaxSuccess" data-error-callback="onAjaxError">
         @csrf
         <div class="modal fade" tabindex="-1" id="crud_modal">

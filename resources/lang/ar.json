@@ -1,7 +1,7 @@
 {
     "login": "تسجيل الدخول",
     "Welcome back": "!مرحبًا بعودتك",
-    "Tawasol-Technology": "تواصل تكنولوجي",
+    "Tawasol-Technology": "تواصل التكنولوجيا",
     "Visited Data": "تفاصيل الزيارة",
     "visit date": "تاريخ الزيارة",
     "city": "المدينة",
@@ -84,9 +84,8 @@
 
     "cities count": "عدد  المدن",
 
-
     "Home": "الرئيسية",
-    "Tawasol": "تواصل تكنولوجي",
+    "Tawasol": "تواصل التكنولوجيا",
 
     "Orders": "الطلبات",
     "orders": "الطلبات",
@@ -707,7 +706,7 @@
     "Tax": "الضريبة",
     "Brand Name In English": "اسم العلامة التجارية بالإنجليزية",
     "Brand Name In Arabic": "اسم العلامة التجارية بالعربية",
- 
+
     "size applicable": "المقاس المطبق",
     "It must consist of letters and numbers": "يجب أن تتكون من أحرف وأرقام",
     "Order Reasons": "أسباب الطلب",

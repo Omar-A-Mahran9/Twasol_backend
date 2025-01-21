@@ -782,42 +782,7 @@
                     <!--end::Drawer wrapper-->
                     <div class="menu menu-sub menu-sub-dropdown menu-column w-350px w-lg-375px" id="kt_menu"
                         data-kt-menu="true" style="">
-                        <!--begin::Heading-->
-                        <div class="d-flex flex-column bgi-no-repeat rounded-top"
-                            style="background-image:url('{{ asset('assets/dashboard/media/misc/menu-header-bg.jpg') }}')">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <!--begin::Title-->
-                                <h3 class="text-white fw-semibold px-9 mt-10 mb-6">
-                                    {{ __('Notifications') }}
-                                    @if ($unreadNotifications->count() > 0)
-                                        <span
-                                            class="fs-8 opacity-75 ps-3 notifications-counter">{{ $unreadNotifications->count() . __('unread') }}</span>
-                                    @else
-                                        <span class="fs-8 opacity-75 ps-3 notifications-counter">
-                                            {{ __('nothing new') }}</span>
-                                    @endif
-                                </h3>
-                                <!--end::Title-->
-                                <a href="{{ route('dashboard.notifications.mark_all_as_read') }}"
-                                    class="text-white fw-semibold px-9 mt-10 mb-6">{{ __('Mark all as read') }}</a>
-                            </div>
 
-                            <ul class="nav nav-line-tabs nav-line-tabs-2x nav-stretch fw-semibold px-9"
-                                role="tablist">
-                                <li class="nav-item" role="presentation">
-                                    <a class="nav-link text-white opacity-75 opacity-state-100 pb-4"
-                                        data-bs-toggle="tab" href="#all_notifications" aria-selected="false"
-                                        tabindex="-1" role="tab">{{ __('All') }}</a>
-                                </li>
-
-                                <li class="nav-item" role="presentation">
-                                    <a class="nav-link text-white opacity-75 opacity-state-100 pb-4 active"
-                                        data-bs-toggle="tab" href="#unread_notifications" aria-selected="true"
-                                        role="tab">{{ __('Unread') }}</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <!--end::Heading-->
                         <!--begin::Tab content-->
                         <div class="tab-content">
                             <div class="tab-pane fade" id="all_notifications" role="tabpanel">

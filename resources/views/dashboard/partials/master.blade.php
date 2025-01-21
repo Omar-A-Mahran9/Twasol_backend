@@ -121,8 +121,7 @@
     </div>
     <!-- end::Toast -->
     <script>
-        var favIconCounter = {{ $unreadNotifications->count() }};
-        var favicon;
+         var favicon;
 
         $(document).ready(function() {
             favicon = new Favico({

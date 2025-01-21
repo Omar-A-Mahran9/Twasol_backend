@@ -2,28 +2,16 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Models\City;
 use App\Models\Order;
-use App\Models\Vendor;
-use App\Models\Address;
-use App\Models\Product;
+
 use App\Models\Customer;
-use App\Models\FastCity;
-use App\Models\OrderItem;
-use App\Enums\OrderStatus;
-use App\Models\CityVendor;
-use App\Models\OrderReason;
-use Illuminate\Support\Str;
+
 use App\Services\OTOService;
 use Illuminate\Http\Request;
 use App\Services\TapPaymentService;
 use App\Http\Controllers\Controller;
-use App\Models\ProductSpecification;
 use App\Traits\WebNotificationsTrait;
-use App\Http\Resources\Api\CityResource;
- use App\Http\Resources\Api\OrderResource;
-use App\Http\Resources\Api\ReasonResource;
-use App\Http\Requests\Api\OrderReasonRequest;
+
  
 use App\Http\Requests\Api\OrderRequest;
 use App\Mail\OrderConfirmationMail;

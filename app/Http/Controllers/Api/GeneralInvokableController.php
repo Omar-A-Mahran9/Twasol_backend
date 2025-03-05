@@ -36,12 +36,12 @@ class GeneralInvokableController extends Controller
         $ourservices = AddonService::select('id', 'name_ar', 'name_en', 'image', 'description_ar', 'description_en')
         ->orderBy('created_at', 'asc') // Order by the oldest created records
         ->get();
-    
+
             $allCities     = City::select('id', 'name_ar', 'name_en')->get();
          $rate         = customers_rates::select('id', 'customer_id','comment','rate','status')->get();
          $parteners=partener::select('id', 'name_ar', 'name_en','image')->get();
             return $this->success('', [
-          
+
             'allCities' => CityResource::collection($allCities),
             'gallary'=>GallariesResource::collection($gallary),
 

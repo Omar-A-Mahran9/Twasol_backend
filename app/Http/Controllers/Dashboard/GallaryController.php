@@ -53,6 +53,8 @@ class GallaryController extends Controller
                     'image'   => $imagePath,
                     'name_ar' =>      $name_ar,
                     'name_en' =>      $name_en,
+                    'addon_service_id' =>      $data['addon_service_id'],
+
                 ]);
             }
         }

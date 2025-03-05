@@ -28,7 +28,8 @@ class UpdateGallaryRequest extends FormRequest
          return [
             'image' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:1000',
              "addon_service_id" => ["required", "string:255", "unique:gallaries,name_en,$gallaries->id", new NotNumbersOnly()],
- 
+            "addon_service_id" => ["required"],
+
         ];
     }
 }

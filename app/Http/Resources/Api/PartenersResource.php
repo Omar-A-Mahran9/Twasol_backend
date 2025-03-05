@@ -14,6 +14,11 @@ class PartenersResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
-    }
+
+            return [
+                'id' => $this->id,
+                'name_ar' => $this->name_ar,
+                'name_en' => $this->name_en,
+                'image' => $this->full_image_path, // Assuming the image is stored in Laravel's storage
+            ];    }
 }

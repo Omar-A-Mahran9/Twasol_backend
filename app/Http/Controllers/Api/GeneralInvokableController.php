@@ -43,11 +43,12 @@ class GeneralInvokableController extends Controller
             return $this->success('', [
 
             'allCities' => CityResource::collection($allCities),
+            'partners'=>PartenersResource::collection($parteners),
             'gallary'=>GallariesResource::collection($gallary),
 
             'Rate' => RateResource::collection( $rate),
             'services'=> ServiceResource::collection($ourservices),
-            'partners'=>PartenersResource::collection($parteners),
+
             'instagram_link' => setting('instagram_link'),
             'privacy_policy' => setting('privacy_policy_' . request()->header('Content-language')),
             'facebook_link' => setting('facebook_link'),

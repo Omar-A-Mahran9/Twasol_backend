@@ -17,8 +17,7 @@ class PartenersResource extends JsonResource
 
             return [
                 'id' => $this->id,
-                'name_ar' => $this->name_ar,
-                'name_en' => $this->name_en,
+                'name' => $this->name,
                 'image' => $this->full_image_path, // Assuming the image is stored in Laravel's storage
             ];    }
 }

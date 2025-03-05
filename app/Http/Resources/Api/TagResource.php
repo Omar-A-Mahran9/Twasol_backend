@@ -1,4 +1,14 @@
-<?php
+use Illuminate\Support\Facades\Log;
+
+public function toArray(Request $request): array
+{
+    Log::info('TagResource toArray method called');
+    return [
+        'id' => $this->id,
+        'name' => $this->name,
+        'created_at' => $this->created_at->format('Y-m-d')
+    ];
+}<?php
 
 namespace App\Http\Resources\Api;
 

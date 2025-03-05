@@ -118,25 +118,26 @@
 
                     <div class="modal-body">
                         <div class="d-flex flex-column justify-content-center">
-                            <label for="image_inp"
-                                class="form-label required text-center fs-6 fw-bold mb-3">{{ __('Image') }}</label>
-                            <x-dashboard.upload-image-inp name="image" :image="null" :directory="null"
-                                placeholder="default.svg" type="editable"></x-dashboard.upload-image-inp>
+                            <label for="images" class="form-label required text-center fs-6 fw-bold mb-3">
+                                {{ __('Images') }}
+                            </label>
+                            <input type="file" name="images[]" id="imagesdta" class="form-control d-none" multiple
+                                accept="image/*">
+
+                            <!-- Preview Section -->
+                            <div id="image-preview" class="mt-3 d-flex flex-wrap"></div>
+                            <div class="fv-plugins-message-container invalid-feedback" id="images"></div>
+
+                            <!-- X-Component for Editing -->
+                            <div id="edit-image-container" class="d-none">
+                                {{-- <label for="image_inp" class="form-label required text-center fs-6 fw-bold mb-3">
+                                    {{ __('Image') }}
+                                </label> --}}
+                                <x-dashboard.upload-image-inp name="image" :image="null" :directory="null"
+                                    placeholder="default.svg" type="editable"></x-dashboard.upload-image-inp>
+                            </div>
                         </div>
-                        <div class="fv-row mb-0 fv-plugins-icon-container">
-                            <label for="name_ar_inp"
-                                class="form-label required fs-6 fw-bold mb-3">{{ __('Name ar') }}</label>
-                            <input type="text" name="name_ar" class="form-control form-control-lg form-control-solid"
-                                id="name_ar_inp" placeholder="{{ __('Name ar') }}">
-                            <div class="fv-plugins-message-container invalid-feedback" id="name_ar"></div>
-                        </div>
-                        <div class="fv-row mb-0 fv-plugins-icon-container">
-                            <label for="name_en_inp"
-                                class="form-label required fs-6 fw-bold mb-3">{{ __('Name en') }}</label>
-                            <input type="text" name="name_en" class="form-control form-control-lg form-control-solid"
-                                id="name_en_inp" placeholder="{{ __('Name en') }}">
-                            <div class="fv-plugins-message-container invalid-feedback" id="name_en"></div>
-                        </div>
+
 
                         <div class="fv-row mb-5 fv-plugins-icon-container">
                             <label class="form-label required fs-6 fw-bold mb-3">{{ __('Service') }}</label>
@@ -186,14 +187,46 @@
             $("#add_btn").click(function(e) {
                 e.preventDefault();
 
-                $("#form_title").text(__("Add new gallary"));
+                $("#form_title").text(__("Add new gallery"));
                 $("[name='_method']").remove();
                 $("#crud_form").trigger('reset');
                 $("#crud_form").attr('action', `/dashboard/gallary`);
                 $('.image-input-wrapper').css('background-image', `url('/placeholder_images/default.svg')`);
+
+                // Show multiple image upload input and hide edit component
+                $("#imagesdta").removeClass("d-none");
+                $("#edit-image-container").addClass("d-none");
             });
+        });
+    </script>
+    <script>
+        document.getElementById("imagesdta").addEventListener("change", function(event) {
+            let files = Array.from(event.target.files);
+            let previewContainer = document.getElementById("image-preview");
+            previewContainer.innerHTML = ""; // Clear previous previews
 
+            // Check if more than 8 images are selected
+            if (files.length > 8) {
+                alert("You can only upload a maximum of 8 images.");
+                event.target.value = ""; // Reset file input
+                return;
+            }
 
+            files.forEach(file => {
+                let reader = new FileReader();
+                reader.onload = function(e) {
+                    let img = document.createElement("img");
+                    img.src = e.target.result;
+                    img.classList.add("m-2");
+                    img.style.width = "100px";
+                    img.style.height = "100px";
+                    img.style.objectFit = "cover";
+                    img.style.borderRadius = "8px";
+                    img.style.boxShadow = "0px 0px 5px rgba(0,0,0,0.2)";
+                    previewContainer.appendChild(img);
+                };
+                reader.readAsDataURL(file);
+            });
         });
     </script>
 @endpush

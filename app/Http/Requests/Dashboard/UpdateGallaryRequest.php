@@ -27,10 +27,8 @@ class UpdateGallaryRequest extends FormRequest
         $gallaries = request()->route('gallary');
          return [
             'image' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:1000',
-            "name_ar" => ["required", "string:255", "unique:gallaries,name_ar,$gallaries->id", new NotNumbersOnly()],
-            "addon_service_id" => ["required", "string:255", "unique:gallaries,name_en,$gallaries->id", new NotNumbersOnly()],
-            "addon_service_id" => ["required"],
-
+             "addon_service_id" => ["required", "string:255", "unique:gallaries,name_en,$gallaries->id", new NotNumbersOnly()],
+ 
         ];
     }
 }

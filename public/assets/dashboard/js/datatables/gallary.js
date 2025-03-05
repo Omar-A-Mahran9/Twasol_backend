@@ -151,28 +151,22 @@ var KTDatatablesServerSide = (function () {
     };
 
     var handleEditRows = () => {
-        // Select all edit buttons
         const editButtons = document.querySelectorAll(
             '[data-kt-docs-table-filter="edit_row"]'
         );
 
         editButtons.forEach((d) => {
-            // edit button on click
             d.addEventListener("click", function (e) {
                 e.preventDefault();
 
                 let currentBtnIndex = $(editButtons).index(d);
                 let data = datatable.row(currentBtnIndex).data();
 
-                $("#form_title").text(__("Edit gallary"));
+                $("#form_title").text(__("Edit gallery"));
                 $(".image-input-wrapper").css(
                     "background-image",
                     `url('${data.full_image_path}')`
                 );
-                $(`[name='addon_service_id']`)
-                    .val(data.addon_service_id ?? "")
-                    .attr("selected", true);
-                $(`[name='addon_service_id']`).trigger("change");
                 $("#name_ar_inp").val(data.name_ar);
                 $("#name_en_inp").val(data.name_en);
                 $("#crud_form").attr(
@@ -183,6 +177,10 @@ var KTDatatablesServerSide = (function () {
                     `<input type="hidden" name="_method" value="PUT">`
                 );
                 $("#crud_modal").modal("show");
+
+                // Hide multiple image input & show edit component
+                $("#imagesdta").addClass("d-none");
+                $("#edit-image-container").removeClass("d-none");
             });
         });
     };

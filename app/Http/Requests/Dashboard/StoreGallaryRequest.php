@@ -25,10 +25,9 @@ class StoreGallaryRequest extends FormRequest
     public function rules()
     {
         return [
-            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg',
-            "name_ar" => ["required", "string:255", "unique:gallaries", new NotNumbersOnly()],
-            "name_en" => ["required", "string:255", "unique:gallaries", new NotNumbersOnly()],
-            "addon_service_id" => ["required"],
+            'images'   => ['required', 'array', 'min:1'],
+            'images.*' => ['image', 'mimes:jpg,jpeg,png,webp', 'max:2048'],
+             "addon_service_id" => ["required"],
 
         ];
     }

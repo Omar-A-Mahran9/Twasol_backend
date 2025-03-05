@@ -22,15 +22,15 @@ return new class extends Migration
             $table->string('description');
             $table->string('address');
 
-           
-            $table->integer('status')->comment('App\Enums\OrderStatus')->default(OrderStatus::OrderPlaced->value);
+
+            $table->integer('status')->comment('App\Enums\OrderStatus')->default(OrderStatus::pending->value);
             $table->foreign('city_id')->references('id')->on('cities');
             $table->foreign('customer_id')->references('id')->on('customers');
 
             $table->foreign('addon_service_id')
             ->references('id')
             ->on('addon_services')
-            ->onDelete('cascade'); 
+            ->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -20,7 +20,7 @@ class GallaryController extends Controller
         $Services    = AddonService::select('id', 'name_ar', 'name_en','description_en','description_ar')->get();
 
         if ($request->ajax()){
-      
+
 
             return response(getModelData(model: new Gallary()));
         }
@@ -36,16 +36,30 @@ class GallaryController extends Controller
         //
     }
 
-  
+
     public function store(StoreGallaryRequest $request)
     {
-        $data          = $request->validated();
-        $data['image'] = uploadImageToDirectory($request->file('image'), "gallary");
+        $data = $request->validated();
 
-         Gallary::create($data);
+        // Ensure images exist
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $image) {
+                $imagePath = uploadImageToDirectory($image, "gallary");
+      // Generate unique name_ar and name_en values
+      $name_ar = 'ar_' . time() . '_' . uniqid();
+      $name_en = 'en_' . time() . '_' . uniqid();
+                // Create a record for each image
+                Gallary::create([
+                    'image'   => $imagePath,
+                    'name_ar' =>      $name_ar,
+                    'name_en' =>      $name_en,
+                ]);
+            }
+        }
 
-        return response(["gallary created successfully"]);
+        return response(["message" => "Gallery images uploaded successfully"], 201);
     }
+
     /**
      * Display the specified resource.
      */
@@ -75,13 +89,13 @@ class GallaryController extends Controller
 
         return response(["gallary updated successfully"]);
     }
- 
+
     /**
      * Remove the specified resource from storage.
      */
     public function destroy( Gallary $gallary)
     {
-        
+
         $this->authorize('delete_gallary');
         $gallary->delete();
         return response(["Gallary deleted successfully"]);
@@ -91,7 +105,7 @@ class GallaryController extends Controller
     {  dd($request);
          $this->authorize('delete_gallary');
        $parteners= Gallary::whereIn('id', $request->selected_items_ids)->delete();
-     
+
         return response(["selected partener deleted successfully"]);
     }
 }

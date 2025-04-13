@@ -6,17 +6,17 @@
         <!--begin::Logo-->
         <a href="{{ route('dashboard.index') }}">
             @if (isArabic())
-                <img alt="Logo" src="{{ asset('placeholder_images/raqi-logo.svg') }}"
+                <img alt="Logo" src="{{ asset('placeholder_images/Logo.svg') }}"
                     class="h-50px d-none d-sm-inline app-sidebar-logo-default theme-light-show" />
             @else
-                <img alt="Logo" src="{{ asset('placeholder_images/raqi-logo.svg') }}"
+                <img alt="Logo" src="{{ asset('placeholder_images/Logo.svg') }}"
                     class="h-50px d-none d-sm-inline app-sidebar-logo-default theme-light-show" />
             @endif
             @if (isArabic())
-                <img alt="Logo" src="{{ asset('placeholder_images/raqi-logo-white.svg') }}"
+                <img alt="Logo" src="{{ asset('placeholder_images/Logo-white.svg') }}"
                     class="h-50px theme-dark-show" />
             @else
-                <img alt="Logo" src="{{ asset('placeholder_images/raqi-logo-white.svg') }}"
+                <img alt="Logo" src="{{ asset('placeholder_images/Logo-white.svg') }}"
                     class="h-50px theme-dark-show" />
             @endif
         </a>
@@ -55,12 +55,13 @@
                         <i class="ki-outline ki-slider-horizontal-2 fs-2"></i>
                     </x-dashboard.aside-item>
                 @endcan
-                {{-- 
-                @can('view_tags')
-                    <x-dashboard.aside-item :slug="'tags'" :route="route('dashboard.tags.index')" :title="__('Tags')">
-                        <i class="ki-outline ki-key fs-2"></i>
+
+
+                @can('view_addonService')
+                    <x-dashboard.aside-item :slug="'addonService'" :route="route('dashboard.addon.index')" :title="__('Add new Service')">
+                        <i class="ki-outline ki-plus fs-2"></i>
                     </x-dashboard.aside-item>
-                @endcan --}}
+                @endcan
 
                 <!--begin:Menu item-->
                 @can('view_customers')
@@ -84,11 +85,6 @@
                     </x-dashboard.aside-item>
                 @endcan
 
-                @can('view_addonService')
-                    <x-dashboard.aside-item :slug="'addonService'" :route="route('dashboard.addon.index')" :title="__('Add new Service')">
-                        <i class="ki-outline ki-plus fs-2"></i>
-                    </x-dashboard.aside-item>
-                @endcan
                 @can('view_offers')
                     <x-dashboard.aside-item :slug="'offers'" :route="route('dashboard.offers.index')" :title="__('Offers')">
                         <i class="ki-outline ki-discount fs-2"></i>
@@ -140,7 +136,7 @@
                     </x-dashboard.aside-item>
                 @endcan
 
-                {{-- 
+                {{--
                 @can('view_CommonQuestion')
                     <x-dashboard.aside-item :slug="'CommonQuestion'" :route="route('dashboard.CommonQuestion.index')" :title="__('Common Question')">
                         <i class="ki-outline ki-question fs-2"></i>

@@ -75,7 +75,6 @@
                                     </div>
                                     <!--end::Image input-->
                                     <!--begin::Hint-->
-                                    <div class="form-text">{{ __('Allowed file types: png, jpg, jpeg.') }}</div>
                                     <!--end::Hint-->
                                 </div>
                                 <!--end::Col-->

@@ -14,7 +14,7 @@ class AddonServiceController extends Controller
      * Display a listing of the resource.
      */
     public function index(Request $request)
-    {        
+    {
          $count_addon = AddonService::count(); // Get the count of blogs
          $visited_site=10000;
          if ($request->ajax()){
@@ -24,54 +24,55 @@ class AddonServiceController extends Controller
              return view('dashboard.addon.index',compact('count_addon','visited_site'));
     }
 
-    /**view_addonService
-     * Show the form for creating a new resource.
-     */
+
     public function store(StoreAddonRequest $request)
     {
         $data = $request->validated();
-        $data['image'] = uploadImageToDirectory($request->file('image'), "Services");
+         if ($request->hasFile('image')) {
+            $data['image'] = uploadImageToDirectory($request->file('image'), "Services");
+        }
+
+        if ($request->hasFile('icon')) {
+            $data['icon'] = uploadImageToDirectory($request->file('icon'), "Services");
+        }
+
+        $data['is_publish'] = $request->has('is_publish') ? 1 : 0;
 
         $addon = AddonService::create($data);
 
-        return response(["services created successfully"]);
-    }
- 
-    public function show(AddonService $addonService)
-    {
-        //
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(AddonService $addonService)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(UpdateAddonRequest $request, AddonService $addon)
     {
-         $data = $request->validated();
-         if ($request->has('image'))
+        $data = $request->validated();
+
+        if ($request->hasFile('image')) {
             $data['image'] = uploadImageToDirectory($request->file('image'), "Services");
+        }
+
+        if ($request->hasFile('icon')) {
+            $data['icon'] = uploadImageToDirectory($request->file('icon'), "Services");
+        }
+
+        $data['is_publish'] = $request->has('is_publish') ? 1 : 0;
+
         $addon->update($data);
 
-        return response(["brand updated successfully"]);
+  
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(AddonService $addonService)
+
+
+
+    public function destroy($id)
     {
- 
+$addonService=AddonService::find($id);
         $this->authorize('delete_addonService');
         $addonService->delete();
         return response(["sec deleted successfully"]);
- 
+
     }
 }

@@ -21,7 +21,7 @@ let translations = {
         "Edit Question": "تعديل السوال",
         "Add Payment ways": "أضف خيارات الدفع",
         "Add Payment parteners": "أضف شريك",
-        "Add new Addon": " أضف خدمة ",
+        "Add new Service": " أضف خدمة ",
         "Edit addon": "تعديل الخدمة",
         "Add new rate": "اضافة تقييم",
         "Add new awars": "اضافة انجاز جديد",

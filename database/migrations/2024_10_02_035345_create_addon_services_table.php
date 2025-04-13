@@ -14,11 +14,15 @@ return new class extends Migration
         Schema::create('addon_services', function (Blueprint $table) {
             $table->id();
             $table->string('image')->nullable();
+            $table->string('icon')->nullable();
+
             $table->longText('name_ar')->unique();
             $table->longText('name_en')->unique();
             $table->longText('description_ar');
             $table->longText('description_en');
-            $table->string('price');
+            $table->boolean('is_publish')->default(TRUE);
+
+            // $table->string('price');
             $table->timestamps();
         });
     }

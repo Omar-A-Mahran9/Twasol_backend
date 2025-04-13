@@ -1,7 +1,7 @@
 {
     "login": "تسجيل الدخول",
     "Welcome back": "!مرحبًا بعودتك",
-    "Tawasol-Technology": "تواصل التكنولوجيا",
+    "JALID": "جليد",
     "Visited Data": "تفاصيل الزيارة",
     "visit date": "تاريخ الزيارة",
     "city": "المدينة",
@@ -81,12 +81,8 @@
     "Search for package categories": "البحث عن فئة باقة",
     "Add package category": "اضافة فئة باقة",
     "packages categories count": "عدد فئات الباقات",
-
     "cities count": "عدد  المدن",
-
     "Home": "الرئيسية",
-    "Tawasol": "تواصل التكنولوجيا",
-
     "Orders": "الطلبات",
     "orders": "الطلبات",
     "Search for vendors ( Name - Email )": "ابحث عن التجار ( الاسم - البريد الالكتروني )",
@@ -245,15 +241,13 @@
     "Payment parteners": "شركاء المدفوعات",
     "Add Payment ways": "أضف خيارات الدفع",
     "Add Payment parteners": "أضف شريك",
-    "Addon Services": "خدمات إضافية",
     "Add new Service": "اضافة خدمة",
-    "Addons list": "قائمة الخدمات",
-    "Add new Addon": "اضافة مدونة ",
+    "Services list": "قائمة الخدمات",
     "Search for Addons": "البحث عن خدمة",
     "Addons": "خدمات اضافية",
 
     "Add Addon": "اضافة خدمة",
-    "Addons count": "عدد  المدونات",
+
     "Choose the color": "اختر اللون",
     "Choose the type": "اختر النوع",
     "Approved": "مقبول",
@@ -619,6 +613,9 @@
     "Visible on the slider": "هل يمكن رؤيته على السلايدر",
     "Slider Details": "تفاصيل السلايدر",
     "Title": "العنوان",
+    "Visible": "مرئي",
+    "Icon": "الأيقونة",
+
     "Slider background": "خلفية السلايدر",
     "Background": "الخلفية",
     "Button name": "اسم الزر",

@@ -142,13 +142,11 @@ var KTDatatablesServerSide = (function () {
     };
 
     var handleEditRows = () => {
-        // Select all edit buttons
         const editButtons = document.querySelectorAll(
             '[data-kt-docs-table-filter="edit_row"]'
         );
 
         editButtons.forEach((d) => {
-            // edit button on click
             d.addEventListener("click", function (e) {
                 e.preventDefault();
 
@@ -160,17 +158,22 @@ var KTDatatablesServerSide = (function () {
                     "background-image",
                     `url('${data.full_image_path}')`
                 );
+                $(".icon-input-wrapper").css(
+                    "background-image",
+                    `url('${data.full_icon_path}')`
+                );
                 $("#name_ar_inp").val(data.name_ar);
                 $("#name_en_inp").val(data.name_en);
-                // Assuming `data` is your object containing the description values
-                tinymce
-                    .get("description_ar_inp")
-                    .setContent(data.description_ar); // Set content for Arabic editor
-                tinymce
-                    .get("description_en_inp")
-                    .setContent(data.description_en); // Set content for English editor
+                $("#description_ar_inp").val(data.description_ar);
+                $("#description_en_inp").val(data.description_en);
 
-                $("#price_inp").val(data.price);
+                // Handle is_publish switch
+                if (data.is_publish) {
+                    $("#kt_modal_add_customer_billing").prop("checked", true);
+                } else {
+                    $("#kt_modal_add_customer_billing").prop("checked", false);
+                }
+
                 $("#crud_form").attr(
                     "action",
                     `/dashboard/${dbTable}/${data.id}`

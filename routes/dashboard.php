@@ -38,8 +38,10 @@ Route::get("fast-shipping-city/restore-selected", "FastShippingCityController@re
 Route::get("fast-shipping-city/restore/{fastCity}", "FastShippingCityController@restore");
 Route::delete("packageCategories/delete-selected", "PackageCategoryController@deleteSelected");
 Route::delete("packages/delete-selected", "PackagesController@deleteSelected");
-Route::delete("car_prices/delete-selected", "CarPriceController@deleteSelected");
-Route::delete("partner/delete-selected", "PartenerController@deleteSelected");
+ Route::delete("partner/delete-selected", "PartenerController@deleteSelected");
+
+
+ Route::resource('addon', 'AddonServiceController')->except(['create', 'edit']);
 
 /** begin resources routes **/
 Route::resource('order-reasons', 'OrderReasonController')->except(['create', 'edit']);
@@ -53,7 +55,6 @@ Route::resource('gallary', 'GallaryController')->except(['create', 'edit']);
 Route::resource('blogs', 'BlogsController')->except(['create', 'edit']);
 Route::resource('CommonQuestion', 'CommonQuestionController')->except(['create', 'edit']);
 
-Route::resource('addon', 'AddonServiceController')->except(['create', 'edit']);
 
 Route::resource('packageCategories', 'PackageCategoryController')->except(['create', 'edit']);
 Route::resource('packagesubCategories', 'PackagesubCategoryController')->except(['create', 'edit']);
@@ -119,7 +120,7 @@ Route::prefix('settings')->name('settings.')->group(function () {
 
     Route::resource('roles', 'RoleController');
     Route::get('role/{role}/admins', 'RoleController@admins');
- 
+
     Route::match(['get', 'post'], 'home-content/main', 'HomeController@index')->name('home-content');
     Route::match(['get', 'post'], 'home-content/about-us', 'HomeController@aboutUs')->name('home.about-us');
     Route::match(['get', 'post'], 'home-content/terms', 'HomeController@terms')->name('home.terms');

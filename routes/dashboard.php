@@ -38,7 +38,8 @@ Route::get("fast-shipping-city/restore-selected", "FastShippingCityController@re
 Route::get("fast-shipping-city/restore/{fastCity}", "FastShippingCityController@restore");
 Route::delete("packageCategories/delete-selected", "PackageCategoryController@deleteSelected");
 Route::delete("packages/delete-selected", "PackagesController@deleteSelected");
- Route::delete("partner/delete-selected", "PartenerController@deleteSelected");
+ Route::delete("addon/delete-selected", "AddonServiceController@deleteSelected");
+ Route::get("addon/restore-selected", "AddonServiceController@restoreSelected");
 
 
  Route::resource('addon', 'AddonServiceController')->except(['create', 'edit']);

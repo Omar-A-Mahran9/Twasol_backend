@@ -61,7 +61,7 @@ class AddonServiceController extends Controller
 
         $addon->update($data);
 
-  
+
     }
 
 
@@ -69,10 +69,28 @@ class AddonServiceController extends Controller
 
     public function destroy($id)
     {
-$addonService=AddonService::find($id);
+        $addonService=AddonService::find($id);
         $this->authorize('delete_addonService');
         $addonService->delete();
-        return response(["sec deleted successfully"]);
+        return response(["service deleted successfully"]);
 
+    }
+
+
+    public function deleteSelected(Request $request)
+    {
+        $this->authorize('delete_addonService');
+
+        AddonService::whereIn('id', $request->selected_items_ids)->delete();
+
+        return response(["selected services deleted successfully"]);
+    }
+
+    public function restoreSelected(Request $request)
+    {
+        $this->authorize('delete_addonService');
+        AddonService::withTrashed()->whereIn('id', $request->selected_items_ids)->restore();
+
+        return response(["selected services restored successfully"]);
     }
 }

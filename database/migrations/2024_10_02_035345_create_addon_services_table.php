@@ -22,7 +22,7 @@ return new class extends Migration
             $table->longText('description_en');
             $table->boolean('is_publish')->default(TRUE);
 
-            // $table->string('price');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -256,6 +256,16 @@ return [
         'our_mission_ar' => 'هدفنا بالعربية',
         'our_mission_en' => 'هدفنا بالانجليزية',
 
+        'label_about_us_ar' => 'هدفنا بالانجليزية',
+        'label_about_us_en' => 'هدفنا بالانجليزية',
+        'label_contact_ar' => 'هدفنا بالانجليزية',
+        'label_contact_en' => 'هدفنا بالانجليزية',
+        'label_service_ar' => 'هدفنا بالانجليزية',
+        'label_service_en' => 'هدفنا بالانجليزية',
+        'about_us_image' => 'هدفنا بالانجليزية',
+        'contact_image' => 'هدفنا بالانجليزية',
+        'service_image' => 'هدفنا بالانجليزية',
+
          'our_vission_ar' => 'رؤيتنا بالعربية',
         'our_vission_en' => 'رؤيتنا بالانجليزية',
         "about_us_image"=> "صورة من نحن ",
@@ -348,45 +358,6 @@ return [
         'landing_page.how_we_are_description_ar' => 'الوصف عربي',
         'landing_page.how_we_are_description_en' => 'الوصف انجليزي',
 
-        'landing_page.why_choose_us_title_1_ar' => 'العنوان عربي',
-        'landing_page.why_choose_us_title_1_en' => 'العنوان انجليزي',
-        'landing_page.why_choose_us_description_1_ar' => 'الوصف عربي',
-        'landing_page.why_choose_us_description_1_en' => 'الوصف انجليزي',
-
-        'landing_page.why_choose_us_title_2_ar' => 'العنوان عربي',
-        'landing_page.why_choose_us_title_2_en' => 'العنوان انجليزي',
-        'landing_page.why_choose_us_description_2_ar' => 'الوصف عربي',
-        'landing_page.why_choose_us_description_2_en' => 'الوصف انجليزي',
-
-        'landing_page.why_choose_us_title_2_ar' => 'العنوان عربي',
-        'landing_page.why_choose_us_title_2_en' => 'العنوان انجليزي',
-        'landing_page.why_choose_us_description_2_ar' => 'الوصف عربي',
-        'landing_page.why_choose_us_description_2_en' => 'الوصف انجليزي',
-
-        'landing_page.why_choose_us_title_4_ar' => 'العنوان عربي',
-        'landing_page.why_choose_us_title_4_en' => 'العنوان انجليزي',
-        'landing_page.why_choose_us_description_4_ar' => 'الوصف عربي',
-        'landing_page.why_choose_us_description_4_en' => 'الوصف انجليزي',
-
-        'landing_page.app_features_title_1_ar' => 'العنوان عربي',
-        'landing_page.app_features_title_1_en' => 'العنوان انجليزي',
-        'landing_page.app_features_description_1_ar' => 'الوصف عربي',
-        'landing_page.app_features_description_1_en' => 'الوصف انجليزي',
-
-        'landing_page.app_features_title_2_ar' => 'العنوان عربي',
-        'landing_page.app_features_title_2_en' => 'العنوان انجليزي',
-        'landing_page.app_features_description_2_ar' => 'الوصف عربي',
-        'landing_page.app_features_description_2_en' => 'الوصف انجليزي',
-
-        'landing_page.app_features_title_2_ar' => 'العنوان عربي',
-        'landing_page.app_features_title_2_en' => 'العنوان انجليزي',
-        'landing_page.app_features_description_2_ar' => 'الوصف عربي',
-        'landing_page.app_features_description_2_en' => 'الوصف انجليزي',
-
-        'landing_page.app_features_title_4_ar' => 'العنوان عربي',
-        'landing_page.app_features_title_4_en' => 'العنوان انجليزي',
-        'landing_page.app_features_description_4_ar' => 'الوصف عربي',
-        'landing_page.app_features_description_4_en' => 'الوصف انجليزي',
         'instagram_link' => 'رابط الانستاجرام',
         'facebook_link' => 'رابط الفيسبوك',
         'linkedin_link' => 'رابط لينكدان',

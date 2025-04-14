@@ -138,6 +138,7 @@ Route::prefix('settings')->name('settings.')->group(function () {
     Route::match(['get', 'post'], 'home-content/privacy-policy', 'HomeController@privacyPolicy')->name('home.privacy-policy');
     Route::match(['get', 'post'], 'home-content/our-mission', 'HomeController@ourmission')->name('home.our-mission');
     Route::match(['get', 'post'], 'home-content/our-vission', 'HomeController@ourvission')->name('home.our-vission');
+    Route::match(['get', 'post'], 'home-content/banner', 'HomeController@banner')->name('home.banner');
 
 
  });

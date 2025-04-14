@@ -23,6 +23,29 @@ class HomeController extends Controller
             return view('dashboard.settings.home.index');
         }
     }
+    public function banner(UpdateHomeSettingsRequest $request)
+    {
+        // Check if it's a GET request — show the form
+        if ($request->isMethod('get')) {
+            $this->authorize('view_settings');
+            return view('dashboard.settings.home.banner');
+        }
+
+        // Otherwise, handle POST submission
+        $data = $request->validated();
+
+        // If a new image is uploaded, handle the upload
+        if ($request->hasFile('about_us_banner')) {
+            deleteImageFromDirectory(setting('about_us_banner'), "Settings");
+            $data['about_us_banner'] = uploadImageToDirectory($request->file('about_us_banner'), "Settings");
+        }
+
+        // Save the updated settings
+        setting($data)->save();
+
+        // Redirect back with a success message (optional)
+        return redirect()->back()->with('success', 'About Us settings updated successfully.');
+    }
 
     public function aboutUs(UpdateHomeSettingsRequest $request)
     {

@@ -6,7 +6,7 @@
     <form class="form d-flex flex-column flex-lg-row ajax-form" action="{{ route('dashboard.settings.home.about-us') }}"
         method="post" data-success-callback="onAjaxSuccess" data-hide-alert="true">
         @csrf
-        <!--begin::Aside column-->
+        <!--begin::Main column-->
         <div class="d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-300px mb-7 me-lg-10">
             <!--begin::Logo settings-->
             <div class="card card-flush py-4">
@@ -63,13 +63,8 @@
 
 
             </div>
-
-
         </div>
-        <!--end::Aside column-->
         <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
-
-
             @include('dashboard.partials.settings-home-nav')
             <!--begin::Tab content-->
             <div class="tab-content">

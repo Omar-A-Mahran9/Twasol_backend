@@ -3,7 +3,7 @@
     @include('dashboard.partials.settings-nav')
 
     <!--begin::Form-->
-    <form class="form d-flex flex-column flex-lg-row ajax-form" action="{{ route('dashboard.settings.home.return-policy') }}"
+    <form class="form d-flex flex-column flex-lg-row ajax-form" action="{{ route('dashboard.settings.home.our-vission') }}"
         method="post" data-success-callback="onAjaxSuccess" data-hide-alert="true">
         @csrf
         <!--begin::Main column-->
@@ -12,14 +12,14 @@
             <!--begin::Tab content-->
             <div class="tab-content">
                 <!--begin::Tab pane-->
-                <div class="tab-pane fade show active" id="settings_return_policy" role="tab-panel">
+                <div class="tab-pane fade show active" id="settings_our_vission" role="tab-panel">
                     <div class="d-flex flex-column gap-7 gap-lg-10">
                         <!--begin::Inventory-->
                         <div class="card card-flush py-4">
                             <!--begin::Card header-->
                             <div class="card-header">
                                 <div class="card-title">
-                                    <h2>{{ __('Return Policy') }}</h2>
+                                    <h2>{{ __('Our vission') }}</h2>
                                 </div>
                             </div>
                             <!--end::Card header-->
@@ -29,31 +29,31 @@
                                 <div class="mb-10 row">
                                     <div class="col-lg-6">
                                         <!--begin::Label-->
-                                        <label class="form-label">{{ __('Return policy in arabic') }}</label>
+                                        <label class="form-label">{{ __('Our vission in arabic') }}</label>
                                         <!--end::Label-->
                                         <!--begin::Editor-->
-                                        <textarea name="return_policy_ar" id="return_policy_ar_inp" data-kt-autosize="true"
-                                            placeholder="{{ __('Return policy in arabic') }}" class="tox-target">
-                                            {{ setting('return_policy_ar') }}
+                                        <textarea name="our_vission_ar" id="our_vission_ar_inp" data-kt-autosize="true"
+                                            placeholder="{{ __('Our vission in arabic') }}" class="tox-target">
+                                            {{ setting('our_vission_ar') }}
                                             </textarea>
                                         <!--end::Editor-->
                                         <!--begin::Description-->
-                                        <div class="fv-plugins-message-container invalid-feedback" id="return_policy_ar">
+                                        <div class="fv-plugins-message-container invalid-feedback" id="our_vission_ar">
                                         </div>
                                         <!--end::Description-->
                                     </div>
                                     <div class="col-lg-6">
                                         <!--begin::Label-->
-                                        <label class="form-label">{{ __('Return policy in english') }}</label>
+                                        <label class="form-label">{{ __('Our vission in english') }}</label>
                                         <!--end::Label-->
                                         <!--begin::Editor-->
-                                        <textarea name="return_policy_en" id="return_policy_en_inp" data-kt-autosize="true"
-                                            placeholder="{{ __('Return policy in english') }}" class="tox-target">
-                                            {{ setting('return_policy_en') }}
+                                        <textarea name="our_vission_en" id="our_vission_en_inp" data-kt-autosize="true"
+                                            placeholder="{{ __('Our vission in english') }}" class="tox-target">
+                                            {{ setting('our_vission_en') }}
                                             </textarea>
                                         <!--end::Editor-->
                                         <!--begin::Description-->
-                                        <div class="fv-plugins-message-container invalid-feedback" id="return_policy_en">
+                                        <div class="fv-plugins-message-container invalid-feedback" id="our_vission_en">
                                         </div>
                                         <!--end::Description-->
                                     </div>
@@ -94,7 +94,7 @@
     <script>
         let language = locale == 'en' ? 'ltr' : 'rtl';
         tinymce.init({
-            selector: "#return_policy_ar_inp",
+            selector: "#our_vission_ar_inp",
             height: "480",
             menubar: false,
             toolbar: ["styleselect",
@@ -105,7 +105,7 @@
             plugins: "advlist autolink link image lists charmap print preview code directionality"
         });
         tinymce.init({
-            selector: "#return_policy_en_inp",
+            selector: "#our_vission_en_inp",
             height: "480",
             menubar: false,
             toolbar: ["styleselect",

@@ -18,7 +18,18 @@
             href="{{ route('dashboard.settings.home.privacy-policy') }}">{{ __('Privacy Policy') }}</a>
     </li>
     <!--end:::Tab item-->
+
     <!--begin:::Tab item-->
- 
+    <li class="nav-item">
+        <a class="nav-link text-active-primary pb-4 {{ getClassIfUrlContains('active', 'our-mission') }}"
+            href="{{ route('dashboard.settings.home.our-mission') }}">{{ __('Our Mission') }}</a>
+    </li>
+    <!--end:::Tab item-->
+    <!--begin:::Tab item-->
+    <li class="nav-item">
+        <a class="nav-link text-active-primary pb-4 {{ getClassIfUrlContains('active', 'our-vission') }}"
+            href="{{ route('dashboard.settings.home.our-vission') }}">{{ __('Our Vission') }}</a>
+    </li>
+    <!--end:::Tab item-->
 </ul>
 <!--end:::Tabs-->

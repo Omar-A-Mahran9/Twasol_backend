@@ -32,6 +32,8 @@ class UpdateHomeSettingsRequest extends FormRequest
                 'label_en' => 'required|string',
                 'about_us_ar' => 'required|string',
                 'about_us_en' => 'required|string',
+                'about_us_image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:512',
+
             ],
             'main' => [
                 'home_page.why_choose_us_main_description_ar' => 'required|string|max:600',
@@ -61,9 +63,13 @@ class UpdateHomeSettingsRequest extends FormRequest
                 'return_policy_ar' => 'required|string',
                 'return_policy_en' => 'required|string',
             ],
-            "loyality" => [
-                'loyality_ar' => 'required|string',
-                'loyality_en' => 'required|string',
+            "our-mission" => [
+                'our_mission_ar' => 'required|string',
+                'our_mission_en' => 'required|string',
+            ],
+            "our-vission" => [
+                'our_vission_ar' => 'required|string',
+                'our_vission_en' => 'required|string',
             ]
         ];
 

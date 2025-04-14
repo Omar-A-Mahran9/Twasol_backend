@@ -136,20 +136,11 @@ Route::prefix('settings')->name('settings.')->group(function () {
     Route::match(['get', 'post'], 'home-content/about-us', 'HomeController@aboutUs')->name('home.about-us');
     Route::match(['get', 'post'], 'home-content/terms', 'HomeController@terms')->name('home.terms');
     Route::match(['get', 'post'], 'home-content/privacy-policy', 'HomeController@privacyPolicy')->name('home.privacy-policy');
-    Route::match(['get', 'post'], 'home-content/return-policy', 'HomeController@returnPolicy')->name('home.return-policy');
-    Route::match(['get', 'post'], 'home-content/loyality', 'HomeController@loyality')->name('home.loyality');
+    Route::match(['get', 'post'], 'home-content/our-mission', 'HomeController@ourmission')->name('home.our-mission');
+    Route::match(['get', 'post'], 'home-content/our-vission', 'HomeController@ourvission')->name('home.our-vission');
 
 
-    Route::post('payment-content/payment-way', 'HomeController@paymentWaystore')->name('home.payment-way.post');
-    Route::post('payment-content/payment-way/{id}/update_statue', 'HomeController@updatestatuePaymentWay')->name('home.payment-way.update');
-    Route::get('payment-content/payment-way', 'HomeController@paymentWay')->name('home.payment-way.get');
-    Route::delete('payment-content/payment-way/{id}/delete','HomeController@deletepaymentWay')->name('home.payment-way.delete');
-
-
-    Route::post('payment-content/payment-partener', 'HomeController@paymentpartenerstore')->name('home.payment-partener.post');
-    Route::post('payment-content/payment-partener/{id}/update_statue', 'HomeController@updatestatue')->name('home.payment-partener.update');
-    Route::get('payment-content/payment-partener', 'HomeController@paymentpartener')->name('home.payment-partener.get');
-});
+ });
 
 Route::get('trash/{modelName}/{id}/restore', 'TrashController@restore')->name('trash.restore');
 Route::get('trash/{modelName?}', 'TrashController@index')->name('trash');

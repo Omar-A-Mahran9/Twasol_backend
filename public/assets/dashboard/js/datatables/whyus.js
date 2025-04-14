@@ -3,7 +3,7 @@
 var datatable;
 // Class definition
 var KTDatatablesServerSide = (function () {
-    let dbTable = "blogs";
+    let dbTable = "whyus";
     // Private functions
     var initDatatable = function () {
         datatable = $("#kt_datatable").DataTable({
@@ -23,7 +23,7 @@ var KTDatatablesServerSide = (function () {
             },
             columns: [
                 { data: "id" },
-                { data: "name" },
+                { data: "title" },
                 { data: "image" },
                 { data: "description" },
                 { data: "created_at" },
@@ -47,7 +47,7 @@ var KTDatatablesServerSide = (function () {
                             <div>
                                 <!--begin::Info-->
                                 <div class="d-flex flex-column justify-content-center">
-                                    <a href="javascript:;" class="mb-1 text-gray-800 text-hover-primary">${row.name}</a>
+                                    <a href="javascript:;" class="mb-1 text-gray-800 text-hover-primary">${row.title}</a>
                                 </div>
                                 <!--end::Info-->
                             </div>
@@ -178,13 +178,13 @@ var KTDatatablesServerSide = (function () {
                 let currentBtnIndex = $(editButtons).index(d);
                 let data = datatable.row(currentBtnIndex).data();
 
-                $("#form_title").text(__("Edit blog"));
+                $("#form_title").text(__("Edit why us"));
                 $(".image-input-wrapper").css(
                     "background-image",
                     `url('${data.full_image_path}')`
                 );
-                $("#name_ar_inp").val(data.name_ar);
-                $("#name_en_inp").val(data.name_en);
+                $("#title_ar_inp").val(data.title_ar);
+                $("#title_en_inp").val(data.title_en);
                 $("#description_ar_inp").val(data.description_ar);
                 $("#description_en_inp").val(data.description_en);
                 $("#crud_form").attr(

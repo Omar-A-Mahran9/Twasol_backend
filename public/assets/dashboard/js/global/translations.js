@@ -6,6 +6,8 @@ const __ = (word) => {
 
 let translations = {
     ar: {
+        "Add new why us": "اضافة لماذا نحن",
+
         "Edit gallery": "تعديل الصورة",
         "Add new partner": "اضافة شريك جديد",
         "Add new blog": "أضف مدونة جديدة",

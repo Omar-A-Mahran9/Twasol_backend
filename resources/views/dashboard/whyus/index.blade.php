@@ -7,16 +7,16 @@
         rel="stylesheet" type="text/css" />
 @endpush
 @section('content')
+    <!--begin::Basic info-->
     <div class="card mb-5 mb-x-10">
         <!--begin::Card header-->
         <div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse"
             data-bs-target="#kt_account_profile_details" aria-expanded="true" aria-controls="kt_account_profile_details">
             <!--begin::Card title-->
             <div class="card-title m-0">
-                <h3 class="fw-bold m-0">{{ __('Services list') }}</h3>
+                <h3 class="fw-bold m-0">{{ __('Why us list') }}</h3>
             </div>
             <!--end::Card title-->
-
             <div class="d-flex justify-content-center flex-wrap mb-5 mt-5">
 
                 <!--begin::Toolbar-->
@@ -36,12 +36,11 @@
                                     fill="currentColor"></rect>
                             </svg>
                         </span>
-                        <!--end::Svg Icon-->{{ __('Add Addon') }}
+                        <!--end::Svg Icon-->{{ __('Add Why us') }}
                     </button>
                     <!--end::Add customer-->
                 </div>
                 <!--end::Toolbar-->
-
             </div>
             <!--end::Info-->
         </div>
@@ -65,7 +64,7 @@
                     </span>
                     <!--end::Svg Icon-->
                     <input type="text" data-kt-docs-table-filter="search"
-                        class="form-control form-control-solid w-250px ps-15" placeholder="{{ __('Search for Addons') }}">
+                        class="form-control form-control-solid w-250px ps-15" placeholder="{{ __('Search for Why us') }}">
                 </div>
                 <!--end::Search-->
 
@@ -93,6 +92,7 @@
                         </th>
                         <th>{{ __('Name') }}</th>
                         <th>{{ __('Image') }}</th>
+                        <th>{{ __('Description') }}</th>
                         <th>{{ __('Created at') }}</th>
                         <th class=" min-w-100px">{{ __('Actions') }}</th>
                     </tr>
@@ -104,100 +104,73 @@
         </div>
         <!--end::Content-->
     </div>
+    <!--end::Basic info-->
 
     {{-- begin::Add Country Modal --}}
-    <form id="crud_form" class="ajax-form w-50" action="{{ route('dashboard.addon.store') }}" method="post"
+    <form id="crud_form" class="ajax-form" action="{{ route('dashboard.whyus.store') }}" method="post"
         data-success-callback="onAjaxSuccess" data-error-callback="onAjaxError">
         @csrf
         <div class="modal fade" tabindex="-1" id="crud_modal">
             <div class="modal-dialog modal-lg modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="form_title">{{ __('Add new Service') }}</h5>
+                        <h5 class="modal-title" id="form_title">{{ __('Add new why us') }}</h5>
                         <!--begin::Close-->
-
-
                         <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
                             aria-label="Close">
                             <i class="ki-outline ki-cross fs-1"></i>
                         </div>
                         <!--end::Close-->
                     </div>
-                    <!-- your modal body and footer here -->
-
-
 
                     <div class="modal-body">
-                        <div class="row">
-                            <div class="col-6 d-flex flex-column justify-content-center">
-                                <label for="image_inp"
-                                    class="form-label required text-center fs-6 fw-bold mb-3">{{ __('Image') }}</label>
-                                <x-dashboard.upload-image-inp name="image" :image="null" :directory="null"
-                                    placeholder="default.svg" type="editable">
-                                </x-dashboard.upload-image-inp>
-                            </div>
-
-                            <div class="col-6 d-flex flex-column justify-content-center">
-                                <label for="icon_inp"
-                                    class="form-label required text-center fs-6 fw-bold mb-3">{{ __('Icon') }}</label>
-                                <x-dashboard.upload-icon-inp name="icon" :image="null" :directory="null"
-                                    placeholder="default.svg" type="editable">
-                                </x-dashboard.upload-icon-inp>
-                            </div>
+                        <div class="d-flex flex-column justify-content-center">
+                            <label for="image_inp"
+                                class="form-label required text-center fs-6 fw-bold mb-3">{{ __('Image') }}</label>
+                            <x-dashboard.upload-image-inp name="image" :image="null" :directory="null"
+                                placeholder="default.svg" type="editable"></x-dashboard.upload-image-inp>
                         </div>
-
-                        <div class="row">
-                            <div class="col-6 fv-row mb-0 fv-plugins-icon-container">
-                                <label for="name_ar_inp"
+                        <div class="d-flex gap-5 mb-5">
+                            <!-- Name ar -->
+                            <div class="fv-row flex-grow-1 fv-plugins-icon-container">
+                                <label for="title_ar_inp"
                                     class="form-label required fs-6 fw-bold mb-3">{{ __('Name ar') }}</label>
-                                <input type="text" name="name_ar"
-                                    class="form-control form-control-lg form-control-solid" id="name_ar_inp"
+                                <input type="text" name="title_ar"
+                                    class="form-control form-control-lg form-control-solid" id="title_ar_inp"
                                     placeholder="{{ __('Name ar') }}">
-                                <div class="fv-plugins-message-container invalid-feedback" id="name_ar"></div>
+                                <div class="fv-plugins-message-container invalid-feedback" id="title_ar"></div>
                             </div>
 
-                            <div class="col-6 fv-row mb-0 fv-plugins-icon-container">
-                                <label for="name_en_inp"
+                            <!-- Name en -->
+                            <div class="fv-row flex-grow-1 fv-plugins-icon-container">
+                                <label for="title_en_inp"
                                     class="form-label required fs-6 fw-bold mb-3">{{ __('Name en') }}</label>
-                                <input type="text" name="name_en"
-                                    class="form-control form-control-lg form-control-solid" id="name_en_inp"
+                                <input type="text" name="title_en"
+                                    class="form-control form-control-lg form-control-solid" id="title_en_inp"
                                     placeholder="{{ __('Name en') }}">
-                                <div class="fv-plugins-message-container invalid-feedback" id="name_en"></div>
+                                <div class="fv-plugins-message-container invalid-feedback" id="title_en"></div>
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-6 fv-row mb-0 fv-plugins-icon-container">
+                        <div class="d-flex gap-5 mb-5">
+                            <!-- Description ar -->
+                            <div class="fv-row flex-grow-1 fv-plugins-icon-container">
                                 <label for="description_ar_inp"
                                     class="form-label required fs-6 fw-bold mb-3">{{ __('Description ar') }}</label>
-                                <textarea class="form-control form-control-lg form-control-solid" rows="4" name="description_ar"
-                                    data-kt-autosize="true" id="description_ar_inp" placeholder="{{ __('Description ar') }}"></textarea>
+                                <textarea rows="4" name="description_ar" class="form-control form-control-lg form-control-solid"
+                                    id="description_ar_inp" placeholder="{{ __('Description ar') }}"></textarea>
                                 <div class="fv-plugins-message-container invalid-feedback" id="description_ar"></div>
                             </div>
 
-                            <div class="col-6 fv-row mb-0 fv-plugins-icon-container">
+                            <!-- Description en -->
+                            <div class="fv-row flex-grow-1 fv-plugins-icon-container">
                                 <label for="description_en_inp"
                                     class="form-label required fs-6 fw-bold mb-3">{{ __('Description en') }}</label>
-                                <textarea class="form-control form-control-lg form-control-solid " rows="4" name="description_en"
-                                    data-kt-autosize="true" id="description_en_inp" placeholder="{{ __('Description en') }}"></textarea>
+                                <textarea rows="4" name="description_en" class="form-control form-control-lg form-control-solid"
+                                    id="description_en_inp" placeholder="{{ __('Description en') }}"></textarea>
                                 <div class="fv-plugins-message-container invalid-feedback" id="description_en"></div>
                             </div>
                         </div>
-
-                        <!--begin::Input group-->
-                        <div class="fv-row d-flex align-items-center gap-5 mt-5">
-                            <div class="me-5">
-                                <label class="fs-6 fw-semibold">{{ __('Visible') . ' ?' }}</label>
-                            </div>
-                            <label class="form-check form-switch form-check-custom form-check-solid">
-                                <input class="form-check-input" name="is_publish" type="checkbox" value="1"
-                                    id="kt_modal_add_customer_billing" checked="checked" />
-                                <span class="form-check-label fw-semibold text-muted"
-                                    for="kt_modal_add_customer_billing">{{ __('Yes') }}</span>
-                            </label>
-                        </div>
-                        <!--end::Input group-->
-
 
                     </div>
 
@@ -222,7 +195,22 @@
 @push('scripts')
     <script src="{{ asset('assets/dashboard/js/global/datatable-config.js') }}"></script>
     <script src="{{ asset('assets/dashboard/js/datatables/datatables.bundle.js') }}"></script>
-    <script src="{{ asset('assets/dashboard/js/datatables/addon.js') }}"></script>
+    <script src="{{ asset('assets/dashboard/js/datatables/whyus.js') }}"></script>
     <script src="{{ asset('assets/dashboard/js/global/crud-operations.js') }}"></script>
     <script src="{{ asset('assets/dashboard/plugins/custom/fslightbox/fslightbox.bundle.js') }}"></script>
+
+    <script>
+        $(document).ready(function() {
+            $("#add_btn").click(function(e) {
+                e.preventDefault();
+                $("#form_title").text(__('Add new why us'));
+                $("[name='_method']").remove();
+                $("#crud_form").trigger('reset');
+                $("#crud_form").attr('action', `/dashboard/whyus`);
+                $('.image-input-wrapper').css('background-image', `url('/placeholder_images/default.svg')`);
+            });
+
+
+        });
+    </script>
 @endpush

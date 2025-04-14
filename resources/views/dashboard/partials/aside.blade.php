@@ -58,8 +58,14 @@
 
 
                 @can('view_addonService')
-                    <x-dashboard.aside-item :slug="'addonService'" :route="route('dashboard.addon.index')" :title="__('Add new Service')">
+                    <x-dashboard.aside-item :slug="'addonService'" :route="route('dashboard.addon.index')" :title="__('Services')">
                         <i class="ki-outline ki-plus fs-2"></i>
+                    </x-dashboard.aside-item>
+                @endcan
+
+                @can('view_whyus')
+                    <x-dashboard.aside-item :slug="'whyus'" :route="route('dashboard.whyus.index')" :title="__('Why us')">
+                        <i class="ki-outline ki-abstract-29 fs-2"></i>
                     </x-dashboard.aside-item>
                 @endcan
 
@@ -79,11 +85,7 @@
                 <!--end:Menu item-->
 
                 <!--begin:Menu item-->
-                @can('view_blogs')
-                    <x-dashboard.aside-item :slug="'blogs'" :route="route('dashboard.blogs.index')" :title="__('Blogs')">
-                        <i class="ki-outline ki-abstract-29 fs-2"></i>
-                    </x-dashboard.aside-item>
-                @endcan
+
 
                 @can('view_offers')
                     <x-dashboard.aside-item :slug="'offers'" :route="route('dashboard.offers.index')" :title="__('Offers')">

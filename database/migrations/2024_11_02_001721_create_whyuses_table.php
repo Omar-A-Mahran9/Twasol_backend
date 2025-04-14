@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('blogs', function (Blueprint $table) {
+        Schema::create('whyuses', function (Blueprint $table) {
             $table->id();
             $table->string('image');
-            $table->string('name_ar')->unique();
-            $table->string('name_en')->unique();
+            $table->string('title_ar')->unique();
+            $table->string('title_en')->unique();
             $table->longText('description_ar');
             $table->longText('description_en');
- 
+
             $table->timestamps();
             $table->softDeletes();
         });

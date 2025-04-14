@@ -21,7 +21,7 @@ class Role extends Model
     ];
 
     public static $modules = [
-        'blogs',
+        'whyus',
         'admins',
         'customers',
         'customersRate',
@@ -30,7 +30,7 @@ class Role extends Model
         'awards',
         'gallary',
         'roles',
-        'addonService', 
+        'addonService',
         'tags',
         'cities',
         'offers',

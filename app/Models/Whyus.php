@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class blogs extends Model
+class Whyus extends Model
 {
     use HasFactory,SoftDeletes;
     protected $guarded = [];
-    protected $appends = ['name', 'full_image_path', 'description'];
+    protected $appends = ['title', 'full_image_path', 'description'];
     protected $casts   = [
         'created_at' => 'date:Y-m-d',
         'updated_at' => 'date:Y-m-d',
@@ -25,14 +25,9 @@ class blogs extends Model
         static::addGlobalScope(new SortingScope);
     }
 
-    public function products()
+    public function getTitleAttribute()
     {
-        return $this->hasMany(Product::class);
-    }
-
-    public function getNameAttribute()
-    {
-        return $this->attributes['name_' . app()->getLocale()];
+        return $this->attributes['title_' . app()->getLocale()];
     }
 
     public function getDescriptionAttribute()
@@ -42,6 +37,6 @@ class blogs extends Model
 
     public function getFullImagePathAttribute()
     {
-        return asset(getImagePathFromDirectory($this->image, 'Brands', "default.svg"));
+        return asset(getImagePathFromDirectory($this->image, 'Whyus', "default.svg"));
     }
 }

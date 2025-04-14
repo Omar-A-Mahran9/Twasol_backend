@@ -45,9 +45,16 @@ Route::delete("packages/delete-selected", "PackagesController@deleteSelected");
  Route::delete("addon/delete-selected", "AddonServiceController@deleteSelected");
  Route::get("addon/restore-selected", "AddonServiceController@restoreSelected");
 
+ Route::delete("whyus/delete-selected", "WhyusController@deleteSelected");
+ Route::get("whyus/restore-selected", "WhyusController@restoreSelected");
+
+ Route::delete("CommonQuestion/delete-selected", "CommonQuestionController@deleteSelected");
+ Route::get("CommonQuestion/restore-selected", "CommonQuestionController@restoreSelected");
+
 
  Route::resource('addon', 'AddonServiceController')->except(['create', 'edit']);
  Route::resource('whyus', 'WhyusController')->except(['create', 'edit']);
+ Route::resource('CommonQuestion', 'CommonQuestionController')->except(['create', 'edit']);
 
 /** begin resources routes **/
 Route::resource('order-reasons', 'OrderReasonController')->except(['create', 'edit']);
@@ -58,7 +65,6 @@ Route::resource('award', 'BrandController')->except(['create', 'edit']);
 Route::resource('partner', 'PartenerController')->except(['create', 'edit']);
 Route::resource('gallary', 'GallaryController')->except(['create', 'edit']);
 
-Route::resource('CommonQuestion', 'CommonQuestionController')->except(['create', 'edit']);
 
 
 Route::resource('packageCategories', 'PackageCategoryController')->except(['create', 'edit']);

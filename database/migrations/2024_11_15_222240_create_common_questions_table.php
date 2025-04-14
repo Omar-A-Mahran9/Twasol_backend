@@ -18,6 +18,8 @@ return new class extends Migration
             $table->longText('answer_ar');
             $table->longText('answer_en');
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

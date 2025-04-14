@@ -69,6 +69,12 @@
                     </x-dashboard.aside-item>
                 @endcan
 
+                @can('view_CommonQuestion')
+                    <x-dashboard.aside-item :slug="'CommonQuestion'" :route="route('dashboard.CommonQuestion.index')" :title="__('Common Question')">
+                        <i class="ki-outline ki-question fs-2"></i>
+                    </x-dashboard.aside-item>
+                @endcan
+
                 <!--begin:Menu item-->
                 @can('view_customers')
                     <x-dashboard.aside-item :slug="'customers'" :route="route('dashboard.customers.index')" :title="__('Customers')">

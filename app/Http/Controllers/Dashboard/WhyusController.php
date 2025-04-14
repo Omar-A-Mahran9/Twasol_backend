@@ -33,41 +33,57 @@ class WhyusController extends Controller
 
      }
 
-    public function update(UpdateWhyusRequest $request, Whyus $blog)
+    public function update(UpdateWhyusRequest $request,  $id)
     {
+        $whyus = Whyus::findOrFail($id);
+
          $data = $request->validated();
         if ($request->has('image'))
             $data['image'] = uploadImageToDirectory($request->file('image'), "Whyus");
 
-        $blog->update($data);
+        $whyus->update($data);
 
      }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Whyus $whyus)
-    {
-        $this->authorize('delete_whyus');
-        $whyus->delete();
-        return response(["whyus deleted successfully"]);
-    }
 
+     public function destroy($id)
+     {
+         $this->authorize('delete_whyus');
 
-    public function deleteSelected(Request $request)
-    {
-        $this->authorize('delete_whyus');
+         $whyus = Whyus::findOrFail($id);
+         $whyus->delete();
 
-        Whyus::whereIn('id', $request->selected_items_ids)->delete();
+         return response(["message" => "Whyus deleted successfully"], 200);
+     }
 
-        return response(["selected services deleted successfully"]);
-    }
+     public function deleteSelected(Request $request)
+     {
+         $this->authorize('delete_whyus');
 
-    public function restoreSelected(Request $request)
-    {
-        $this->authorize('delete_whyus');
-        Whyus::withTrashed()->whereIn('id', $request->selected_items_ids)->restore();
+         $ids = $request->selected_items_ids;
 
-        return response(["selected services restored successfully"]);
-    }
+         if (empty($ids)) {
+             return response(["message" => "No items selected for deletion"], 400);
+         }
+
+         Whyus::whereIn('id', $ids)->delete();
+
+         return response(["message" => "Selected services deleted successfully"], 200);
+     }
+
+     public function restoreSelected(Request $request)
+     {
+         $this->authorize('delete_whyus');
+
+         $ids = $request->selected_items_ids;
+
+         if (empty($ids)) {
+             return response(["message" => "No items selected for restoration"], 400);
+         }
+
+         Whyus::withTrashed()->whereIn('id', $ids)->restore();
+
+         return response(["message" => "Selected services restored successfully"], 200);
+     }
+
 }

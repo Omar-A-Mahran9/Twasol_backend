@@ -5,10 +5,11 @@ namespace App\Models;
 use App\Models\Scopes\SortingScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class CommonQuestion extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
     protected $guarded = [];
     protected $appends = ['question', 'answer'];
     protected $casts   = [
@@ -23,12 +24,7 @@ class CommonQuestion extends Model
     {
         static::addGlobalScope(new SortingScope);
     }
-
-    public function products()
-    {
-        return $this->hasMany(Product::class);
-    }
-
+ 
     public function getQuestionAttribute()
     {
         return $this->attributes['question_' . app()->getLocale()];

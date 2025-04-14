@@ -14,7 +14,7 @@ class UpdateWhyusRequest extends FormRequest
      */
     public function authorize()
     {
-        return abilities()->contains('update_blogs');
+        return abilities()->contains('update_whyus');
     }
 
     /**
@@ -24,11 +24,10 @@ class UpdateWhyusRequest extends FormRequest
      */
     public function rules()
     {
-        $whyus = request()->route('whyus');
-         return [
+          return [
             'image' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:512',
-            "title_ar" => ["required", "string:255", "title_ar,$whyus->id", new NotNumbersOnly()],
-            "title_en" => ["required", "string:255", "title_en,$whyus->id", new NotNumbersOnly()],
+            "title_ar" => ["required", "string:255" , new NotNumbersOnly()],
+            "title_en" => ["required", "string:255",  new NotNumbersOnly()],
             "description_ar" => ["required", "string:255", new NotNumbersOnly()],
             "description_en" => ["required", "string:255", new NotNumbersOnly()],
         ];

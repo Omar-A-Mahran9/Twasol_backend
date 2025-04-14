@@ -51,9 +51,13 @@ Route::delete("packages/delete-selected", "PackagesController@deleteSelected");
  Route::delete("CommonQuestion/delete-selected", "CommonQuestionController@deleteSelected");
  Route::get("CommonQuestion/restore-selected", "CommonQuestionController@restoreSelected");
 
+ Route::delete("howuse/delete-selected", "HowuseController@deleteSelected");
+ Route::get("howuse/restore-selected", "HowuseController@restoreSelected");
 
  Route::resource('addon', 'AddonServiceController')->except(['create', 'edit']);
  Route::resource('whyus', 'WhyusController')->except(['create', 'edit']);
+ Route::resource('howuse', 'HowuseController')->except(['create', 'edit']);
+
  Route::resource('CommonQuestion', 'CommonQuestionController')->except(['create', 'edit']);
 
 /** begin resources routes **/

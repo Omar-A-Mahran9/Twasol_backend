@@ -7,6 +7,7 @@ const __ = (word) => {
 let translations = {
     ar: {
         "Add new why us": "اضافة لماذا نحن",
+        "Add": "إضافة",
 
         "Edit gallery": "تعديل الصورة",
         "Add new partner": "اضافة شريك جديد",
@@ -111,11 +112,7 @@ let translations = {
         " selected": "محددة",
         male: "ذكر",
         female: "انثى",
-        cash: "الدفع نقدي",
-        bank_account: "حساب بنكي",
-        online: "اونلين",
-        monthly: "شهرى",
-        yearly: "سنوي",
+      
         "Medical center": "المركز الطبي",
         Doctor: "الطبيب",
         Client: "العميل",
@@ -123,18 +120,9 @@ let translations = {
         "Create new car": "أضف سيارة جديد",
         Approved: "مقبول",
         Pending: "قيد الانتظار",
-        "Created at": "تاريخ الانشاء",
-        "Product price": "سعر المنتج",
-        "Car data": "بيانات السيارة",
-        "From Time": "بداية الباقة",
-        "To Time": " نهاية الباقة",
 
-        Used: "مستعمل",
-        New: "جديد",
-        OrderPlaced: "تم تسجيل الطلب",
-        PaymentConfirmed: "تم تأكيد عملية الدفع",
-        Processing: "جار التجهيز",
-        Shipped: "تم الشحن",
+
+
         Delivered: "تم التوصيل",
         Rejected: "تم الرفض",
         Yes: "نعم",

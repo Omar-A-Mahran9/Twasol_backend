@@ -22,43 +22,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::group(['middleware' => ['cors', 'json.response']], function () {
-    Route::post('login', 'Auth\AuthController@loginByEmail');
-    Route::post('login-otp/{customer:phone}', 'Auth\AuthController@loginOTP');
-    Route::post('register', 'Auth\AuthController@register');
 
-    Route::post('send-otp/{phone}', 'Auth\ForgetPasswordController@sendOtp');
-    Route::post('check-otp/{customer:phone}', 'Auth\ForgetPasswordController@checkOTP');
-    Route::post('change-password/{customer:phone}', 'Auth\ForgetPasswordController@changePassword');
-    Route::get('resend-otp/{customer:phone}', 'Auth\ForgetPasswordController@reSendOtp');
-
-    Route::middleware(['auth:api'])->group(function () {
-        Route::post('products/{product}/rate', 'ProductController@rate');
-        Route::post('/customers/update-info', [ProfileController::class, 'updateInfo']);
-        Route::post('/customers/update-password', 'ProfileController@updatePassword');
-        Route::get('/customers/profile-info', [ProfileController::class, 'profileInfo'])->name('profile-info');
-
-        Route::get('orders', 'OrderController@orderBy');
-        Route::get('/current', function (Request $request) {
-            return auth()->user();
-        });
-    });
-    //Payment Gateway APIS
-    Route::post('order-reason/{type}', 'OrderController@orderReason');
-    Route::get('track-order', 'OrderController@trackOrder');
-
-    Route::get('reason', 'OrderController@reason');
-    Route::post('order-pay', "OrderController@pay");
-    Route::get('retrieve-charge', "OrderController@checkPaymentTransaction");
-    Route::post('store-oto-access-token', 'OTOController@storeOTOAccessToken');
-    Route::post('check-delivery', 'OTOController@checkDeliveryFee');
-
-    Route::get('brands', 'HomeController@getBrands');
-    Route::get('blogs', 'HomeController@getblogs');
-    Route::get('awards', 'HomeController@getawards');
-    Route::get('partners', 'HomeController@getpartners');
-    Route::get('galleris', 'HomeController@getgallaries');
-    Route::get('galleries/{id}', 'HomeController@getGalleryById');
-
+ 
     Route::get('categories', 'HomeController@getCategories');
     Route::get('subcategories', 'HomeController@getSubcategories');
     Route::get('products', 'HomeController@getProducts');

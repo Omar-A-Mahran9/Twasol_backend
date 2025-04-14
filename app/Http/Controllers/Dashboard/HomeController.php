@@ -25,27 +25,39 @@ class HomeController extends Controller
     }
     public function banner(UpdateHomeSettingsRequest $request)
     {
-        // Check if it's a GET request — show the form
         if ($request->isMethod('get')) {
             $this->authorize('view_settings');
             return view('dashboard.settings.home.banner');
         }
 
-        // Otherwise, handle POST submission
         $data = $request->validated();
 
-        // If a new image is uploaded, handle the upload
-        if ($request->hasFile('about_us_banner')) {
-            deleteImageFromDirectory(setting('about_us_banner'), "Settings");
-            $data['about_us_banner'] = uploadImageToDirectory($request->file('about_us_banner'), "Settings");
+        // Define the list of banner keys you expect to handle
+        $bannerKeys = [
+            'about_us_banner',
+            'service_banner',
+            'contact_banner',
+            'home_banner',
+            'feature_banner'
+            // Add more banner fields here if needed
+        ];
+
+        foreach ($bannerKeys as $key) {
+            if ($request->hasFile($key)) {
+                // Delete old image if exists
+                deleteImageFromDirectory(setting($key), "Settings");
+
+                // Upload new image and update the data array
+                $data[$key] = uploadImageToDirectory($request->file($key), "Settings");
+            }
         }
 
-        // Save the updated settings
+        // Save all settings
         setting($data)->save();
 
-        // Redirect back with a success message (optional)
-        return redirect()->back()->with('success', 'About Us settings updated successfully.');
+        return redirect()->back()->with('success', __('Banner settings updated successfully.'));
     }
+
 
     public function aboutUs(UpdateHomeSettingsRequest $request)
     {

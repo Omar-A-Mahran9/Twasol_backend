@@ -16,6 +16,7 @@
     "Add new Common Question": "اضافة سؤال ",
     "Search for Common Question": "البحث عن الأسئلة الشائعة",
     "Add Common Question": "اضافة سؤال ",
+    "How make Order": "كيفية طلب خدمة",
 
     "Statue": "الحالة",
     "Contact requests list": "طلبات التواصل",
@@ -26,6 +27,7 @@
     "Answer ar": "الإجابة بالعربية",
     "Question": "السؤال",
     "Answer": "الاجابة",
+    "Max Limit Reached": "لا يمكن اضافة اكثر من أربعة عناصر",
 
     "Our Mission": "هدفنا",
     "Our Vission": "رؤيـتنا",
@@ -38,17 +40,14 @@
     "Add package": "اضافة باقة",
     "packages count": "عدد الباقات",
     "show in home": "الظهور في الرئيسية",
-    "Car List": "قائمة السيارات",
-    "from city": "من مدينة",
-    "From city": "من مدينة",
+    "How use list": "قائمة كيفية طلب صيانة",
+
 
     "Our mission in arabic": "هدفنا باللغة العربية",
     "Our mission in english": "هدفنا باللغة الانجليزية",
     "Our vission in arabic": "رؤيـتنا باللغة العربية",
     "Our vission in english": "رؤيـتنا باللغة الانجليزية",
-    "To": "إلى",
-    "To city": "إلى مدينة",
-    "Cannot delete category with existing sub-categories": "لا يمكن حذف فئة مربوطة بفئة فرعية",
+    "Add": "إضافة",
 
     "Packages Categories": "فئات الباقات",
     "Packages Categories list": "قائمة فئات الباقات",

@@ -19,16 +19,6 @@
     </li>
     <!--end:::Tab item-->
     <!--begin:::Tab item-->
-    <li class="nav-item">
-        <a class="nav-link text-active-primary pb-4 {{ getClassIfUrlContains('active', 'return-policy') }}"
-            href="{{ route('dashboard.settings.home.return-policy') }}">{{ __('Return Policy') }}</a>
-    </li>
-    <!--end:::Tab item-->
-    <!--begin:::Tab item-->
-    <li class="nav-item">
-        <a class="nav-link text-active-primary pb-4 {{ getClassIfUrlContains('active', 'loyality') }}"
-            href="{{ route('dashboard.settings.home.loyality') }}">{{ __('loyalty and rewards program') }}</a>
-    </li>
-    <!--end:::Tab item-->
+ 
 </ul>
 <!--end:::Tabs-->

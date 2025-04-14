@@ -31,7 +31,7 @@ class CommonQuestionController extends Controller
 
         return response(["Common Question created successfully"]);
     }
- 
+
 
     public function update(UpdateCommonQuestionRequest $request, CommonQuestion $CommonQuestion)
     {
@@ -52,5 +52,22 @@ class CommonQuestionController extends Controller
         $this->authorize('delete_CommonQuestion');
         $CommonQuestion->delete();
         return response(["Common Question deleted successfully"]);
+    }
+
+    public function deleteSelected(Request $request)
+    {
+        $this->authorize('delete_CommonQuestion');
+
+        CommonQuestion::whereIn('id', $request->selected_items_ids)->delete();
+
+        return response(["selected CommonQuestion deleted successfully"]);
+    }
+
+    public function restoreSelected(Request $request)
+    {
+        $this->authorize('delete_CommonQuestion');
+        CommonQuestion::withTrashed()->whereIn('id', $request->selected_items_ids)->restore();
+
+        return response(["selected CommonQuestion restored successfully"]);
     }
 }

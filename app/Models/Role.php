@@ -24,11 +24,11 @@ class Role extends Model
         'whyus',
         'admins',
         'CommonQuestion',
-
+        'home_content',
         'customers',
         'customersRate',
         'vendors',
-        'awards',
+
         'gallary',
         'roles',
         'addonService',

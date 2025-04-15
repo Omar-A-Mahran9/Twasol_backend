@@ -128,7 +128,7 @@
                 animation: 'popFade'
             });
 
-         
+
             KTLayoutSearch.init();
         });
     </script>

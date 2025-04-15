@@ -208,9 +208,19 @@ License: For each use you must have a valid license purchased only from above li
                         </form>
                         <!--end::Form-->
                         <!--begin::Footer-->
-                        <div class="d-flex flex-center flex-column-auto  ">
-
+                        <!--begin::Footer-->
+                        <div class="d-flex flex-center flex-column-auto">
+                            <!--begin::Links-->
+                            <div class="d-flex align-items-center fw-bold fs-6">
+                                <a href="https://webstdy.com/{{ app()->getLocale() }}" target="_blank"
+                                    class="text-muted text-hover-primary px-2" id="developed_by">
+                                    {{ __('Developed by') }} <img class="mx-4"
+                                        src="https://webstdy.com/CDN/cr_dark.png">
+                                </a>
+                            </div>
+                            <!--end::Links-->
                         </div>
+                        <!--end::Footer-->
                         <!--end::Footer-->
                     </div>
                     <!--end::Wrapper-->

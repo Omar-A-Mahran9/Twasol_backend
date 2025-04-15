@@ -5,11 +5,14 @@
         <!--begin::Copyright-->
         <div class="text-dark order-2 order-md-1">
             <span class="text-muted fw-semibold me-1">2023&copy;</span>
-            <a href="https://www.linkedin.com/in/omar-a-mahran/" target="_blank"
-                class="text-gray-800 text-hover-primary">Omar_A_Mahran</a>
+            <a href="https://webstdy.com/{{ app()->getLocale() }}" target="_blank"
+                class="text-muted text-hover-primary px-2" id="developed_by">
+                {{ __('Developed by') }} <img class="mx-4" src="https://webstdy.com/CDN/cr_dark.png">
+            </a>
         </div>
         <!--end::Copyright-->
     </div>
-    <!--end::Footer container-->
+
+
 </div>
 <!--end::Footer-->

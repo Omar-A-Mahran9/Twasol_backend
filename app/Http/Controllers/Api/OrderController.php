@@ -32,6 +32,7 @@ class OrderController extends Controller
 
     public function createOrder(OrderRequest $request)
     {
+        dd('fff');
         $data = $request->validated();
         // If no addon service ID, return an error response or success message
         if ($request->addon_service_id == null) {
@@ -74,7 +75,7 @@ class OrderController extends Controller
         ];
 
         $order = Order::create($orderData);
- 
+
         return $this->success(
             $order,
          );

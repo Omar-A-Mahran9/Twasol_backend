@@ -179,16 +179,19 @@ License: For each use you must have a valid license purchased only from above li
                             <!--end::Actions-->
                         </form>
                         <!--end::Form-->
-                        <!--begin::Footer-->
-                        {{-- <div class="d-flex flex-center flex-column-auto p-10">
-                            <!--begin::Links-->
-                            <div class="d-flex align-items-center fw-bold fs-6">
-                                <a href="https://www.linkedin.com/in/omar-a-mahran/" target="_blank"
-                                    class="text-gray-800 text-hover-primary">Omar_A_Mahran</a>
-                            </div>
-                            <!--end::Links-->
+                        <div class="copyrights">
+                            <p>
+                                &copy; {{ __('Alsaber cars CO, All Rights Reserved') }}
+                            </p>
+                            <p class="my-3">
+                                {{ __('Developed by') }}
+                                <a title="ويب ستدي لتصميم و برمجة المواقع" target="_blank"
+                                    href="https://webstdy.com/ar?utm_source=sabr-foorter&utm_medium=referral">
+                                    <img src="{{ asset('web/img/webstdy.png') }}"
+                                        title="ويب ستدي لتصميم و برمجة المواقع" alt="شركة ويب ستيدي للبرمجيات">
+                                </a>
+                            </p>
                         </div>
-                        <!--end::Footer--> --}}
                     </div>
                     <!--end::Wrapper-->
 

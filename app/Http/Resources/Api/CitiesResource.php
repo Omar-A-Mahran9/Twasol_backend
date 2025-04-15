@@ -5,7 +5,7 @@ namespace App\Http\Resources\Api;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class PartenersResource extends JsonResource
+class CitiesResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -14,10 +14,10 @@ class PartenersResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
+        return [
+            "id"=> $this->id,
+            'name' => $this->name,
 
-            return [
-                'id' => $this->id,
-                'name' => $this->name,
-                'image' => $this->full_image_path, // Assuming the image is stored in Laravel's storage
-            ];    }
+        ];
+    }
 }

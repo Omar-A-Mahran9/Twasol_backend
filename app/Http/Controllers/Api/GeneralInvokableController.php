@@ -3,26 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Api\BrandResource;
-use App\Http\Resources\Api\CategoryResource;
-use App\Http\Resources\Api\CityResource;
-use App\Http\Resources\Api\CustomerRateResource;
-use App\Http\Resources\Api\GallariesResource;
-use App\Http\Resources\Api\packagesCategoryResources;
-use App\Http\Resources\Api\PartenersResource;
-use App\Http\Resources\Api\Rate;
-use App\Http\Resources\Api\RateResource;
-use App\Http\Resources\Api\ServiceResource;
-use App\Http\Resources\Api\SkinColorResource;
-use App\Models\AddonService;
-use App\Models\Brand;
-use App\Models\Category;
-use App\Models\City;
-use App\Models\customers_rates;
-use App\Models\Gallary;
-use App\Models\PackageCategory;
-use App\Models\partener;
-use App\Models\SkinColor;
+use App\Http\Resources\Api\SliderResource;
+use App\Models\Slider;
 use Illuminate\Http\Request;
 
 class GeneralInvokableController extends Controller
@@ -32,22 +14,22 @@ class GeneralInvokableController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $gallary   = Gallary::select('id', 'name_ar', 'name_en','image')->get();
-        $ourservices = AddonService::select('id', 'name_ar', 'name_en', 'image', 'description_ar', 'description_en')
-        ->orderBy('created_at', 'asc') // Order by the oldest created records
-        ->get();
+        // $gallary   = Gallary::select('id', 'name_ar', 'name_en','image')->get();
+        // $ourservices = AddonService::select('id', 'name_ar', 'name_en', 'image', 'description_ar', 'description_en')
+        // ->orderBy('created_at', 'asc') // Order by the oldest created records
+        // ->get();
 
-            $allCities     = City::select('id', 'name_ar', 'name_en')->get();
-         $rate         = customers_rates::select('id', 'customer_id','comment','rate','status')->get();
-         $parteners=partener::select('id', 'name_ar', 'name_en','image')->get();
+            $slider     = Slider::select('id', 'title_ar', 'title_en')->get();
+        //  $rate         = customers_rates::select('id', 'customer_id','comment','rate','status')->get();
+        //  $parteners=partener::select('id', 'name_ar', 'name_en','image')->get();
             return $this->success('', [
 
-            'allCities' => CityResource::collection($allCities),
-            'partners'=>PartenersResource::collection($parteners),
-            'gallary'=>GallariesResource::collection($gallary),
+            'slider' => SliderResource::collection($slider),
+            // 'partners'=>PartenersResource::collection($parteners),
+            // 'gallary'=>GallariesResource::collection($gallary),
 
-            'Rate' => RateResource::collection( $rate),
-            'services'=> ServiceResource::collection($ourservices),
+            // 'Rate' => RateResource::collection( $rate),
+            // 'services'=> ServiceResource::collection($ourservices),
 
             'instagram_link' => setting('instagram_link'),
             'privacy_policy' => setting('privacy_policy_' . request()->header('Content-language')),

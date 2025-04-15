@@ -13,10 +13,10 @@
                     class="h-50px d-none d-sm-inline app-sidebar-logo-default theme-light-show" />
             @endif
             @if (isArabic())
-                <img alt="Logo" src="{{ asset('placeholder_images/Logo-white.svg') }}"
+                <img alt="Logo" src="{{ asset('placeholder_images/Logo.svg') }}"
                     class="h-50px theme-dark-show" />
             @else
-                <img alt="Logo" src="{{ asset('placeholder_images/Logo-white.svg') }}"
+                <img alt="Logo" src="{{ asset('placeholder_images/Logo.svg') }}"
                     class="h-50px theme-dark-show" />
             @endif
         </a>

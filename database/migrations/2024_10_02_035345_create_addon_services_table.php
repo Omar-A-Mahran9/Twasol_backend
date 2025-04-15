@@ -21,6 +21,8 @@ return new class extends Migration
             $table->longText('description_ar');
             $table->longText('description_en');
             $table->boolean('is_publish')->default(TRUE);
+            $table->decimal('price')->nullable();
+            $table->decimal('visiting_price')->nullable();
 
             $table->softDeletes();
             $table->timestamps();

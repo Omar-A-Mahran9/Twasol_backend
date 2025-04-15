@@ -48,6 +48,7 @@
     "Our vission in arabic": "رؤيـتنا باللغة العربية",
     "Our vission in english": "رؤيـتنا باللغة الانجليزية",
     "Add": "إضافة",
+    "Edit slider": "تعديل السلايدر",
 
     "Packages Categories": "فئات الباقات",
     "Packages Categories list": "قائمة فئات الباقات",
@@ -62,7 +63,6 @@
     "Orders": "الطلبات",
     "orders": "الطلبات",
     "Search for vendors ( Name - Email )": "ابحث عن التجار ( الاسم - البريد الالكتروني )",
-    "Email": "البريد الالكتروني",
     "Password": "كلمة المرور",
     "remember me ?": "تذكرني ؟",
     "Developed by": "تم تطويرها بواسطة",

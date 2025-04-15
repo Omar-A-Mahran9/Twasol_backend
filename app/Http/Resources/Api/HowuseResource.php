@@ -5,7 +5,7 @@ namespace App\Http\Resources\Api;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class SkinColorResource extends JsonResource
+class HowuseResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,8 +15,11 @@ class SkinColorResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->id,
-            'name' => $this->name,
+            "id"=> $this->id,
+            'image' => $this->full_image_path,
+            'title' => $this->title,
+            'description' => $this->description
+
         ];
     }
 }

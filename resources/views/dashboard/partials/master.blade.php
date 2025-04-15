@@ -128,9 +128,7 @@
                 animation: 'popFade'
             });
 
-            if (favIconCounter > 0)
-                favicon.badge(favIconCounter);
-
+         
             KTLayoutSearch.init();
         });
     </script>

@@ -21,16 +21,19 @@ class Role extends Model
     ];
 
     public static $modules = [
-        'blogs',
+        'whyus',
+        'howuse',
+
         'admins',
+        'CommonQuestion',
+        'home_content',
         'customers',
         'customersRate',
         'vendors',
-        'partener',
-        'awards',
+
         'gallary',
         'roles',
-        'addonService', 
+        'addonService',
         'tags',
         'cities',
         'offers',

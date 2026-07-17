@@ -12,19 +12,17 @@ return new class extends Migration {
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
-            $table->string('first_name');
-            $table->string('last_name');
+            $table->string('full_name');
             $table->string('image')->nullable();
-            $table->string('email')->unique();
+            $table->string('email')->unique()->nullable();
             $table->string('phone')->unique();
-            $table->enum('gender', ['male', 'female'])->nullable(); // Define enum and make it unique
-
+ 
             $table->string('otp')->nullable();
             $table->string('password')->nullable();
             $table->boolean('block_flag')->defaultFalse();
             $table->rememberToken();
             $table->timestamps();
-            
+
         });
     }
 

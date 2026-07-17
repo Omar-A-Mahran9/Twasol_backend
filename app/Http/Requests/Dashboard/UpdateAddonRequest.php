@@ -44,7 +44,6 @@ class UpdateAddonRequest extends FormRequest
 
             "description_ar" => ["required",   new NotNumbersOnly()  ],
             "description_en" => ["required",  new NotNumbersOnly() ],
-            "price" => ["required", "numeric"],
-        ];
+         ];
     }
 }

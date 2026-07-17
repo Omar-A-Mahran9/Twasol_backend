@@ -19,7 +19,7 @@
     --bs-black: #000000;
     --bs-white: #ffffff;
     --bs-gray: #78829d;
-    --bs-gray-dark: #136387;
+    --bs-gray-dark: #2B7FFF;
     --bs-gray-100: #f9f9f9;
     --bs-gray-200: #f1f1f2;
     --bs-gray-300: #dbdfe9;
@@ -140,7 +140,7 @@
     --bs-emphasis-color-rgb: 255, 255, 255;
     --bs-secondary-color: rgba(255, 255, 255, 0.75);
     --bs-secondary-color-rgb: 255, 255, 255;
-    --bs-secondary-bg: #136387;
+    --bs-secondary-bg: #2B7FFF;
     --bs-secondary-bg-rgb: 37, 47, 74;
     --bs-tertiary-color: rgba(255, 255, 255, 0.5);
     --bs-tertiary-color-rgb: 255, 255, 255;
@@ -160,7 +160,7 @@
     --bs-info-bg-subtle: #170b2f;
     --bs-warning-bg-subtle: #332800;
     --bs-danger-bg-subtle: #300d16;
-    --bs-light-bg-subtle: #136387;
+    --bs-light-bg-subtle: #2B7FFF;
     --bs-dark-bg-subtle: #131825;
     --bs-primary-border-subtle: #255b99;
     --bs-secondary-border-subtle: #83868c;
@@ -169,7 +169,7 @@
     --bs-warning-border-subtle: #997700;
     --bs-danger-border-subtle: #912741;
     --bs-light-border-subtle: #4b5675;
-    --bs-dark-border-subtle: #136387;
+    --bs-dark-border-subtle: #2B7FFF;
     --bs-heading-color: #ffffff;
     --bs-link-color: #3e97ff;
     --bs-link-hover-color: #65acff;
@@ -4002,7 +4002,7 @@ fieldset:disabled .btn {
 
 .dropdown-menu-dark {
     --bs-dropdown-color: #dbdfe9;
-    --bs-dropdown-bg: #136387;
+    --bs-dropdown-bg: #2B7FFF;
     --bs-dropdown-border-color: var(--bs-border-color-translucent);
     --bs-dropdown-box-shadow: ;
     --bs-dropdown-link-color: #dbdfe9;
@@ -29047,7 +29047,7 @@ fieldset:disabled .btn {
     --bs-text-gray-500: #99a1b7;
     --bs-text-gray-600: #78829d;
     --bs-text-gray-700: #4b5675;
-    --bs-text-gray-800: #136387;
+    --bs-text-gray-800: #2B7FFF;
     --bs-text-gray-900: #071437;
     --bs-border-color: #f1f1f2;
     --bs-border-dashed-color: #dbdfe9;
@@ -29115,9 +29115,9 @@ fieldset:disabled .btn {
     --bs-engage-btn-bg: #ffffff;
     --bs-engage-btn-box-shadow: 0px 0px 22px #e0e0e0;
     --bs-engage-btn-border-color: #e8e8e8;
-    --bs-engage-btn-color: #136387;
+    --bs-engage-btn-color: #2B7FFF;
     --bs-engage-btn-icon-color: #78829d;
-    --bs-engage-btn-color-active: #136387;
+    --bs-engage-btn-color-active: #2B7FFF;
 }
 
 [data-bs-theme="dark"] {
@@ -54835,7 +54835,7 @@ body,
 }
 .app-sidebar .menu > .menu-item.here > .menu-link {
     transition: color 0.2s ease;
-    background-color: #136387;
+    background-color: #2B7FFF;
     color: var(--bs-white);
 }
 .app-sidebar .menu > .menu-item.here > .menu-link .menu-title {

@@ -22,15 +22,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::group(['middleware' => ['cors', 'json.response']], function () {
-    Route::post('login', 'Auth\AuthController@loginByEmail');
-    Route::post('login-otp/{customer:phone}', 'Auth\AuthController@loginOTP');
-    Route::post('register', 'Auth\AuthController@register');
 
-    Route::post('send-otp/{phone}', 'Auth\ForgetPasswordController@sendOtp');
-    Route::post('check-otp/{customer:phone}', 'Auth\ForgetPasswordController@checkOTP');
-    Route::post('change-password/{customer:phone}', 'Auth\ForgetPasswordController@changePassword');
-    Route::get('resend-otp/{customer:phone}', 'Auth\ForgetPasswordController@reSendOtp');
 
+<<<<<<< HEAD
     Route::middleware(['auth:api'])->group(function () {
         Route::post('products/{product}/rate', 'ProductController@rate');
         Route::post('/customers/update-info', [ProfileController::class, 'updateInfo']);
@@ -78,29 +72,20 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
 
     Route::get('categories-products/{category}', 'CategoryController@categoryProducts');
     Route::get('categories-search', 'HomeController@categoriesSearch');
+=======
+>>>>>>> dbb27197de73dcd514bc9d13aff284f8d17381d1
     Route::post('news-letter', 'HomeController@newsLetter');
     Route::get('sliders', 'HomeController@getSliders');
-    Route::get('offers', 'HomeController@getOffers');
+    Route::get('services', 'HomeController@getservices');
+    Route::get('whyus', 'HomeController@getwhyus');
+    Route::get('questions', 'HomeController@getQuestions');
+    Route::get('how-make-order', 'HomeController@getMakeOrder');
+    Route::get('cities', 'HomeController@getcities');
+
     Route::post('order/{step}', 'OrderController@createOrder');
-
-
-
-//--------------------------------------------------------------------------
 
     Route::get('general', 'GeneralInvokableController');
     Route::post('contact_us', 'ContactUsController@store');
-    Route::get('blogs', 'HomeController@getblogs');
-    Route::get('blog/{id}', 'HomeController@getblog');
-
-    Route::get('questions', 'HomeController@getQuestions');
-    Route::post('bepartener/{step}', 'BepartenerController@store');
-
-    Route::get('booking',[BookingController::class,'index']);
-    Route::post('booking',[BookingController::class,'store']);
-
-    Route::post('filter_car_prices',[BookingController::class,'filterPertrip']);
-    Route::post('filter_Packages',[BookingController::class,'filterPackages']);
-
-
+    
 
 });

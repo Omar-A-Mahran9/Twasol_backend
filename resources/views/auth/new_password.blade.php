@@ -18,7 +18,7 @@ License: For each use you must have a valid license purchased only from above li
 
 <head>
     <base href="../../../" />
-    <title>{{ __('Tawasol-Technology') }}</title>
+    <title>{{ __('JALID') }}</title>
     <meta charset="utf-8" />
     <meta name="description"
         content="The most advanced Bootstrap 5 Admin Theme with 40 unique prebuilt layouts on Themeforest trusted by 100,000 beginners and professionals. Multi-demo, Dark Mode, RTL support and complete React, Angular, Vue, Asp.Net Core, Rails, Spring, Blazor, Django, Express.js, Node.js, Flask, Symfony & Laravel versions. Grab your copy now and get life-time updates for free." />
@@ -29,10 +29,10 @@ License: For each use you must have a valid license purchased only from above li
     <meta property="og:type" content="article" />
     <meta property="og:title"
         content="Metronic - Bootstrap Admin Template, HTML, VueJS, React, Angular. Laravel, Asp.Net Core, Ruby on Rails, Spring Boot, Blazor, Django, Express.js, Node.js, Flask Admin Dashboard Theme & Template" />
-    <meta property="og:url" content="{{ asset('placeholder_images/favicon_Al-raqi.svg') }}" />
+    <meta property="og:url" content="{{ asset('placeholder_images/favicon.svg') }}" />
     <meta property="og:site_name" content="Keenthemes | Metronic" />
-    <link rel="canonical" href="{{ asset('placeholder_images/favicon_Al-raqi.svg') }}" />
-    <link rel="shortcut icon" href="{{ asset('placeholder_images/favicon_Al-raqi.svg') }}" />
+    <link rel="canonical" href="{{ asset('placeholder_images/favicon.svg') }}" />
+    <link rel="shortcut icon" href="{{ asset('placeholder_images/favicon.svg') }}" />
 
     <!--begin::Global Stylesheets Bundle(used by all pages)-->
     <link href="{{ asset('assets/dashboard/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
@@ -190,12 +190,19 @@ License: For each use you must have a valid license purchased only from above li
                     <!--end::Form-->
                     <!--begin::Footer-->
                     <div class="d-flex flex-center flex-column-auto p-10">
-                        <!--begin::Links-->
-                        <div class="d-flex align-items-center fw-bold fs-6">
-                            <a href="https://www.linkedin.com/in/omar-a-mahran/" target="_blank"
-                                class="text-gray-800 text-hover-primary">Omar_A_Mahran</a>
+                        <div class="copyrights">
+                            <p>
+                                &copy; {{ __('Alsaber cars CO, All Rights Reserved') }}
+                            </p>
+                            <p class="my-3">
+                                {{ __('Developed by') }}
+                                <a title="ويب ستدي لتصميم و برمجة المواقع" target="_blank"
+                                    href="https://webstdy.com/ar?utm_source=sabr-foorter&utm_medium=referral">
+                                    <img src="{{ asset('web/img/webstdy.png') }}"
+                                        title="ويب ستدي لتصميم و برمجة المواقع" alt="شركة ويب ستيدي للبرمجيات">
+                                </a>
+                            </p>
                         </div>
-                        <!--end::Links-->
                     </div>
                     <!--end::Footer-->
                 </div>

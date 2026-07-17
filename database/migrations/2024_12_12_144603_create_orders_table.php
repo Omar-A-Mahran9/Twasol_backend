@@ -15,12 +15,11 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('customer_id');
-            $table->unsignedBigInteger('city_id');
             $table->unsignedBigInteger('addon_service_id') ;
             // Foreign key constraint.
             $table->date('date');
-            $table->string('description');
             $table->string('address');
+            $table->integer('count')->nullable();
 
 
             $table->integer('status')->comment('App\Enums\OrderStatus')->default(OrderStatus::pending->value);

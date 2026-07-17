@@ -16,7 +16,7 @@ License: For each use you must have a valid license purchased only from above li
 
 <head>
     <base href="../../../" />
-    <title>{{ __('Tawasol-Technology') }}</title>
+    <title>{{ __('JALID') }}</title>
     <meta charset="utf-8" />
     <meta name="description"
         content="The most advanced Bootstrap 5 Admin Theme with 40 unique prebuilt layouts on Themeforest trusted by 100,000 beginners and professionals. Multi-demo, Dark Mode, RTL support and complete React, Angular, Vue, Asp.Net Core, Rails, Spring, Blazor, Django, Express.js, Node.js, Flask, Symfony & Laravel versions. Grab your copy now and get life-time updates for free." />
@@ -28,9 +28,9 @@ License: For each use you must have a valid license purchased only from above li
     <meta property="og:title"
         content="Metronic - Bootstrap Admin Template, HTML, VueJS, React, Angular. Laravel, Asp.Net Core, Ruby on Rails, Spring Boot, Blazor, Django, Express.js, Node.js, Flask Admin Dashboard Theme & Template" />
     <meta property="og:url" content="https://keenthemes.com/metronic" />
-    <meta property="og:site_name" content="Tawasol-Technology" />
+    <meta property="og:site_name" content="JALID" />
     <link rel="canonical" href="https://preview.keenthemes.com/metronic8" />
-    <link rel="shortcut icon" href="{{ asset('placeholder_images/favicon_Al-raqi.svg') }}" />
+    <link rel="shortcut icon" href="{{ asset('placeholder_images/favicon.svg') }}" />
     <!--begin::Fonts(mandatory for all pages)-->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
@@ -208,9 +208,19 @@ License: For each use you must have a valid license purchased only from above li
                         </form>
                         <!--end::Form-->
                         <!--begin::Footer-->
-                        <div class="d-flex flex-center flex-column-auto  ">
-
+                        <!--begin::Footer-->
+                        <div class="d-flex flex-center flex-column-auto">
+                            <!--begin::Links-->
+                            <div class="d-flex align-items-center fw-bold fs-6">
+                                <a href="https://webstdy.com/{{ app()->getLocale() }}" target="_blank"
+                                    class="text-muted text-hover-primary px-2" id="developed_by">
+                                    {{ __('Developed by') }} <img class="mx-4"
+                                        src="https://webstdy.com/CDN/cr_dark.png">
+                                </a>
+                            </div>
+                            <!--end::Links-->
                         </div>
+                        <!--end::Footer-->
                         <!--end::Footer-->
                     </div>
                     <!--end::Wrapper-->

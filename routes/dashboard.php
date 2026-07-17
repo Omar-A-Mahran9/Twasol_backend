@@ -38,8 +38,27 @@ Route::get("fast-shipping-city/restore-selected", "FastShippingCityController@re
 Route::get("fast-shipping-city/restore/{fastCity}", "FastShippingCityController@restore");
 Route::delete("packageCategories/delete-selected", "PackageCategoryController@deleteSelected");
 Route::delete("packages/delete-selected", "PackagesController@deleteSelected");
-Route::delete("car_prices/delete-selected", "CarPriceController@deleteSelected");
-Route::delete("partner/delete-selected", "PartenerController@deleteSelected");
+
+ Route::delete("addon/delete-selected", "AddonServiceController@deleteSelected");
+ Route::get("addon/restore-selected", "AddonServiceController@restoreSelected");
+
+ Route::delete("addon/delete-selected", "AddonServiceController@deleteSelected");
+ Route::get("addon/restore-selected", "AddonServiceController@restoreSelected");
+
+ Route::delete("whyus/delete-selected", "WhyusController@deleteSelected");
+ Route::get("whyus/restore-selected", "WhyusController@restoreSelected");
+
+ Route::delete("CommonQuestion/delete-selected", "CommonQuestionController@deleteSelected");
+ Route::get("CommonQuestion/restore-selected", "CommonQuestionController@restoreSelected");
+
+ Route::delete("howuse/delete-selected", "HowuseController@deleteSelected");
+ Route::get("howuse/restore-selected", "HowuseController@restoreSelected");
+
+ Route::resource('addon', 'AddonServiceController')->except(['create', 'edit']);
+ Route::resource('whyus', 'WhyusController')->except(['create', 'edit']);
+ Route::resource('howuse', 'HowuseController')->except(['create', 'edit']);
+
+ Route::resource('CommonQuestion', 'CommonQuestionController')->except(['create', 'edit']);
 
 /** begin resources routes **/
 Route::resource('order-reasons', 'OrderReasonController')->except(['create', 'edit']);
@@ -50,10 +69,7 @@ Route::resource('award', 'BrandController')->except(['create', 'edit']);
 Route::resource('partner', 'PartenerController')->except(['create', 'edit']);
 Route::resource('gallary', 'GallaryController')->except(['create', 'edit']);
 
-Route::resource('blogs', 'BlogsController')->except(['create', 'edit']);
-Route::resource('CommonQuestion', 'CommonQuestionController')->except(['create', 'edit']);
 
-Route::resource('addon', 'AddonServiceController')->except(['create', 'edit']);
 
 Route::resource('packageCategories', 'PackageCategoryController')->except(['create', 'edit']);
 Route::resource('packagesubCategories', 'PackagesubCategoryController')->except(['create', 'edit']);
@@ -119,25 +135,17 @@ Route::prefix('settings')->name('settings.')->group(function () {
 
     Route::resource('roles', 'RoleController');
     Route::get('role/{role}/admins', 'RoleController@admins');
- 
+
     Route::match(['get', 'post'], 'home-content/main', 'HomeController@index')->name('home-content');
     Route::match(['get', 'post'], 'home-content/about-us', 'HomeController@aboutUs')->name('home.about-us');
     Route::match(['get', 'post'], 'home-content/terms', 'HomeController@terms')->name('home.terms');
     Route::match(['get', 'post'], 'home-content/privacy-policy', 'HomeController@privacyPolicy')->name('home.privacy-policy');
-    Route::match(['get', 'post'], 'home-content/return-policy', 'HomeController@returnPolicy')->name('home.return-policy');
-    Route::match(['get', 'post'], 'home-content/loyality', 'HomeController@loyality')->name('home.loyality');
+    Route::match(['get', 'post'], 'home-content/our-mission', 'HomeController@ourmission')->name('home.our-mission');
+    Route::match(['get', 'post'], 'home-content/our-vission', 'HomeController@ourvission')->name('home.our-vission');
+    Route::match(['get', 'post'], 'home-content/banner', 'HomeController@banner')->name('home.banner');
 
 
-    Route::post('payment-content/payment-way', 'HomeController@paymentWaystore')->name('home.payment-way.post');
-    Route::post('payment-content/payment-way/{id}/update_statue', 'HomeController@updatestatuePaymentWay')->name('home.payment-way.update');
-    Route::get('payment-content/payment-way', 'HomeController@paymentWay')->name('home.payment-way.get');
-    Route::delete('payment-content/payment-way/{id}/delete','HomeController@deletepaymentWay')->name('home.payment-way.delete');
-
-
-    Route::post('payment-content/payment-partener', 'HomeController@paymentpartenerstore')->name('home.payment-partener.post');
-    Route::post('payment-content/payment-partener/{id}/update_statue', 'HomeController@updatestatue')->name('home.payment-partener.update');
-    Route::get('payment-content/payment-partener', 'HomeController@paymentpartener')->name('home.payment-partener.get');
-});
+ });
 
 Route::get('trash/{modelName}/{id}/restore', 'TrashController@restore')->name('trash.restore');
 Route::get('trash/{modelName?}', 'TrashController@index')->name('trash');

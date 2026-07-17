@@ -12,17 +12,17 @@
             <!--begin::Logo image-->
             <a href="{{ route('dashboard.index') }}">
                 @if (isArabic())
-                    <img alt="Logo" src="{{ asset('assets/dashboard/media/svg/products-categories/platin.svg') }}"
+                    <img alt="Logo" src="{{ asset('assets/dashboard/media/svg/products-categories/Logo.svg') }}"
                         class="h-50px d-none d-sm-inline app-sidebar-logo-default theme-light-show" />
                 @else
-                    <img alt="Logo" src="{{ asset('assets/dashboard/media/svg/products-categories/platin.svg') }}"
+                    <img alt="Logo" src="{{ asset('assets/dashboard/media/svg/products-categories/Logo.svg') }}"
                         class="h-50px d-none d-sm-inline app-sidebar-logo-default theme-light-show" />
                 @endif
                 @if (isArabic())
-                    <img alt="Logo" src="{{ asset('assets/dashboard/media/svg/products-categories/platin.svg') }}"
+                    <img alt="Logo" src="{{ asset('assets/dashboard/media/svg/products-categories/Logo.svg') }}"
                         class="h-50px theme-dark-show" />
                 @else
-                    <img alt="Logo" src="{{ asset('assets/dashboard/media/svg/products-categories/platin.svg') }}"
+                    <img alt="Logo" src="{{ asset('assets/dashboard/media/svg/products-categories/Logo.svg') }}"
                         class="h-50px theme-dark-show" />
                 @endif
             </a>
@@ -749,7 +749,7 @@
                     <!--begin::Drawer wrapper-->
                     <div class="btn btn-icon btn-custom btn-color-gray-500 btn-active-light btn-active-color-primary w-35px h-35px w-md-40px h-md-40px position-relative"
                         id="kt_drawer_chat_toggle">
-                        <a href="https://tawasol-technology.com/" target="_blank">
+                        <a href="https://jalid.sa" target="_blank">
                             {{--  <i class="fa-duotone fa-solid fa-globe fs-2"></i>  --}}
                             <i class="fa-solid fa-globe fs-2"></i>
                             {{--  <i class="ki-outline ki-abstract-20 fs-2"></i>  --}}
@@ -785,9 +785,9 @@
 
                         <!--begin::Tab content-->
                         <div class="tab-content">
-                        
+
                             <div class="tab-pane fade show active" id="unread_notifications" role="tabpanel">
-                             
+
                             </div>
                         </div>
                         <!--end::Tab content-->

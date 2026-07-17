@@ -24,7 +24,7 @@ var KTDatatablesServerSide = (function () {
             columns: [
                 { data: "id" },
                 { data: "name" },
-                { data: "price" },
+                { data: "image" },
                 { data: "created_at" },
                 { data: null },
             ],
@@ -56,15 +56,24 @@ var KTDatatablesServerSide = (function () {
 
                 {
                     targets: 2,
+                    orderable: false,
                     render: function (data, type, row) {
                         return `
-                            <div>
-                                <!--begin::Info-->
-                                <div class="d-flex flex-column justify-content-center">
-                                    <a href="javascript:;" class="mb-1 text-gray-800 text-hover-primary">${row.price}</a>
+                            <!--begin::Overlay-->
+                            <a class="d-block overlay" data-action="preview_attachments" href="#">
+                                <!--begin::Image-->
+                                <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded h-100px"
+                                    style="background-image:url('${row.full_image_path}')">
                                 </div>
-                                <!--end::Info-->
-                            </div>
+                                <!--end::Image-->
+
+                                <!--begin::Action-->
+                                <div class="overlay-layer card-rounded bg-dark bg-opacity-25 shadow">
+                                    <i class="bi bi-eye-fill text-white fs-3x"></i>
+                                </div>
+                                <!--end::Action-->
+                            </a>
+                            <!--end::Overlay-->
                         `;
                     },
                 },
@@ -142,13 +151,11 @@ var KTDatatablesServerSide = (function () {
     };
 
     var handleEditRows = () => {
-        // Select all edit buttons
         const editButtons = document.querySelectorAll(
             '[data-kt-docs-table-filter="edit_row"]'
         );
 
         editButtons.forEach((d) => {
-            // edit button on click
             d.addEventListener("click", function (e) {
                 e.preventDefault();
 
@@ -160,17 +167,22 @@ var KTDatatablesServerSide = (function () {
                     "background-image",
                     `url('${data.full_image_path}')`
                 );
+                $(".icon-input-wrapper").css(
+                    "background-image",
+                    `url('${data.full_icon_path}')`
+                );
                 $("#name_ar_inp").val(data.name_ar);
                 $("#name_en_inp").val(data.name_en);
-                // Assuming `data` is your object containing the description values
-                tinymce
-                    .get("description_ar_inp")
-                    .setContent(data.description_ar); // Set content for Arabic editor
-                tinymce
-                    .get("description_en_inp")
-                    .setContent(data.description_en); // Set content for English editor
+                $("#description_ar_inp").val(data.description_ar);
+                $("#description_en_inp").val(data.description_en);
 
-                $("#price_inp").val(data.price);
+                // Handle is_publish switch
+                if (data.is_publish) {
+                    $("#kt_modal_add_customer_billing").prop("checked", true);
+                } else {
+                    $("#kt_modal_add_customer_billing").prop("checked", false);
+                }
+
                 $("#crud_form").attr(
                     "action",
                     `/dashboard/${dbTable}/${data.id}`

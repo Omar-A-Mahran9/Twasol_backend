@@ -288,6 +288,7 @@
                                 placeholder="{{ __('Description en') }}">
                             <div class="fv-plugins-message-container invalid-feedback" id="description_en"></div>
                         </div>
+                        
                     </div>
 
                     <div class="modal-footer">

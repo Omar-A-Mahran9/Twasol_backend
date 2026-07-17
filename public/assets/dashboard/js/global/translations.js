@@ -12,6 +12,7 @@ let translations = {
         "Please wait...": "يرجى الانتظار...",
         "Are you sure from deleting this ": "هل انت متاكد من حذف  ",
         "Edit blog": "تعديل المدونة",
+        
         "Edit packageCategories": "تعديل فئة الباقة",
         "Add package category": "أضف فئة باقة جديدة",
         "Add package": "أضف باقة جديدة",

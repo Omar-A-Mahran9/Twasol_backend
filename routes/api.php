@@ -74,7 +74,7 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
     Route::get('vendors', 'VendorController@index');
     Route::get('vendors/{vendor}', 'VendorController@show');
     Route::get('vendors-products/{vendor}', 'VendorController@vendorProducts');
-    Route::post('vendors', 'VendorController@store');
+    Route::post('vendors', 'VendorController@store');multi
 
     Route::get('categories-products/{category}', 'CategoryController@categoryProducts');
     Route::get('categories-search', 'HomeController@categoriesSearch');

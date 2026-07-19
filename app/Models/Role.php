@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Schema\Builder;
 
-
 class Role extends Model
 {
     use HasFactory;
@@ -21,29 +20,13 @@ class Role extends Model
     ];
 
     public static $modules = [
-        'whyus',
-        'howuse',
+    'admins',
+    'departments',
+    'employees',
+    'leave_types',
 
-        'admins',
-        'CommonQuestion',
-        'home_content',
-        'customers',
-        'customersRate',
-        'vendors',
 
-        'gallary',
-        'roles',
-        'addonService',
-        'tags',
-        'cities',
-        'offers',
-        'products',
-        'newsletter',
-        'contact_us',
-        'settings',
-        'orders',
-        'sliders',
-    ];
+];
 
     protected static function booted()
     {

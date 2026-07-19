@@ -29,6 +29,9 @@ return [
         'string' => 'يجب أن يكون عدد حروف النّص ( :attribute ) بين :min و :max',
         'array' => 'يجب أن يحتوي ( :attribute ) على عدد من العناصر بين :min و :max',
     ],
+    "birth_date" => "تاريخ الميلاد",
+    "marital_status" => "تاريخ الميلاد",
+
     'boolean' => 'يجب أن تكون قيمة ( :attribute ) إما true أو false ',
     'confirmed' => 'حقل التأكيد غير مُطابق للحقل ( :attribute )',
     'date' => '( :attribute ) ليس تاريخًا صحيحًا',
@@ -274,7 +277,7 @@ return [
     'description_about_us_ar'  => 'وصف قسم نبذة عنا (بالعربية)',
          'our_vission_ar' => 'رؤيتنا بالعربية',
         'our_vission_en' => 'رؤيتنا بالانجليزية',
-        "about_us_image"=> "صورة من نحن ",
+        "about_us_image" => "صورة من نحن ",
         'schedules.*.reservation_type' => 'نوع الحجز',
         'schedules.*.*.start_time' => 'بداية العمل',
         'schedules.*.*.end_time' => 'نهاية العمل',

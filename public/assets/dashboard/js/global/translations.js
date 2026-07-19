@@ -7,7 +7,8 @@ const __ = (word) => {
 let translations = {
     ar: {
         "Add new why us": "اضافة لماذا نحن",
-        "Add": "إضافة",
+        Add: "إضافة",
+        "Edit department": "تعديل الإدارة",
 
         "Edit gallery": "تعديل الصورة",
         "Add new partner": "اضافة شريك جديد",
@@ -15,7 +16,7 @@ let translations = {
         "Please wait...": "يرجى الانتظار...",
         "Are you sure from deleting this ": "هل انت متاكد من حذف  ",
         "Edit blog": "تعديل المدونة",
-        
+        "Edit employee": "تعديل موظف",
         "Edit packageCategories": "تعديل فئة الباقة",
         "Add package category": "أضف فئة باقة جديدة",
         "Add package": "أضف باقة جديدة",
@@ -29,6 +30,7 @@ let translations = {
         "Edit addon": "تعديل الخدمة",
         "Add new rate": "اضافة تقييم",
         "Add new awars": "اضافة انجاز جديد",
+        "Add new leave type": "اضافة نوع أجازة",
 
         "Yes, Delete !": "نعــم, أحذف !",
         "No, Cancel": "لا , ألغي",
@@ -113,7 +115,7 @@ let translations = {
         " selected": "محددة",
         male: "ذكر",
         female: "انثى",
-      
+
         "Medical center": "المركز الطبي",
         Doctor: "الطبيب",
         Client: "العميل",
@@ -121,8 +123,6 @@ let translations = {
         "Create new car": "أضف سيارة جديد",
         Approved: "مقبول",
         Pending: "قيد الانتظار",
-
-
 
         Delivered: "تم التوصيل",
         Rejected: "تم الرفض",

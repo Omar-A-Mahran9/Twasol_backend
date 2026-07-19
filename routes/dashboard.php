@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\Dashboard\EmployeeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -39,35 +39,28 @@ Route::get("fast-shipping-city/restore/{fastCity}", "FastShippingCityController@
 Route::delete("packageCategories/delete-selected", "PackageCategoryController@deleteSelected");
 Route::delete("packages/delete-selected", "PackagesController@deleteSelected");
 
- Route::delete("addon/delete-selected", "AddonServiceController@deleteSelected");
- Route::get("addon/restore-selected", "AddonServiceController@restoreSelected");
 
- Route::delete("addon/delete-selected", "AddonServiceController@deleteSelected");
- Route::get("addon/restore-selected", "AddonServiceController@restoreSelected");
+/* begin Delete And restore */
+Route::delete("admins/delete-selected", "AdminController@deleteSelected");
+Route::get("admins/restore-selected", "AdminController@restoreSelected");
 
- Route::delete("whyus/delete-selected", "WhyusController@deleteSelected");
- Route::get("whyus/restore-selected", "WhyusController@restoreSelected");
+Route::delete("departments/delete-selected", "DepartmentController@deleteSelected");
+Route::get("departments/restore-selected", "DepartmentController@restoreSelected");
 
- Route::delete("CommonQuestion/delete-selected", "CommonQuestionController@deleteSelected");
- Route::get("CommonQuestion/restore-selected", "CommonQuestionController@restoreSelected");
-
- Route::delete("howuse/delete-selected", "HowuseController@deleteSelected");
- Route::get("howuse/restore-selected", "HowuseController@restoreSelected");
-
- Route::resource('addon', 'AddonServiceController')->except(['create', 'edit']);
- Route::resource('whyus', 'WhyusController')->except(['create', 'edit']);
- Route::resource('howuse', 'HowuseController')->except(['create', 'edit']);
-
- Route::resource('CommonQuestion', 'CommonQuestionController')->except(['create', 'edit']);
+Route::delete("employees/delete-selected", "EmployeeController@deleteSelected");
+Route::get("employees/restore-selected", "EmployeeController@restoreSelected");
 
 /** begin resources routes **/
-Route::resource('order-reasons', 'OrderReasonController')->except(['create', 'edit']);
+Route::resource('admins', 'AdminController')->except(['create', 'edit']);
+Route::resource('departments', 'DepartmentController')->except(['create', 'edit']);
+Route::resource('employees', 'EmployeeController')->except(['create', 'edit']);
+
 Route::resource('admins', 'AdminController')->except(['create', 'edit']);
 Route::resource('booking', 'BookingController')->except(['create', 'edit']);
 Route::resource('brands', 'BrandController')->except(['create', 'edit']);
 Route::resource('award', 'BrandController')->except(['create', 'edit']);
 Route::resource('partner', 'PartenerController')->except(['create', 'edit']);
-Route::resource('gallary', 'GallaryController')->except(['create', 'edit']);
+Route::resource('leave-types', 'LeaveTypeController')->except(['create', 'edit']);
 
 
 
@@ -103,17 +96,7 @@ Route::resource('ads', 'AdController')->except(['create', 'edit']);
 Route::resource('offers', 'OfferController')->except(['create', 'edit']);
 Route::resource('orders', 'OrderController');
 Route::resource('refund-cancel-orders', 'RefundCancelOrderController');
-Route::resource('sliders', 'SliderController');
-Route::post('change-order-status/{id}', 'OrderController@changeOrderStatus')->name('change-order-status');
-Route::post("products/{step?}", "ProductController@store")->name('products.store');
-Route::put("products/{product}/{step?}", "ProductController@update")->name('products.update');
-Route::get("cars/{car}/images", "CarsController@images");
-Route::resource('products', 'ProductController')->except(['store', 'update']);
 
-Route::resource('cars', 'CarsController')->except(['store', 'update']);
-
-Route::post("cars/{step?}", "CarsController@store")->name('cars.store');
-Route::put("cars/{car}/{step?}", "CarsController@update")->name('cars.update');
 
 Route::resource('newsletter', 'NewsLetterController')->only(['index', 'destroy']);
 Route::get('profile-info', 'ProfileController@profileInfo')->name('profile-info');
@@ -121,6 +104,28 @@ Route::put('update-profile-info', 'ProfileController@updateProfileInfo')->name('
 Route::put('update-profile-email', 'ProfileController@updateProfileEmail')->name('update-profile-email');
 Route::put('update-profile-password', 'ProfileController@updateProfilePassword')->name('update-profile-password');
 /** ajax routes **/
+
+Route::get("/", "DashboardController@index")->name('index');
+Route::get("/", "DashboardController@index")->name('index');
+
+/* begin Delete And restore */
+Route::delete("admins/delete-selected", "AdminController@deleteSelected");
+Route::get("admins/restore-selected", "AdminController@restoreSelected");
+
+Route::delete("departments/delete-selected", "DepartmentController@deleteSelected");
+Route::get("departments/restore-selected", "DepartmentController@restoreSelected");
+
+Route::delete("employees/delete-selected", "EmployeeController@deleteSelected");
+Route::get("employees/restore-selected", "EmployeeController@restoreSelected");
+
+/** begin resources routes **/
+Route::resource('admins', 'AdminController')->except(['create', 'edit']);
+Route::resource('departments', 'DepartmentController')->except(['create', 'edit']);
+Route::resource('employees', 'EmployeeController')->except(['create', 'edit']);
+Route::post(
+    'employees/validate-step',
+    [EmployeeController::class, 'validateStep']
+)->name('employees.validate-step');
 Route::post('dropzone/validate-image', 'DropzoneController@validateImage')->name('dropzone.validate-image');
 Route::post("select2-ajax/subcategories", "ProductController@getSubcategories")->name('select2-ajax.subcategories');
 Route::post("select2-ajax/vendor-cities", "ProductController@getCitiesBasedOnVendor")->name('select2-ajax.vendor-cities');
@@ -145,11 +150,9 @@ Route::prefix('settings')->name('settings.')->group(function () {
     Route::match(['get', 'post'], 'home-content/banner', 'HomeController@banner')->name('home.banner');
 
 
- });
+});
 
-Route::get('trash/{modelName}/{id}/restore', 'TrashController@restore')->name('trash.restore');
-Route::get('trash/{modelName?}', 'TrashController@index')->name('trash');
-Route::get('trash/{modelName}/{id}', 'TrashController@restore');
+
 Route::get('/language/{lang}', function (Request $request) {
     session()->put('locale', $request->lang);
     return redirect()->back();
@@ -157,7 +160,4 @@ Route::get('/language/{lang}', function (Request $request) {
 /** notifications routes **/
 Route::post('/save-token', 'NotificationController@saveToken')->name('save-token');
 Route::post('/send-notification', 'NotificationController@sendNotification')->name('send.notification');
-Route::get('notifications/{id}/mark_as_read', 'NotificationController@markAsRead')->name('notifications.mark_as_read');
-Route::get('notifications/{type}/load-more/{next}', 'NotificationController@loadMore')->name('notifications.load_more');
-Route::get('notifications/mark-all-as-read', 'NotificationController@markAllAsRead')->name('notifications.mark_all_as_read');
-Route::post('/fetch-data', 'DashboardController@ordersTransaction')->name('fetch.data');
+ Route::post('/fetch-data', 'DashboardController@ordersTransaction')->name('fetch.data');

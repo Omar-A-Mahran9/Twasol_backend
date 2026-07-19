@@ -13,11 +13,9 @@
                     class="h-50px d-none d-sm-inline app-sidebar-logo-default theme-light-show" />
             @endif
             @if (isArabic())
-                <img alt="Logo" src="{{ asset('placeholder_images/Logo.svg') }}"
-                    class="h-50px theme-dark-show" />
+                <img alt="Logo" src="{{ asset('placeholder_images/Logo.svg') }}" class="h-50px theme-dark-show" />
             @else
-                <img alt="Logo" src="{{ asset('placeholder_images/Logo.svg') }}"
-                    class="h-50px theme-dark-show" />
+                <img alt="Logo" src="{{ asset('placeholder_images/Logo.svg') }}" class="h-50px theme-dark-show" />
             @endif
         </a>
         <!--end::Logo-->
@@ -44,133 +42,37 @@
                     <i class="ki-outline ki-category fs-2"></i>
                 </x-dashboard.aside-item>
                 <!--end:Menu item-->
+
                 @can('view_admins')
                     <x-dashboard.aside-item :slug="'admins'" :route="route('dashboard.admins.index')" :title="__('Admins')">
                         <i class="ki-outline ki-security-user fs-2"></i>
                     </x-dashboard.aside-item>
                 @endcan
 
-                @can('view_sliders')
-                    <x-dashboard.aside-item :slug="'sliders'" :route="route('dashboard.sliders.index')" :title="__('Sliders')">
-                        <i class="ki-outline ki-slider-horizontal-2 fs-2"></i>
+                @can('view_departments')
+                    <x-dashboard.aside-item :slug="'departments'" :route="route('dashboard.departments.index')" :title="__('Departments')">
+                        <i class="ki-outline ki-abstract-26 fs-2"></i>
                     </x-dashboard.aside-item>
                 @endcan
 
+                @can('view_leave_types')
+                    <x-dashboard.aside-item :slug="'leave-types'" :route="route('dashboard.leave-types.index')" :title="__('Leave Types')">
 
-                @can('view_addonService')
-                    <x-dashboard.aside-item :slug="'addonService'" :route="route('dashboard.addon.index')" :title="__('Services')">
-                        <i class="ki-outline ki-plus fs-2"></i>
+                        <i class="ki-outline ki-calendar fs-2"></i>
+
                     </x-dashboard.aside-item>
                 @endcan
 
-                @can('view_whyus')
-                    <x-dashboard.aside-item :slug="'whyus'" :route="route('dashboard.whyus.index')" :title="__('Why us')">
-                        <i class="ki-outline ki-abstract-29 fs-2"></i>
-                    </x-dashboard.aside-item>
-                @endcan
+                @can('view_employees')
+                    <x-dashboard.aside-item :slug="'employees'" :route="route('dashboard.employees.index')" :title="__('Employees')">
 
-                @can('view_howuse')
-                    <x-dashboard.aside-item :slug="'howuse'" :route="route('dashboard.howuse.index')" :title="__('How make Order')">
-                        <i class="ki-outline ki-discount fs-2"></i>
-                    </x-dashboard.aside-item>
-                @endcan
-
-                @can('view_CommonQuestion')
-                    <x-dashboard.aside-item :slug="'CommonQuestion'" :route="route('dashboard.CommonQuestion.index')" :title="__('Common Question')">
-                        <i class="ki-outline ki-question fs-2"></i>
-                    </x-dashboard.aside-item>
-                @endcan
-
-                <!--begin:Menu item-->
-                @can('view_customers')
-                    <x-dashboard.aside-item :slug="'customers'" :route="route('dashboard.customers.index')" :title="__('Customers')">
                         <i class="ki-outline ki-people fs-2"></i>
-                    </x-dashboard.aside-item>
-                @endcan
-                <!--end:Menu item-->
-                <!--begin:Menu item-->
-                @can('view_customersRate')
-                    <x-dashboard.aside-item :slug="'customers_rates'" :route="route('dashboard.customers_rates.index')" :title="__('Customers Rates')">
-                        <i class="ki-outline ki-chart-line fs-2"></i>
-                    </x-dashboard.aside-item>
-                @endcan
-                <!--end:Menu item-->
 
-                <!--begin:Menu item-->
-
-
-                @can('view_offers')
-                    <x-dashboard.aside-item :slug="'offers'" :route="route('dashboard.offers.index')" :title="__('Offers')">
-                        <i class="ki-outline ki-discount fs-2"></i>
-                    </x-dashboard.aside-item>
-                @endcan
-
-                <!--begin:Menu item-->
-                @can('view_cities')
-                    <x-dashboard.aside-item :slug="'cities'" :route="route('dashboard.cities.index')" :title="__('Cities')">
-                        <i class="ki-outline ki-map fs-2"></i>
-                    </x-dashboard.aside-item>
-                @endcan
-                <!--end:Menu item-->
-
-                @can('view_contact_us')
-                    <x-dashboard.aside-item :slug="'contact_us'" :route="route('dashboard.contact-requests.index')" :title="__('Contact us')">
-                        <i class="ki-outline ki-phone fs-1"></i>
-                    </x-dashboard.aside-item>
-                @endcan
-
-                @can('view_orders')
-                    <x-dashboard.aside-item :slug="'orders'" :route="route('dashboard.orders.index')" :title="__('Orders')">
-                        <i class="ki-outline ki-parcel fs-1"></i>
-                    </x-dashboard.aside-item>
-                @endcan
-
-                @can('view_newsletter')
-                    <x-dashboard.aside-item :slug="'newsletter'" :route="route('dashboard.newsletter.index')" :title="__('Newsletter')">
-                        <i class="ki-outline ki-book-square fs-1"></i>
-                    </x-dashboard.aside-item>
-                @endcan
-
-                @can('view_awards')
-                    <x-dashboard.aside-item :slug="'brands'" :route="route('dashboard.brands.index')" :title="__('awards')">
-                        <i class="fas fa-certificate fs-2"></i>
-                    </x-dashboard.aside-item>
-                @endcan
-
-                @can('view_partener')
-                    <x-dashboard.aside-item :slug="'parteners'" :route="route('dashboard.partner.index')" :title="__('partner')">
-                        <i class="fas fa-handshake fs-2   me-2"></i>
                     </x-dashboard.aside-item>
                 @endcan
 
 
-                @can('view_gallary')
-                    <x-dashboard.aside-item :slug="'gallary'" :route="route('dashboard.gallary.index')" :title="__('Gallary')">
-                        <i class="fas fa-image fs-2  me-2"></i>
-                    </x-dashboard.aside-item>
-                @endcan
 
-                {{--
-                @can('view_CommonQuestion')
-                    <x-dashboard.aside-item :slug="'CommonQuestion'" :route="route('dashboard.CommonQuestion.index')" :title="__('Common Question')">
-                        <i class="ki-outline ki-question fs-2"></i>
-                    </x-dashboard.aside-item>
-                @endcan --}}
-
-
-                @can('view_roles')
-                    <x-dashboard.aside-item :slug="'settings'" :route="route('dashboard.settings.roles.index')" :title="__('Settings')">
-                        <i class="ki-outline ki-rescue fs-2"></i>
-                    </x-dashboard.aside-item>
-                @endcan
-                <!--end:Menu item-->
-                <!--begin:Menu item-->
-                @can('view_recycle_bin')
-                    <x-dashboard.aside-item :slug="'trash'" :route="route('dashboard.trash')" :title="__('Recycle Bin')">
-                        <i class="ki-outline ki-trash fs-2"></i>
-                    </x-dashboard.aside-item>
-                @endcan
-                <!--end:Menu item-->
             </div>
             <!--end::Menu-->
         </div>
@@ -232,8 +134,7 @@
                         <!--end::Menu item-->
                         <!--begin::Menu item-->
                         <div class="menu-item px-3 my-0">
-                            <a href="#" class="menu-link px-3 py-2" data-kt-element="mode"
-                                data-kt-value="dark">
+                            <a href="#" class="menu-link px-3 py-2" data-kt-element="mode" data-kt-value="dark">
                                 <span class="menu-icon" data-kt-element="icon">
                                     <i class="ki-outline ki-moon fs-2"></i>
                                 </span>

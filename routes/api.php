@@ -24,7 +24,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::group(['middleware' => ['cors', 'json.response']], function () {
 
 
-<<<<<<< HEAD
     Route::middleware(['auth:api'])->group(function () {
         Route::post('products/{product}/rate', 'ProductController@rate');
         Route::post('/customers/update-info', [ProfileController::class, 'updateInfo']);
@@ -64,16 +63,14 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
     Route::get('products', 'ProductController@index');
     Route::get('products/{product}', 'ProductController@show');
     Route::get('products/{product}/rates', 'ProductController@rates');
-     Route::get('about-vendor/{product}', 'ProductController@aboutVendor');
+    Route::get('about-vendor/{product}', 'ProductController@aboutVendor');
     Route::get('vendors', 'VendorController@index');
     Route::get('vendors/{vendor}', 'VendorController@show');
     Route::get('vendors-products/{vendor}', 'VendorController@vendorProducts');
-    Route::post('vendors', 'VendorController@store');multi
+    Route::post('vendors', 'VendorController@store');
 
     Route::get('categories-products/{category}', 'CategoryController@categoryProducts');
     Route::get('categories-search', 'HomeController@categoriesSearch');
-=======
->>>>>>> dbb27197de73dcd514bc9d13aff284f8d17381d1
     Route::post('news-letter', 'HomeController@newsLetter');
     Route::get('sliders', 'HomeController@getSliders');
     Route::get('services', 'HomeController@getservices');
@@ -86,6 +83,6 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
 
     Route::get('general', 'GeneralInvokableController');
     Route::post('contact_us', 'ContactUsController@store');
-    
+
 
 });

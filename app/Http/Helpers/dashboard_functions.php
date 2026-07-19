@@ -39,9 +39,34 @@ if (!function_exists('uploadImageToDirectory')) {
         $model     = Str::plural($model);
         $model     = Str::ucfirst($model);
         $path      = "/Images/$model";
-        $imageName = str_replace(' ', '', 'jalid_' . time() . $imageFile->getClientOriginalName());  // Set Image name
+        $imageName = str_replace(' ', '', 'hrm_' . time() . $imageFile->getClientOriginalName());  // Set Image name
         $imageFile->storeAs($path, $imageName, 'public');
         return $imageName;
+    }
+}
+
+if (!function_exists('uploadFileToDirectory')) {
+
+    function uploadFileToDirectory($file, $model = '')
+    {
+        $model = Str::plural($model);
+        $model = Str::ucfirst($model);
+
+        $path = "/Files/$model";
+
+        $fileName = str_replace(
+            ' ',
+            '',
+            'hrm_' . time() . $file->getClientOriginalName()
+        );
+
+        $file->storeAs(
+            $path,
+            $fileName,
+            'public'
+        );
+
+        return $fileName;
     }
 }
 
@@ -93,12 +118,13 @@ if (!function_exists('getImagePathFromDirectory')) {
         $imagePath         = "/storage/Images/$directory/$imageName";
         $callbackImagePath = "placeholder_images/$directory/$defaultImage";
 
-        if ($imageName && $directory && file_exists(public_path($imagePath)))
+        if ($imageName && $directory && file_exists(public_path($imagePath))) {
             return asset($imagePath);
-        else if (file_exists($callbackImagePath))
+        } elseif (file_exists($callbackImagePath)) {
             return asset($callbackImagePath);
-        else
+        } else {
             return asset("/placeholder_images/$defaultImage");
+        }
     }
 }
 
@@ -107,8 +133,9 @@ if (!function_exists('isTabActive')) {
 
     function isTabActive($path)
     {
-        if (request()->routeIs($path))
+        if (request()->routeIs($path)) {
             return 'active';
+        }
     }
 }
 
@@ -118,8 +145,9 @@ if (!function_exists('isTabOpen')) {
     function isTabOpen($path)
     {
 
-        if (request()->segment(2) === $path)
+        if (request()->segment(2) === $path) {
             return 'menu-item-open';
+        }
     }
 }
 
@@ -128,8 +156,9 @@ if (!function_exists('getClassIfUrlContains')) {
     function getClassIfUrlContains($class, $word)
     {
 
-        if ($word == "/" && count(request()->segments()) == 1)
+        if ($word == "/" && count(request()->segments()) == 1) {
             return $class;
+        }
 
         return in_array($word, request()->segments()) ? $class : '';
     }
@@ -200,10 +229,11 @@ if (!function_exists('getModelData')) {
         $params = request()->all();
 
         // set passed filters from controller if exist
-        if (!$onlyTrashed)
+        if (!$onlyTrashed) {
             $model = $model->query()->with($relationsWithColumns);
-        else
+        } else {
             $model = $model->query()->onlyTrashed()->with($relationsWithColumns);
+        }
 
 
         /** Get the count before search **/
@@ -212,12 +242,14 @@ if (!function_exists('getModelData')) {
         // general search
         if (isset($params['search']['value'])) {
 
-            if (str_starts_with($params['search']['value'], '0'))
+            if (str_starts_with($params['search']['value'], '0')) {
                 $params['search']['value'] = substr($params['search']['value'], 1);
+            }
 
             /** search in the original table **/
-            foreach ($columns as $column)
+            foreach ($columns as $column) {
                 array_push($orsFilters, [$column, 'LIKE', "%" . $params['search']['value'] . "%"]);
+            }
         }
 
         // filter search
@@ -235,25 +267,28 @@ if (!function_exists('getModelData')) {
 
                 /** search in the original table **/
                 foreach ($searchingKeys as $column) {
-                    if (!($column['name'] == 'created_at' or $column['name'] == 'date'))
+                    if (!($column['name'] == 'created_at' or $column['name'] == 'date')) {
                         array_push($andsFilters, [$column['name'], '=', $column['search']['value']]);
-                    else {
-                        if (!str_contains($column['search']['value'], ' - ')) // if date isn't range ( single date )
+                    } else {
+                        if (!str_contains($column['search']['value'], ' - ')) { // if date isn't range ( single date )
                             $model->orWhereDate($column['name'], $column['search']['value']);
-                        else
+                        } else {
                             $model->orWhereBetween($column['name'], getDateRangeArray($column['search']['value']));
+                        }
                     }
                 }
             }
         }
 
         $model = $model->where(function ($query) use ($orsFilters) {
-            foreach ($orsFilters as $filter)
+            foreach ($orsFilters as $filter) {
                 $query->orWhere([$filter]);
+            }
         });
 
-        if ($andsFilters)
+        if ($andsFilters) {
             $model->where($andsFilters);
+        }
 
         if (isset($params['order'][0])) {
             $model->orderBy($params['columns'][$params['order'][0]['column']]['data'], $params['order'][0]['dir']);
@@ -332,10 +367,11 @@ if (!function_exists('sendFirebaseNotification')) {
             ],
         ];
 
-        if ($token == null)
+        if ($token == null) {
             $data['registration_ids'] = $tokens;
-        else
+        } else {
             $data['to'] = $token;
+        }
 
         Http::withHeaders([
             'Authorization' => 'key=' . $SERVER_API_KEY,
